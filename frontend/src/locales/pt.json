@@ -60,7 +60,6 @@
   "collaborations": "Colaborações",
   "create": "Criar",
   "course": "Curso",
-  "content": "Conteúdo",
   "quiz": "Questionário",
   "collection": "Coleção",
   "courseDesc": "Crie cursos usando coleções e recursos. Cursos têm duração para alcançar um objetivo.",
@@ -99,5 +98,51 @@
   "joinThousands": "Junte-se a milhares de profissionais que avançaram em suas carreiras com nossos programas de treinamento abrangentes.",
   "certifiedProfessionals": "Formação Profissional Certificada",
   "watchDemo": "Assistir demonstração",
-  "certifications": "Certificações"
+  "certifications": "Certificações",
+  "nav": {
+    "home": "Início",
+    "explore": "Explorar",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "button": {
+    "login": "Entrar"
+  },
+  "hero": {
+    "title": "Conhecimento que te move para frente.",
+    "subtitle": "Desbloqueie seu potencial e explore um mundo de conhecimento. Comece sua jornada com mais de 100 cursos feitos para o seu futuro.",
+    "cta": "Comece Sua Jornada de Aprendizado",
+    "processSimple": "O processo de aprendizado é simples",
+    "online": "Online",
+    "studyPace": "Estude no seu próprio ritmo"
+  },
+  "stats": {
+    "courses": "Cursos",
+    "activeLearners": "Alunos Ativos",
+    "certifications": "Certificações"
+  },
+  "popular": {
+    "title": "Conteúdo Mais Popular",
+    "viewAll": "Ver Todos"
+  },
+  "contentStats": {
+    "learners": "Alunos",
+    "lessons": "Aulas",
+    "view": "Ver"
+  },
+  "resource": {
+    "title": "Fique à frente. O que vem a seguir começa aqui.",
+    "header": "Centro de Recursos",
+    "viewVideo": "Ver o Vídeo",
+    "viewPdf": "Ver o PDF",
+    "viewHtml": "Ver o HTML",
+    "viewEpub": "Ver o Epub"
+  },
+  "trending": {
+    "mostViewed": "Conteúdo Mais Visto",
+    "trending": "Conteúdo em Alta"
+  },
+  "faq": {
+    "title": "Perguntas frequentes"
+  }
 }

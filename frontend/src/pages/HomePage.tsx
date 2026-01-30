@@ -1,70 +1,151 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth, Role, User } from '../auth/AuthContext';
-import { getDefaultRouteForRole } from '../rbac/roleConfig';
-import { v4 as uuidv4 } from 'uuid';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { FiSearch, FiChevronLeft } from "react-icons/fi";
+import { Input } from "@/components/input";
+import { Button } from "@/components/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/dropdown-menu";
+import PageLoader from "@/components/PageLoader";
+import Footer from "@/components/Footer";
+import { useAppI18n, type LanguageCode } from "@/hooks/useAppI18n";
+import HomeSidebar from "@/components/HomeSidebar";
+import HomeStatsCards from "@/components/HomeStatsCards";
+import HomeContinueLearning from "@/components/HomeContinueLearning";
+import HomePerformanceChart from "@/components/HomePerformanceChart";
+import HomeInProgressGrid from "@/components/HomeInProgressGrid";
+import HomeRecommendedSection from "@/components/HomeRecommendedSection";
 
-const HomePage: React.FC = () => {
-  const [selectedRole, setSelectedRole] = useState<Role>('guest');
-  const { login } = useAuth();
+// Custom language icon matching design
+const LanguageIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <text x="2" y="16" fontSize="11" fontWeight="600" fill="currentColor">A</text>
+    <text x="12" y="16" fontSize="9" fontWeight="500" fill="currentColor">あ</text>
+  </svg>
+);
+
+const Home = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { languages, currentCode, changeLanguage } = useAppI18n();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeNav, setActiveNav] = useState("home");
 
-  // Get the return path from location state, or use role's default route
-  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || getDefaultRouteForRole(selectedRole);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const user: User = {
-      id: uuidv4(),
-      name: `User (${selectedRole})`,
-      role: selectedRole,
-    };
-
-    login(user);
-    
-    // Redirect back to the page they tried to access, or default path
-    navigate(from, { replace: true });
+  const handleLanguageChange = (code: LanguageCode) => {
+    changeLanguage(code);
   };
 
+  if (isLoading) {
+    return <PageLoader message="Loading your dashboard..." />;
+  }
+
   return (
-    <div>
-      <h1>Welcome to Sunbird Portal</h1>
-      <h2>Available Courses</h2>
-      <ul>
-        <li>Course 1</li>
-        <li>Course 2</li>
-      </ul>
+    <div className="min-h-screen bg-home-ivory flex">
+      {/* Sidebar */}
+      <HomeSidebar activeNav={activeNav} onNavChange={setActiveNav} />
 
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="role">Select Role:</label>
-          <select
-            id="role"
-            value={selectedRole}
-            onChange={(e) => setSelectedRole(e.target.value as Role)}
-          >
-            <option value="admin">Admin</option>
-            <option value="content_creator">Content Creator</option>
-            <option value="content_reviewer">Content Reviewer</option>
-            <option value="guest">Guest</option>
-          </select>
-        </div>
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col">
+        {/* Top Header */}
+        <header className="bg-white border-b border-gray-100 px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Left: Back + Title */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => navigate(-1)}
+                className="text-home-ginger hover:text-home-brick transition-colors"
+              >
+                <FiChevronLeft className="w-5 h-5" />
+              </button>
+              <h1 className="text-lg font-semibold text-gray-900">Home</h1>
+            </div>
 
-        <button type="submit">
-          Login
-        </button>
-      </form>
+            {/* Right: Search + Language */}
+            <div className="flex items-center gap-4">
+              {/* Search Bar */}
+              <div className="relative w-80">
+                <Input
+                  placeholder="Search for content"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-4 pr-10 bg-white border-gray-200 focus:border-home-ginger focus:ring-home-ginger/20 rounded-lg h-10"
+                />
+                <button className="absolute right-3 top-1/2 -translate-y-1/2 text-home-ginger hover:text-home-brick">
+                  <FiSearch className="w-4 h-4" />
+                </button>
+              </div>
 
-      {location.state?.from && (
-        <p>
-          You will be redirected to: <strong>{from}</strong>
-        </p>
-      )}
+              {/* Language Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="gap-1 text-gray-600 hover:text-home-ginger">
+                    <LanguageIcon />
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="bg-white border-gray-200">
+                  {languages.map((lang) => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code as LanguageCode)}
+                      className={currentCode === lang.code ? "bg-home-ivory" : ""}
+                    >
+                      <span className="mr-2">{lang.label}</span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+        </header>
+
+        {/* Scrollable Content */}
+        <main className="flex-1 overflow-y-auto bg-home-ivory">
+          <div className="p-6 md:p-8">
+            {/* Welcome Section */}
+            <div className="mb-6">
+              <h2 className="text-xl font-semibold text-gray-900">Hi John Deo</h2>
+              <p className="text-gray-500 text-sm">Welcome to a learning experience made just for you.</p>
+            </div>
+
+            {/* Stats Cards */}
+            <HomeStatsCards />
+
+            {/* Continue Learning + Performance */}
+            <div className="flex gap-6 mb-8">
+              <div className="w-[65%]">
+                <HomeContinueLearning />
+              </div>
+              <div className="w-[35%]">
+                <HomePerformanceChart />
+              </div>
+            </div>
+
+            {/* In Progress Contents */}
+            <HomeInProgressGrid />
+
+            {/* Recommended Contents */}
+            <HomeRecommendedSection />
+          </div>
+
+          {/* Footer */}
+          <Footer />
+        </main>
+      </div>
     </div>
   );
 };
 
-export default HomePage;
+export default Home;

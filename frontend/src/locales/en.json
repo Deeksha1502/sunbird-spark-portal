@@ -112,5 +112,51 @@
   "joinThousands": "Join thousands of professionals who have advanced their careers with our comprehensive training programs.",
   "certifiedProfessionals": "Certified Professional Training",
   "watchDemo": "Watch Demo",
-  "certifications": "Certifications"
+  "certifications": "Certifications",
+  "nav": {
+    "home": "Home",
+    "explore": "Explore",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "button": {
+    "login": "Login"
+  },
+  "hero": {
+    "title": "Knowledge that moves you forward.",
+    "subtitle": "Unlock your potential and explore a world of knowledge. Start your journey with 100+ courses built for your future.",
+    "cta": "Start Your Learning Journey",
+    "processSimple": "The learning process is simple",
+    "online": "Online",
+    "studyPace": "Study at your own pace"
+  },
+  "stats": {
+    "courses": "Courses",
+    "activeLearners": "Active Learners",
+    "certifications": "Certifications"
+  },
+  "popular": {
+    "title": "Most Popular Content",
+    "viewAll": "View All"
+  },
+  "contentStats": {
+    "learners": "Learners",
+    "lessons": "Lessons",
+    "view": "View"
+  },
+  "resource": {
+    "title": "Stay ahead. What's next starts here.",
+    "header": "Resource Center",
+    "viewVideo": "View The Video",
+    "viewPdf": "View The PDF",
+    "viewHtml": "View The HTML",
+    "viewEpub": "View the Epub"
+  },
+  "trending": {
+    "mostViewed": "Most Viewed Content",
+    "trending": "Trending Content"
+  },
+  "faq": {
+    "title": "Frequently asked questions"
+  }
 }
