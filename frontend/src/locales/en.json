@@ -46,7 +46,8 @@
   "searchPlaceholder": "Search courses...",
   "featuredCourses": "Featured Courses",
   "popularCourses": "Popular Courses",
-  "browseCategories": "Browse by Category",
+  "browseCategories": "Browse through Categories",
+  "categoryDescription": "Explore our diverse range of professional training categories",
   "viewAll": "View All",
   "startLearning": "Start Learning",
   "exploreCourses": "Explore Courses",
@@ -120,7 +121,9 @@
     "contact": "Contact"
   },
   "button": {
-    "login": "Login"
+    "login": "Login",
+    "goBack": "Go Back",
+    "share": "Share"
   },
   "hero": {
     "title": "Knowledge that moves you forward.",
@@ -144,13 +147,21 @@
     "lessons": "Lessons",
     "view": "View"
   },
+  "courseDetails": {
+    "overview": "Course Overview",
+    "weeks": "Weeks",
+    "skills": "Skills you will learn",
+    "suitedFor": "Best Suited For",
+    "relatedContent": "Related Content"
+  },
   "resource": {
     "title": "Stay ahead. What's next starts here.",
     "header": "Resource Center",
     "viewVideo": "View The Video",
     "viewPdf": "View The PDF",
     "viewHtml": "View The HTML",
-    "viewEpub": "View the Epub"
+    "viewEpub": "View the Epub",
+    "seeCaseStudy": "See the Case Study"
   },
   "trending": {
     "mostViewed": "Most Viewed Content",

@@ -10,8 +10,9 @@ import WorkspacePage from './pages/WorkspacePage';
 import ReportsPage from './pages/ReportsPage';
 import CreateContentPage from './pages/CreateContentPage';
 import Index from './pages/Index';
-import Courses from './pages/Courses';
+// import Courses from './pages/Courses';
 import Explore from './pages/Explore';
+import CollectionDetail from './pages/CollectionDetail';
 
 const AdminProtected = withRoles(['admin'])(AdminPage);
 const WorkspaceProtected = withRoles(['content_creator', 'content_reviewer'])(WorkspacePage);
@@ -26,8 +27,9 @@ const AppRoutes: React.FC = () => {
         <Route path="/" element={<Index />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/unauthorized" element={<UnauthorizedPage />} />
-        <Route path="/courses" element={<Courses />} />
+        {/* <Route path="/courses" element={<Courses />} /> */}
         <Route path="/explore" element={<Explore />} />
+        <Route path="/collection/:collectionId" element={<CollectionDetail />} />
 
         {/* Protected routes */}
         <Route path="/admin" element={<AdminProtected />} />

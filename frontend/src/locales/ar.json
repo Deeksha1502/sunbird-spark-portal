@@ -119,7 +119,9 @@
     "contact": "اتصل بنا"
   },
   "button": {
-    "login": "تسجيل الدخول"
+    "login": "تسجيل الدخول",
+    "goBack": "رجوع",
+    "share": "مشاركة"
   },
   "hero": {
     "title": "المعرفة التي تدفعك للأمام.",
@@ -143,13 +145,21 @@
     "lessons": "دروس",
     "view": "عرض"
   },
+  "courseDetails": {
+    "overview": "نظرة عامة على الدورة",
+    "weeks": "أسابيع",
+    "skills": "المهارات التي ستتعلمها",
+    "suitedFor": "الأفضل ل",
+    "relatedContent": "محتوى ذو صلة"
+  },
   "resource": {
     "title": "ابق في المقدمة. ما هو التالي يبدأ هنا.",
     "header": "مركز الموارد",
     "viewVideo": "شاهد الفيديو",
     "viewPdf": "اعرض PDF",
     "viewHtml": "اعرض HTML",
-    "viewEpub": "اعرض Epub"
+    "viewEpub": "اعرض Epub",
+    "seeCaseStudy": "انظر دراسة الحالة"
   },
   "trending": {
     "mostViewed": "المحتوى الأكثر مشاهدة",

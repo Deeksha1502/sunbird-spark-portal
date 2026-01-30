@@ -106,7 +106,9 @@
     "contact": "Contato"
   },
   "button": {
-    "login": "Entrar"
+    "login": "Entrar",
+    "goBack": "Voltar",
+    "share": "Compartilhar"
   },
   "hero": {
     "title": "Conhecimento que te move para frente.",
@@ -130,13 +132,21 @@
     "lessons": "Aulas",
     "view": "Ver"
   },
+  "courseDetails": {
+    "overview": "Visão geral do curso",
+    "weeks": "Semanas",
+    "skills": "Habilidades que você aprenderá",
+    "suitedFor": "Melhor para",
+    "relatedContent": "Conteúdo relacionado"
+  },
   "resource": {
     "title": "Fique à frente. O que vem a seguir começa aqui.",
     "header": "Centro de Recursos",
     "viewVideo": "Ver o Vídeo",
     "viewPdf": "Ver o PDF",
     "viewHtml": "Ver o HTML",
-    "viewEpub": "Ver o Epub"
+    "viewEpub": "Ver o Epub",
+    "seeCaseStudy": "Ver estudo de caso"
   },
   "trending": {
     "mostViewed": "Conteúdo Mais Visto",

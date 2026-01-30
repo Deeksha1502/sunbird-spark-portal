@@ -119,7 +119,9 @@
     "contact": "Contact"
   },
   "button": {
-    "login": "Connexion"
+    "login": "Connexion",
+    "goBack": "Retour",
+    "share": "Partager"
   },
   "hero": {
     "title": "Des connaissances qui vous font avancer.",
@@ -143,13 +145,21 @@
     "lessons": "Leçons",
     "view": "Voir"
   },
+  "courseDetails": {
+    "overview": "Aperçu du cours",
+    "weeks": "Semaines",
+    "skills": "Compétences que vous apprendrez",
+    "suitedFor": "Idéal pour",
+    "relatedContent": "Contenu associé"
+  },
   "resource": {
     "title": "Gardez une longueur d'avance. L'avenir commence ici.",
     "header": "Centre de Ressources",
     "viewVideo": "Voir la Vidéo",
     "viewPdf": "Voir le PDF",
     "viewHtml": "Voir le HTML",
-    "viewEpub": "Voir l'Epub"
+    "viewEpub": "Voir l'Epub",
+    "seeCaseStudy": "Voir l'étude de cas"
   },
   "trending": {
     "mostViewed": "Contenu le Plus Vu",

@@ -37,7 +37,7 @@ const Explore = () => {
             <Header />
             <main className="container mx-auto px-4 py-8 md:py-12">
                 <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
-                    {t("startExploring") || "Start Exploring"}
+                    {t("Start Exploring") || "Start Exploring"}
                 </h1>
 
                 <div className="flex flex-col md:flex-row gap-6 md:gap-8">
