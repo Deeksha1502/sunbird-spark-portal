@@ -107,7 +107,7 @@ const PopularContent = () => {
                             className="inline-block text-[11px] font-medium px-3 py-1 rounded-full"
                             style={getBadgeStyles()}
                         >
-                            {course.type}
+                            {t(`contentTypes.${course.type.toLowerCase()}`) || course.type}
                         </span>
                     </div>
 

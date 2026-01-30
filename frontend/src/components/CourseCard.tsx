@@ -29,23 +29,23 @@ const CourseCard = ({ course }: CourseCardProps) => {
     <Card className="group overflow-hidden border-border hover:shadow-xl transition-all duration-300 bg-card h-full">
       {/* Thumbnail */}
       <div className="relative overflow-hidden">
-        <div 
+        <div
           className="aspect-video bg-muted bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-          style={{ 
+          style={{
             backgroundImage: `url(${course.thumbnail})`,
             backgroundColor: 'hsl(var(--muted))'
           }}
         />
         {course.isFeatured && (
           <Badge className="absolute top-3 start-3 bg-secondary text-secondary-foreground">
-            Featured
+            {t("featured")}
           </Badge>
         )}
-        <Badge 
-          variant="outline" 
+        <Badge
+          variant="outline"
           className="absolute top-3 end-3 bg-card/90 backdrop-blur-sm"
         >
-          {course.level}
+          {t(`levels.${course.level}`)}
         </Badge>
       </div>
 
@@ -59,7 +59,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
         </h3>
 
         {/* Instructor */}
-        <p className="text-sm text-muted-foreground mb-3">by {course.instructor}</p>
+        <p className="text-sm text-muted-foreground mb-3">{t("by")} {course.instructor}</p>
 
         {/* Stats */}
         <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-4">

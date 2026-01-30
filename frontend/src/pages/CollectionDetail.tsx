@@ -132,7 +132,7 @@ const CollectionDetail = () => {
     }, [collectionId]);
 
     if (isLoading) {
-        return <PageLoader message="Loading collection..." />;
+        return <PageLoader message={t("loading")} />;
     }
 
     return (
@@ -361,37 +361,40 @@ interface RelatedItem {
     lessons?: number;
 }
 
-const RelatedCourseCard = ({ item }: { item: RelatedItem }) => (
-    <Link to={`/collection/${item.id}`} className="group h-full">
-        <div className="bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow h-full flex flex-col">
-            <div className="aspect-[4/3] overflow-hidden">
-                <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-            </div>
-            <div className="p-4 flex-1 flex flex-col">
-                <span className="inline-block text-xs font-medium text-foreground bg-[#FFF1C7] border border-[#CC8545] rounded-full px-3 py-1 mb-2">
-                    {item.type}
-                </span>
-                <h3 className="text-sm font-semibold text-foreground leading-snug mb-3 line-clamp-2 flex-1">
-                    {item.title}
-                </h3>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                        {item.rating}
-                        <FiStar className="w-3 h-3 text-amber-400 fill-amber-400" />
+const RelatedCourseCard = ({ item }: { item: RelatedItem }) => {
+    const { t } = useAppI18n();
+    return (
+        <Link to={`/collection/${item.id}`} className="group h-full">
+            <div className="bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow h-full flex flex-col">
+                <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                </div>
+                <div className="p-4 flex-1 flex flex-col">
+                    <span className="inline-block text-xs font-medium text-foreground bg-[#FFF1C7] border border-[#CC8545] rounded-full px-3 py-1 mb-2">
+                        {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                     </span>
-                    <span className="text-gray-300">•</span>
-                    <span>{item.learners} Learners</span>
-                    <span className="text-gray-300">•</span>
-                    <span>{item.lessons} Lessons</span>
+                    <h3 className="text-sm font-semibold text-foreground leading-snug mb-3 line-clamp-2 flex-1">
+                        {item.title}
+                    </h3>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                            {item.rating}
+                            <FiStar className="w-3 h-3 text-amber-400 fill-amber-400" />
+                        </span>
+                        <span className="text-gray-300">•</span>
+                        <span>{item.learners} {t("contentStats.learners")}</span>
+                        <span className="text-gray-300">•</span>
+                        <span>{item.lessons} {t("contentStats.lessons")}</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </Link>
-);
+        </Link>
+    );
+}
 
 const RelatedResourceCard = ({ item }: { item: RelatedItem }) => {
     const { t } = useAppI18n();
@@ -408,7 +411,7 @@ const RelatedResourceCard = ({ item }: { item: RelatedItem }) => {
                 {/* Type Badge */}
                 <div className="absolute top-4 left-4">
                     <span className="inline-block bg-white text-foreground text-xs font-medium px-3 py-1.5 rounded-md">
-                        {item.type}
+                        {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                     </span>
                 </div>
 

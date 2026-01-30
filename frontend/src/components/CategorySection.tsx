@@ -39,26 +39,26 @@ const CategorySection = () => {
 
   const categories = [
     {
-      id: "1",
-      name: "UI/UX\nDesign",
+      id: "ui-ux-design",
+      name: "ui-ux-design",
       Icon: UIUXIcon,
       gradient: "linear-gradient(135deg, #7B68EE 0%, #5DADE2 100%)",
     },
     {
-      id: "2",
-      name: "IT\nDevelopment",
+      id: "it-development",
+      name: "it-development",
       Icon: DevIcon,
       gradient: "linear-gradient(135deg, #E67E22 0%, #F5B041 100%)",
     },
     {
-      id: "3",
-      name: "Digital\nMarketing",
+      id: "digital-marketing",
+      name: "digital-marketing",
       Icon: MarketingIcon,
       gradient: "linear-gradient(135deg, #1ABC9C 0%, #58D68D 100%)",
     },
     {
-      id: "4",
-      name: "Entrepreneurship",
+      id: "entrepreneurship",
+      name: "entrepreneurship",
       Icon: EntrepreneurIcon,
       gradient: "linear-gradient(135deg, #E880A0 0%, #D7A0E0 100%)",
     },
@@ -96,7 +96,7 @@ const CategorySection = () => {
                 <div className="flex flex-col gap-2">
                   <category.Icon />
                   <p className="text-[13px] md:text-[14px] font-medium text-white whitespace-pre-line leading-tight">
-                    {category.name}
+                    {t(`categoriesList.${category.id}`)}
                   </p>
                 </div>
               </div>

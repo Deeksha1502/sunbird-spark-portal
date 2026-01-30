@@ -114,7 +114,7 @@ const ResourceCardComponent = ({
     image: string;
     aspectClass: string;
 }) => {
-    const { t } = useAppI18n();
+    const { t, isRTL } = useAppI18n();
 
     const getViewLabel = (type: string) => {
         switch (type) {
@@ -137,7 +137,7 @@ const ResourceCardComponent = ({
                     />
 
                     {/* Type Badge */}
-                    <div className="absolute top-5 left-5">
+                    <div className={`absolute top-5 ${isRTL ? 'right-5' : 'left-5'}`}>
                         <span className="inline-block bg-white/95 text-foreground text-[12px] font-medium px-4 py-1.5 rounded-md">
                             {type}
                         </span>

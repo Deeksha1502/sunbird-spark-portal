@@ -10,6 +10,7 @@ import resourceHardware from "@/assets/resource-hardware.png";
 import resourceBitcoin from "@/assets/resource-bitcoin.png";
 import resourceHacker from "@/assets/resource-hacker.png";
 import resourceEthereum from "@/assets/resource-ethereum.png";
+import { useAppI18n } from "@/hooks/useAppI18n";
 
 interface ExploreGridProps {
     filters: FilterState;
@@ -134,6 +135,7 @@ const exploreItems: ExploreItem[] = [
 ];
 
 const ExploreGrid = ({ filters }: ExploreGridProps) => {
+    const { t } = useAppI18n();
     // For now, show all items. Filtering logic can be added later.
     const items = exploreItems;
 
@@ -151,6 +153,7 @@ const ExploreGrid = ({ filters }: ExploreGridProps) => {
 };
 
 const CourseCard = ({ item }: { item: ExploreItem }) => {
+    const { t } = useAppI18n();
     return (
         <Link to={`/collection/${item.id}`} className="group h-full">
             <div className="bg-white rounded-[16px] overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow p-3 pb-4 h-full flex flex-col">
@@ -167,7 +170,7 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
                 <div className="pt-3 px-1 flex flex-col flex-1">
                     {/* Type Badge - cream background with golden border */}
                     <span className="inline-block text-xs font-medium text-foreground bg-[#FFF1C7] border border-[#CC8545] rounded-full px-3 py-1 mb-2 self-start">
-                        {item.type}
+                        {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                     </span>
 
                     {/* Title */}
@@ -182,9 +185,9 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
                             <FiStar className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                         </span>
                         <span className="text-gray-300">•</span>
-                        <span>{item.learners} Learners</span>
+                        <span>{item.learners} {t("contentStats.learners")}</span>
                         <span className="text-gray-300">•</span>
-                        <span>{item.lessons} Lessons</span>
+                        <span>{item.lessons} {t("contentStats.lessons")}</span>
                     </div>
                 </div>
             </div>
@@ -193,16 +196,17 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
 };
 
 const ResourceCard = ({ item }: { item: ExploreItem }) => {
+    const { t, isRTL } = useAppI18n();
     const getViewLabel = (type: ContentType) => {
         switch (type) {
             case "Video":
-                return "Watch the Video";
+                return t("resource.viewVideo");
             case "PDF":
-                return "View The PDF";
+                return t("resource.viewPdf");
             case "Epub":
-                return "View the Epub";
+                return t("resource.viewEpub");
             default:
-                return "View";
+                return t("view");
         }
     };
 
@@ -217,9 +221,9 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
                     />
 
                     {/* Type Badge */}
-                    <div className="absolute top-4 left-4">
+                    <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'}`}>
                         <span className="inline-block bg-white/95 text-foreground text-xs font-medium px-3 py-1.5 rounded-full">
-                            {item.type}
+                            {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                         </span>
                     </div>
 

@@ -8,7 +8,7 @@ import creamWave from "@/assets/cream-wave.png";
 import tealShape from "@/assets/teal-shape.png";
 
 const HeroWithStats = () => {
-    const { t } = useAppI18n();
+    const { t, isRTL } = useAppI18n();
 
     const avatars = [
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=faces",
@@ -81,24 +81,36 @@ const HeroWithStats = () => {
                     />
                 </div>
 
-                {/* Decorative dots */}
+                {/* Decorative dots - positioned conditionally based on direction */}
                 <div
                     className="absolute w-8 h-8 rounded-full hidden lg:block"
-                    style={{ backgroundColor: '#B94A2C', top: '15%', right: '38%' }}
+                    style={{
+                        backgroundColor: '#B94A2C',
+                        top: '15%',
+                        [isRTL ? 'left' : 'right']: '38%'
+                    }}
                 />
                 <div
                     className="absolute w-10 h-10 rounded-full hidden lg:block"
-                    style={{ backgroundColor: '#FFD954', top: '45%', right: '48%' }}
+                    style={{
+                        backgroundColor: '#FFD954',
+                        top: '45%',
+                        [isRTL ? 'left' : 'right']: '48%'
+                    }}
                 />
                 <div
                     className="absolute w-4 h-4 rounded-full hidden lg:block"
-                    style={{ backgroundColor: '#B94A2C', top: '32%', right: '8%' }}
+                    style={{
+                        backgroundColor: '#B94A2C',
+                        top: '32%',
+                        [isRTL ? 'left' : 'right']: '8%'
+                    }}
                 />
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[420px] py-12 lg:py-16">
-                        {/* Content - Left Side */}
-                        <div className="text-left max-w-xl">
+                        {/* Content - Left Side (becomes Right in RTL grid) */}
+                        <div className="max-w-xl">
                             <h1
                                 className="text-[40px] md:text-[48px] lg:text-[56px] font-bold leading-[1.1] mb-6"
                                 style={{ color: '#1A1A1A', fontFamily: 'Rubik, sans-serif' }}
@@ -122,20 +134,28 @@ const HeroWithStats = () => {
                                     style={{ backgroundColor: '#B94A2C', fontFamily: 'Rubik, sans-serif' }}
                                 >
                                     {t("hero.cta")}
-                                    <FiArrowRight className="w-4 h-4 ml-2" />
+                                    {isRTL ? (
+                                        <FiArrowRight className="w-4 h-4 mr-2 rotate-180" />
+                                    ) : (
+                                        <FiArrowRight className="w-4 h-4 ml-2" />
+                                    )}
                                 </Button>
                             </Link>
                         </div>
 
-                        {/* Hero Image with teal shape - Right Side */}
+                        {/* Hero Image with teal shape - Right Side (becomes Left in RTL grid) */}
+                        {/* justify-end aligns to 'end' which is right in LTR and left in RTL. Perfect. */}
                         <div className="hidden lg:flex justify-end items-end relative h-[400px]">
                             {/* Teal pill shape background */}
-                            <div className="absolute bottom-0 right-0 w-[340px]">
+                            {/* Needs to flip to the 'end' side (left in RTL) */}
+                            <div
+                                className={`absolute bottom-0 ${isRTL ? 'left-0' : 'right-0'} w-[340px]`}
+                            >
                                 <img
                                     src={tealShape}
                                     alt=""
                                     className="w-full h-auto"
-                                    style={{ transform: 'rotate(-25deg)', transformOrigin: 'center' }}
+                                    style={{ transform: `rotate(${isRTL ? '25deg' : '-25deg'})`, transformOrigin: 'center' }}
                                 />
                             </div>
 
@@ -145,6 +165,7 @@ const HeroWithStats = () => {
                                     src={heroWoman}
                                     alt="Professional learning"
                                     className="w-[360px] h-auto object-contain"
+                                    style={isRTL ? { transform: 'scaleX(-1)' } : undefined}
                                 />
                             </div>
                         </div>
@@ -262,10 +283,14 @@ const HeroWithStats = () => {
 
                             {/* Circular CTA that visually overhangs the card */}
                             <button
-                                className="absolute bottom-5 right-0 w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center"
+                                className={`absolute bottom-5 ${isRTL ? "left-0" : "right-0"} w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center`}
                                 aria-label="Go"
                             >
-                                <FiArrowRight className="w-4 h-4" />
+                                {isRTL ? (
+                                    <FiArrowRight className="w-4 h-4 rotate-180" />
+                                ) : (
+                                    <FiArrowRight className="w-4 h-4" />
+                                )}
                             </button>
                         </div>
                     </div>

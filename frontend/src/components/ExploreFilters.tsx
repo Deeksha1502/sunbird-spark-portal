@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Checkbox } from "./checkbox";
+import { useAppI18n } from "@/hooks/useAppI18n";
 import type { FilterState } from "@/pages/Explore";
 
 // Import collection icons
@@ -14,6 +15,7 @@ interface ExploreFiltersProps {
 }
 
 const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
+  const { t } = useAppI18n();
   const [showMoreContentTypes, setShowMoreContentTypes] = useState(false);
   const [showMoreCategories, setShowMoreCategories] = useState(false);
 
@@ -62,11 +64,11 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
   return (
     <div className="bg-[#F5F5F5] rounded-2xl p-4">
       {/* Filters Title */}
-      <h2 className="text-lg font-bold text-foreground mb-4 px-2">Filters</h2>
+      <h2 className="text-lg font-bold text-foreground mb-4 px-2">{t("filters")}</h2>
 
       {/* Collections Section */}
       <div className="bg-white rounded-xl p-4 mb-3">
-        <h3 className="text-sm font-semibold text-foreground mb-4">Collections</h3>
+        <h3 className="text-sm font-semibold text-foreground mb-4">{t("collections")}</h3>
         <div className="space-y-3">
           {collections.map((item) => (
             <label
@@ -74,13 +76,13 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
               className="flex items-center justify-between cursor-pointer group"
             >
               <div className="flex items-center gap-2.5">
-                <img 
-                  src={item.icon} 
-                  alt="" 
+                <img
+                  src={item.icon}
+                  alt=""
                   className="w-5 h-5 object-contain"
                 />
                 <span className="text-sm text-foreground group-hover:text-primary transition-colors">
-                  {item.label}
+                  {t(`filterOptions.${item.id}`)}
                 </span>
               </div>
               <Checkbox
@@ -97,7 +99,7 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
 
       {/* Content Type Section */}
       <div className="bg-white rounded-xl p-4 mb-3">
-        <h3 className="text-sm font-semibold text-foreground mb-4">Content Type</h3>
+        <h3 className="text-sm font-semibold text-foreground mb-4">{t("contentType")}</h3>
         <div className="space-y-3">
           {visibleContentTypes.map((item) => (
             <label
@@ -105,7 +107,7 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
               className="flex items-center justify-between cursor-pointer group"
             >
               <span className="text-sm text-foreground group-hover:text-primary transition-colors">
-                {item.label}
+                {t(`contentTypes.${item.id}`)}
               </span>
               <Checkbox
                 checked={filters.contentTypes.includes(item.id)}
@@ -122,14 +124,14 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
             onClick={() => setShowMoreContentTypes(!showMoreContentTypes)}
             className="mt-4 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
-            {showMoreContentTypes ? "View Less" : "View More"}
+            {showMoreContentTypes ? t("viewLess") : t("viewMore")}
           </button>
         )}
       </div>
 
       {/* Categories Section */}
       <div className="bg-white rounded-xl p-4">
-        <h3 className="text-sm font-semibold text-foreground mb-4">Categories</h3>
+        <h3 className="text-sm font-semibold text-foreground mb-4">{t("categories")}</h3>
         <div className="space-y-3">
           {visibleCategories.map((item) => (
             <label
@@ -137,7 +139,7 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
               className="flex items-center justify-between cursor-pointer group"
             >
               <span className="text-sm text-foreground group-hover:text-primary transition-colors">
-                {item.label}
+                {t(`categoriesList.${item.id}`)}
               </span>
               <Checkbox
                 checked={filters.categories.includes(item.id)}
@@ -154,7 +156,7 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
             onClick={() => setShowMoreCategories(!showMoreCategories)}
             className="mt-4 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
-            {showMoreCategories ? "View Less" : "View More"}
+            {showMoreCategories ? t("viewLess") : t("viewMore")}
           </button>
         )}
       </div>

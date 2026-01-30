@@ -129,7 +129,7 @@ const MostPopularContent = () => {
                                         className="text-[11px] font-medium px-3 py-1 rounded-full mb-2.5"
                                         style={getBadgeStyle()}
                                     >
-                                        {course.type}
+                                        {t(`contentTypes.${course.type.toLowerCase()}`) || course.type}
                                     </Badge>
 
                                     {/* Title */}
