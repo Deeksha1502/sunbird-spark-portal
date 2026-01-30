@@ -11,6 +11,7 @@ import ReportsPage from './pages/ReportsPage';
 import CreateContentPage from './pages/CreateContentPage';
 import Index from './pages/Index';
 import Courses from './pages/Courses';
+import Explore from './pages/Explore';
 
 const AdminProtected = withRoles(['admin'])(AdminPage);
 const WorkspaceProtected = withRoles(['content_creator', 'content_reviewer'])(WorkspacePage);
@@ -26,6 +27,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/unauthorized" element={<UnauthorizedPage />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/explore" element={<Explore />} />
 
         {/* Protected routes */}
         <Route path="/admin" element={<AdminProtected />} />
