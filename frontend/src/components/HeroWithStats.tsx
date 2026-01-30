@@ -215,13 +215,15 @@ const HeroWithStats = () => {
 
                         {/* Learning Process Card */}
                         <div
-                            className={`flex flex-col justify-between px-6 py-5 rounded-2xl bg-surface ${floatingShadow} lg:w-[260px]`}
+                            className={`flex flex-col justify-between px-6 py-5 rounded-2xl bg-surface ${floatingShadow} lg:w-[260px] h-[128.48px]`}
                         >
                             <div>
                                 <p
                                     className="text-[14px] font-semibold mb-4 leading-snug text-foreground"
                                 >
-                                    {t("hero.processSimple")}
+                                    {t("hero.processSimple").split(/(\n)/).map((line, i) =>
+                                        line === "\n" ? <br key={i} /> : line
+                                    )}
                                 </p>
                             </div>
                             <div>
@@ -236,10 +238,12 @@ const HeroWithStats = () => {
                         {/* Study at your own pace Card */}
                         <div className="relative lg:w-[280px]">
                             <div
-                                className={`flex h-full flex-col justify-between rounded-2xl bg-surface px-6 py-5 ${floatingShadow} lg:mr-6`}
+                                className={`flex h-[134px] flex-col justify-between rounded-2xl bg-surface px-6 py-5 ${floatingShadow} lg:mr-6`}
                             >
                                 <p className="text-[14px] font-semibold mb-4 leading-snug text-foreground">
-                                    {t("hero.studyPace")}
+                                    {t("hero.studyPace").split(/(\n)/).map((line, i) =>
+                                        line === "\n" ? <br key={i} /> : line
+                                    )}
                                 </p>
                                 <div className="flex items-center justify-between">
                                     <div className="flex -space-x-3">
