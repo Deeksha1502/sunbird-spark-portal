@@ -88,8 +88,8 @@ const MostPopularContent = () => {
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-6">
                     <h2
-                        className="text-lg md:text-xl font-bold"
-                        style={{ color: '#1A1A1A', fontFamily: 'Rubik, sans-serif' }}
+                        className="text-lg md:text-xl font-medium"
+                        style={{ color: '#1A1A1A' }}
                     >
                         {t("popular.title")}
                     </h2>
@@ -134,8 +134,8 @@ const MostPopularContent = () => {
 
                                     {/* Title */}
                                     <h3
-                                        className="font-semibold text-[14px] leading-snug mb-2.5 line-clamp-2"
-                                        style={{ color: '#1A1A1A', fontFamily: 'Rubik, sans-serif' }}
+                                        className="font-semibold text-[14px] leading-snug mb-2.5 line-clamp-2 bg-transparent border-0"
+                                        style={{ color: '#1A1A1A' }}
                                     >
                                         {course.title}
                                     </h3>
@@ -143,7 +143,7 @@ const MostPopularContent = () => {
                                     {/* Stats */}
                                     <div
                                         className="flex items-center gap-1.5 text-[12px]"
-                                        style={{ color: '#6B7280', fontFamily: 'Rubik, sans-serif' }}
+                                        style={{ color: '#6B7280' }}
                                     >
                                         <span
                                             className="font-medium"

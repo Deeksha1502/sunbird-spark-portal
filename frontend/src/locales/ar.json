@@ -54,7 +54,7 @@
     "audio": "صوت",
     "pdf": "PDF",
     "epub": "Epub",
-    "youtube": "Youtube",
+    "youtube": "يوتيوب",
     "html": "HTML",
     "interactive": "تفاعلي",
     "course": "دورة",
@@ -210,5 +210,13 @@
   },
   "faq": {
     "title": "الأسئلة الشائعة"
+  },
+  "footer": {
+    "products": "منتجات",
+    "company": "شركة",
+    "resources": "موارد",
+    "videos": "فيديوهات",
+    "terms": "الشروط والأحكام",
+    "privacy": "سياسة الخصوصية"
   }
 }

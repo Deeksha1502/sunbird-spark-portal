@@ -40,7 +40,7 @@ const HomeRecommendedSection = () => {
     return (
         <section className="mb-8">
             <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recommended Contents</h3>
+                <h3 className="text-lg font-medium text-gray-900">Recommended Contents</h3>
                 <Link to="/explore" className="text-[#A85236] hover:text-[#8a4329] transition-colors">
                     <FiArrowRight className="w-5 h-5" />
                 </Link>

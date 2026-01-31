@@ -134,7 +134,7 @@ const PopularContent = () => {
         <div className="mb-12">
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-lg md:text-xl font-bold text-foreground">
+                <h2 className="text-lg md:text-xl font-medium text-foreground">
                     {title}
                 </h2>
                 <Link

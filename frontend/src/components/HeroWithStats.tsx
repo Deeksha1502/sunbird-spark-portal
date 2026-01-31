@@ -85,24 +85,24 @@ const HeroWithStats = () => {
                 <div
                     className="absolute w-8 h-8 rounded-full hidden lg:block"
                     style={{
-                        backgroundColor: '#B94A2C',
-                        top: '15%',
+                        backgroundColor: '#A85236',
+                        top: '20.5%',
                         [isRTL ? 'left' : 'right']: '38%'
                     }}
                 />
                 <div
                     className="absolute w-10 h-10 rounded-full hidden lg:block"
                     style={{
-                        backgroundColor: '#FFD954',
-                        top: '45%',
+                        backgroundColor: '#FFDB74',
+                        top: '49.71%',
                         [isRTL ? 'left' : 'right']: '48%'
                     }}
                 />
                 <div
                     className="absolute w-4 h-4 rounded-full hidden lg:block"
                     style={{
-                        backgroundColor: '#B94A2C',
-                        top: '32%',
+                        backgroundColor: '#A85236',
+                        top: '50.73%',
                         [isRTL ? 'left' : 'right']: '8%'
                     }}
                 />
@@ -112,8 +112,8 @@ const HeroWithStats = () => {
                         {/* Content - Left Side (becomes Right in RTL grid) */}
                         <div className="max-w-xl">
                             <h1
-                                className="text-[40px] md:text-[48px] lg:text-[56px] font-bold leading-[1.1] mb-6"
-                                style={{ color: '#1A1A1A', fontFamily: 'Rubik, sans-serif' }}
+                                className="text-[40px] md:text-[48px] lg:text-[56px] font-semibold leading-[1.1] mb-6"
+                                style={{ color: '#1A1A1A' }}
                             >
                                 {t("hero.title", "Knowledge that moves you forward.").split(/(\n)/).map((line, i) =>
                                     line === "\n" ? <br key={i} /> : line
@@ -122,7 +122,7 @@ const HeroWithStats = () => {
 
                             <p
                                 className="text-[15px] md:text-[16px] mb-8 leading-relaxed max-w-md"
-                                style={{ color: '#6B7280', fontFamily: 'Rubik, sans-serif' }}
+                                style={{ color: '#6B7280' }}
                             >
                                 {t("hero.subtitle")}
                             </p>
@@ -131,7 +131,7 @@ const HeroWithStats = () => {
                                 <Button
                                     size="lg"
                                     className="text-white font-semibold text-[15px] px-7 h-12 rounded-full shadow-md hover:shadow-lg transition-all"
-                                    style={{ backgroundColor: '#B94A2C', fontFamily: 'Rubik, sans-serif' }}
+                                    style={{ backgroundColor: '#B94A2C' }}
                                 >
                                     {t("hero.cta")}
                                     {isRTL ? (
@@ -144,23 +144,25 @@ const HeroWithStats = () => {
                         </div>
 
                         {/* Hero Image with teal shape - Right Side (becomes Left in RTL grid) */}
-                        {/* justify-end aligns to 'end' which is right in LTR and left in RTL. Perfect. */}
                         <div className="hidden lg:flex justify-end items-end relative h-[400px]">
-                            {/* Teal pill shape background */}
-                            {/* Needs to flip to the 'end' side (left in RTL) */}
-                            <div
-                                className={`absolute bottom-0 ${isRTL ? 'left-0' : 'right-0'} w-[340px]`}
-                            >
-                                <img
-                                    src={tealShape}
-                                    alt=""
-                                    className="w-full h-auto"
-                                    style={{ transform: `rotate(${isRTL ? '25deg' : '-25deg'})`, transformOrigin: 'center' }}
-                                />
-                            </div>
-
                             {/* Woman image */}
                             <div className="relative z-10 flex items-end justify-center h-full">
+                                {/* Teal pill shape background - Centered behind image */}
+                                <div
+                                    className="absolute bottom-0 w-[500px]"
+                                    style={{
+                                        left: '58%',
+                                        transform: `translateX(-50%) rotate(${isRTL ? '25deg' : '-25deg'})`,
+                                        transformOrigin: 'center',
+                                        zIndex: -1
+                                    }}
+                                >
+                                    <img
+                                        src={tealShape}
+                                        alt=""
+                                        className="w-full h-auto"
+                                    />
+                                </div>
                                 <img
                                     src={heroWoman}
                                     alt="Professional learning"

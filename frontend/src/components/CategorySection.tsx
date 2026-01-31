@@ -69,7 +69,7 @@ const CategorySection = () => {
       <div className="container mx-auto px-4">
         {/* Header with inline arrow */}
         <div className="flex items-center gap-3 mb-8">
-          <h2 className="text-xl md:text-2xl font-bold text-foreground">
+          <h2 className="text-xl md:text-2xl font-medium text-foreground">
             {t("browseCategories")}
           </h2>
           <Link

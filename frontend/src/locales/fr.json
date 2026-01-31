@@ -53,8 +53,8 @@
     "video": "Vidéo",
     "audio": "Audio",
     "pdf": "PDF",
-    "epub": "Epub",
-    "youtube": "Youtube",
+    "epub": "ePub",
+    "youtube": "YouTube",
     "html": "HTML",
     "interactive": "Interactif",
     "course": "Cours",
@@ -210,5 +210,13 @@
   },
   "faq": {
     "title": "Foire aux questions"
+  },
+  "footer": {
+    "products": "Produits",
+    "company": "Entreprise",
+    "resources": "Ressources",
+    "videos": "Vidéos",
+    "terms": "Termes et conditions",
+    "privacy": "Politique de confidentialité"
   }
 }

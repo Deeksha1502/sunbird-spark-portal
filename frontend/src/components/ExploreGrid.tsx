@@ -156,7 +156,7 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
     const { t } = useAppI18n();
     return (
         <Link to={`/collection/${item.id}`} className="group h-full">
-            <div className="bg-white rounded-[16px] overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow p-3 pb-4 h-full flex flex-col">
+            <div className="bg-white rounded-[20px] overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow p-3 pb-4 h-full flex flex-col shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)]">
                 {/* Image - consistent 274x156 ratio with subtle rounded corners */}
                 <div className="aspect-[274/156] overflow-hidden rounded-[12px] flex-shrink-0">
                     <img
@@ -174,15 +174,15 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-[15px] font-semibold text-foreground leading-snug mb-auto line-clamp-2">
+                    <h3 className="text-[17px] font-bold text-foreground leading-snug mb-auto line-clamp-3 mt-1">
                         {item.title}
                     </h3>
 
                     {/* Stats */}
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-3">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-4 font-medium">
                         <span className="flex items-center gap-1">
                             {item.rating}
-                            <FiStar className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                            <FiStar className="w-3.5 h-3.5 text-[#A85236] fill-[#A85236]" />
                         </span>
                         <span className="text-gray-300">•</span>
                         <span>{item.learners} {t("contentStats.learners")}</span>
@@ -212,7 +212,7 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
 
     return (
         <Link to={`/collection/${item.id}`} className="block h-full">
-            <div className="group rounded-[16px] overflow-hidden cursor-pointer h-full">
+            <div className="group rounded-[20px] overflow-hidden cursor-pointer h-full shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)]">
                 <div className="relative h-full">
                     <img
                         src={item.image}
