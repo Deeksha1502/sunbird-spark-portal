@@ -36,7 +36,7 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
-  
+
   const { t, languages, currentLanguage, changeLanguage, dir } = useAppI18n();
 
   const handleDeleteNotification = (id: string) => {
@@ -59,15 +59,19 @@ const Header = () => {
     changeLanguage(code as LanguageCode);
   };
 
+  const handleLogin = () => {
+    window.location.assign('/portal/auth');
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="/" className="flex items-center">
-            <img 
-              src={sunbirdLogo} 
-              alt="Sunbird Spark" 
+            <img
+              src={sunbirdLogo}
+              alt="Sunbird Spark"
               className="h-10 w-auto"
             />
           </a>
@@ -126,11 +130,9 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <a href="/auth">
-              <Button size="sm" className="bg-primary hover:bg-primary/90">
-                {t("login")}
-              </Button>
-            </a>
+            <Button size="sm" className="bg-primary hover:bg-primary/90" onClick={handleLogin}>
+              {t("login")}
+            </Button>
           </div>
 
           {/* Mobile Actions */}
@@ -207,11 +209,9 @@ const Header = () => {
                 </a>
               ))}
               <div className="mt-4 px-4">
-                <a href="/auth" className="block">
-                  <Button className="w-full bg-primary hover:bg-primary/90">
-                    {t("login")}
-                  </Button>
-                </a>
+                <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleLogin}>
+                  {t("login")}
+                </Button>
               </div>
             </div>
           </nav>
