@@ -23,7 +23,6 @@ const ForgotPassword: React.FC = () => {
 
   const maskedIdentifier = maskIdentifier(identifier.trim());
 
-  /* ---------- VALIDATIONS ---------- */
   const isRecoverValid =
     IDENTIFIER_REGEX.test(identifier.trim()) && name.trim().length > 0;
 
@@ -32,10 +31,9 @@ const ForgotPassword: React.FC = () => {
   const isPasswordValid = PASSWORD_REGEX.test(password);
   const isConfirmValid = password === confirmPassword && confirmPassword.length > 0;
 
-  /* ---------- SUB-COMPONENTS ---------- */
   const Header = ({ title, subtitle }: { title: string; subtitle?: string }) => (
     <div className="login-header text-center mb-8">
-      <h1 className="welcome-title text-[30px] font-semibold text-[#222222] leading-[30px] mb-2">{title}</h1>
+      <h1 className="welcome-title !font-rubik text-[30px] font-semibold text-[#222222] leading-[30px] mb-2">{title}</h1>
       {subtitle && <p className="welcome-subtitle text-[14px] font-normal text-[#757575] leading-relaxed mx-auto max-w-[320px]">{subtitle}</p>}
     </div>
   );
@@ -58,7 +56,7 @@ const ForgotPassword: React.FC = () => {
 
   return (
     <AuthLayout>
-      <div className="w-full">
+      <div className="w-full font-rubik">
 
         {/* STEP 1: Identification */}
         {step === 1 && (
@@ -147,7 +145,7 @@ const ForgotPassword: React.FC = () => {
                       id={`otp-${index}`}
                       type="text"
                       maxLength={1}
-                      className="otp-input w-[45px] h-[50px] border border-[#E2E8F0] rounded-lg text-center text-[1.25rem] focus:outline-none focus:border-[#A85236] focus:shadow-[0_0_0_2px_rgba(167,58,36,0.2)] bg-white"
+                      className="otp-input w-[52px] h-[52px] border-2 border-[#A85236] rounded-none text-center text-[1.25rem] focus:outline-none focus:shadow-[0_0_0_2px_rgba(167,58,36,0.2)] bg-white"
                       value={digit}
                       onChange={(e) => {
                         const val = e.target.value.replace(/\D/g, '');

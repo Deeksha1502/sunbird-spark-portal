@@ -22,7 +22,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
 
   return (
     <div
-      className="login-wrapper min-h-screen w-full flex items-center justify-center relative bg-[#4A8C8C] bg-cover bg-center overflow-x-hidden"
+      className="login-wrapper font-rubik min-h-screen w-full flex items-center justify-center relative bg-[#4A8C8C] bg-cover bg-center overflow-x-hidden"
       style={{ backgroundImage: `url(${authWaveBg})` }}
     >
       {/* Split Screen Container */}
@@ -30,9 +30,9 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
 
         {/* Left Panel */}
         <div className="login-left-panel hidden md:flex flex-1 relative items-center justify-center overflow-hidden border-2 border-white/20 rounded-[3rem_0_0_3rem]">
-          <div className="login-left-panel-container absolute inset-0 z-[3] border-[3px] border-white/10 rounded-[3rem] shadow-[0_0_0_2rem_rgba(255,255,255,0.05)]"></div>
+          <div className="login-left-panel-container absolute inset-0 z-[3] border-[3px] border-white rounded-[3rem] shadow-[0_0_0_2rem_rgba(255,255,255,0.05)]"></div>
           <div className="left-panel-content absolute z-[2] left-6 bottom-6 max-w-[calc(100%-48px)]">
-            <h2 className="left-panel-title text-[30px] font-semibold text-white leading-[42px]">
+            <h2 className="left-panel-title !font-rubik text-[30px] font-semibold text-white leading-[42px]">
               Empower your future<br />
               through learning.
             </h2>
