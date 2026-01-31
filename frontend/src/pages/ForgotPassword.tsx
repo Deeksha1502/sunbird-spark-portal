@@ -38,9 +38,10 @@ const ForgotPassword: React.FC = () => {
     </div>
   );
 
-  const InputLabel = ({ children, htmlFor }: { children: React.ReactNode, htmlFor?: string }) => (
+  const InputLabel = ({ children, htmlFor, required }: { children: React.ReactNode, htmlFor?: string, required?: boolean }) => (
     <label htmlFor={htmlFor} className="block text-[14px] font-medium text-[#333] mb-2">
       {children}
+      {required && <span className="text-red-500 ml-1">*</span>}
     </label>
   );
 
@@ -62,28 +63,28 @@ const ForgotPassword: React.FC = () => {
         {step === 1 && (
           <>
             <Header
-              title="Welcome to Sunbird!"
-              subtitle="Your learning journey starts here—log in to continue."
+              title="Forgot Password?"
+              subtitle="Don’t worry! Share your details and we will send you a code to reset your password."
             />
 
             <div className="space-y-5">
               <div className="form-group mb-5">
-                <InputLabel>Email ID / Mobile Number</InputLabel>
+                <InputLabel required>Email ID / Mobile Number</InputLabel>
                 <Input
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                   placeholder="Enter Email ID / Mobile Number"
-                  className="h-12 rounded-2xl border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
+                  className="h-12 !bg-white rounded-none border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
                 />
               </div>
 
               <div className="form-group mb-5">
-                <InputLabel>Name (as registered)</InputLabel>
+                <InputLabel required>Name (as registered)</InputLabel>
                 <Input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter name"
-                  className="h-12 rounded-2xl border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
+                  className="h-12 !bg-white rounded-none border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
                 />
               </div>
 
@@ -145,7 +146,7 @@ const ForgotPassword: React.FC = () => {
                       id={`otp-${index}`}
                       type="text"
                       maxLength={1}
-                      className="otp-input w-[52px] h-[52px] border-2 border-[#A85236] rounded-none text-center text-[1.25rem] focus:outline-none focus:shadow-[0_0_0_2px_rgba(167,58,36,0.2)] bg-white"
+                      className="otp-input w-[52px] h-[52px] border-2 border-[#A85236] !bg-white rounded-none text-center text-[1.25rem] focus:outline-none focus:shadow-[0_0_0_2px_rgba(167,58,36,0.2)]"
                       value={digit}
                       onChange={(e) => {
                         const val = e.target.value.replace(/\D/g, '');
@@ -204,14 +205,14 @@ const ForgotPassword: React.FC = () => {
             <div className="space-y-4">
               {/* New Password */}
               <div className="form-group mb-5">
-                <InputLabel>New Password</InputLabel>
+                <InputLabel required>New Password</InputLabel>
                 <div className="relative">
                   <Input
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter New Password"
-                    className="h-12 rounded-2xl border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
+                    className="h-12 !bg-white rounded-none border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
                   />
                   <button
                     type="button"
@@ -230,14 +231,14 @@ const ForgotPassword: React.FC = () => {
 
               {/* Confirm Password */}
               <div className="form-group mb-6">
-                <InputLabel>Confirm Password</InputLabel>
+                <InputLabel required>Confirm Password</InputLabel>
                 <div className="relative">
                   <Input
                     type={showConfirmPassword ? 'text' : 'password'}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Confirm New Password"
-                    className="h-12 rounded-2xl border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
+                    className="h-12 !bg-white rounded-none border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
                   />
                   <button
                     type="button"
