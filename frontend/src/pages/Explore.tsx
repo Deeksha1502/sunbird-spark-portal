@@ -51,8 +51,8 @@ const Explore = () => {
 
                     {/* Content Grid */}
                     <div className="flex-1">
-                        <div className="px-6">
-                            <div className="bg-white rounded-[12px] px-6 mb-6 flex flex-row justify-between items-center shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100" style={{ height: '60px' }}>
+                        <div>
+                            <div className="bg-white rounded-[20px] px-6 mb-6 flex flex-row justify-between items-center shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100" style={{ height: '60px' }}>
                                 <h1 className="font-medium text-foreground pl-2" style={{ fontFamily: 'Rubik, sans-serif', fontSize: '20px', lineHeight: '26px', letterSpacing: '0%' }}>
                                     {t("startExploring")}
                                 </h1>
@@ -86,7 +86,7 @@ const Explore = () => {
                             </div>
                         </div>
 
-                        <div className="px-6">
+                        <div>
                             <ExploreGrid filters={filters} />
                         </div>
                     </div>

@@ -8,6 +8,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/dropdown-menu";
 import sunbirdLogo from "@/assets/sunbird-logo.png";
+import translationIcon from "@/assets/translation_icon.png";
 import { Link, useLocation } from "react-router-dom";
 import { useAppI18n, type LanguageCode } from "@/hooks/useAppI18n";
 
@@ -25,20 +26,9 @@ const Header = () => {
 
     const isActive = (href: string) => {
         if (href === "/") return location.pathname === "/";
-        return false;
+        if (href === "/explore") return location.pathname === "/explore";
+        return location.pathname.startsWith(href) && href !== "/";
     };
-
-    // Language icon - Translation icon matching the design
-    const LanguageIcon = () => (
-        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#222222]">
-            <path d="M5 8L10 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <path d="M8 6V8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <path d="M6 8C6 10 7.5 12.5 10 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <path d="M10 8C10 10 8.5 12.5 6 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <path d="M14 17L16 12L18 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M14.5 16H17.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-    );
 
     // Filled Bell Icon with notification dot
     const BellFilledIcon = () => (
@@ -72,110 +62,99 @@ const Header = () => {
                                 key={link.href}
                                 to={link.href}
                                 className={`text-[15px] transition-colors ${isActive(link.href)
-                                    ? 'text-[#B94A2C] font-medium'
-                                    : 'text-[#1A1A1A] font-normal hover:text-[#B94A2C]'
+                                    ? 'text-[#A85236] font-medium'
+                                    : 'text-[#1A1A1A] font-normal hover:text-[#A85236]'
                                     }`}
                             >
                                 <span className="flex items-center gap-1">
                                     {link.label}
-                                    {link.href === "/explore" && <FiChevronDown className="w-4 h-4 mt-0.5 text-[#A85236]" />}
+                                    {link.href === "/explore" && <FiChevronDown className={`w-4 h-4 mt-0.5 ${isActive(link.href) ? 'text-[#A85236]' : 'text-gray-400'}`} />}
                                 </span>
                             </Link>
                         ))}
                     </nav>
 
                     {/* Desktop Actions */}
-                    <div className="hidden md:flex items-center gap-1">
-                        {/* Search */}
-                        <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
-                            <FiSearch className="w-[18px] h-[18px]" style={{ strokeWidth: 2 }} />
-                        </button>
+                    <div className="hidden md:flex items-center gap-4">
+                        <div className="flex items-center gap-1">
+                            {/* Search */}
+                            <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
+                                <FiSearch className="w-[18px] h-[18px]" style={{ strokeWidth: 2 }} />
+                            </button>
 
-                        {/* Notifications - Filled Bell */}
-                        <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
-                            <BellFilledIcon />
-                        </button>
+                            {/* Notifications - Filled Bell */}
+                            <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
+                                <BellFilledIcon />
+                            </button>
 
-                        {/* Language Selector */}
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <button className="flex items-center gap-0.5 p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
-                                    <LanguageIcon />
-                                    <FiChevronDown className="w-3.5 h-3.5" />
-                                </button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end" className="bg-white border border-gray-200 shadow-lg z-50">
-                                {languages.map((lang) => (
-                                    <DropdownMenuItem
-                                        key={lang.code}
-                                        onClick={() => changeLanguage(lang.code as LanguageCode)}
-                                        className={`hover:bg-gray-50 cursor-pointer ${currentCode === lang.code ? 'bg-gray-50' : ''}`}
-                                    >
-                                        <span>{lang.label}</span>
-                                        <span className="text-gray-400 text-xs ml-2">({lang.code.toUpperCase()})</span>
-                                    </DropdownMenuItem>
-                                ))}
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+                            {/* Language Selector */}
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <button className="flex items-center gap-1 p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
+                                        <img src={translationIcon} alt="Language" width={21} height={21} />
+                                        <FiChevronDown className="w-3.5 h-3.5" />
+                                    </button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end" className="w-[150px] bg-white z-50">
+                                    {languages.map((lang) => (
+                                        <DropdownMenuItem
+                                            key={lang.code}
+                                            className={`cursor-pointer hover:bg-gray-50 ${currentCode === lang.code ? 'font-medium text-[#A85236]' : ''
+                                                }`}
+                                            onClick={() => changeLanguage(lang.code)}
+                                        >
+                                            {lang.label}
+                                        </DropdownMenuItem>
+                                    ))}
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </div>
 
                         {/* Login Button */}
-                        <Link to="/auth" className="ml-2">
-                            <Button
-                                size="sm"
-                                className="text-white font-medium rounded-md bg-[#A85236] hover:bg-[#8f462e] p-0 flex items-center justify-center text-[10px]"
-                                style={{ width: '44px', height: '16px' }}
-                            >
-                                {t("button.login")}
-                            </Button>
+                        <Link
+                            to="/login"
+                            className="bg-[#A85236] hover:bg-[#8B442C] text-white px-6 py-2 rounded-[6px] text-sm font-medium transition-colors"
+                        >
+                            {t("login")}
                         </Link>
                     </div>
 
-                    {/* Mobile Actions */}
-                    <div className="flex items-center gap-2 md:hidden">
-                        <button className="p-2 text-[#A85236]">
-                            <FiSearch className="w-5 h-5" />
-                        </button>
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="text-[#1A1A1A]"
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="md:hidden p-2 text-[#A85236]"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
+                        {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile Menu */}
+            {isMenuOpen && (
+                <div className="md:hidden border-t border-gray-100">
+                    <div className="container mx-auto px-4 py-4 space-y-4">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.href}
+                                to={link.href}
+                                className={`block text-sm font-medium ${isActive(link.href) ? 'text-[#A85236]' : 'text-gray-600'
+                                    }`}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                        <hr />
+                        <Link
+                            to="/login"
+                            className="block w-full text-center bg-[#A85236] text-white px-4 py-2 rounded-lg text-sm font-medium"
+                            onClick={() => setIsMenuOpen(false)}
                         >
-                            {isMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
-                        </Button>
+                            {t("login")}
+                        </Link>
                     </div>
                 </div>
-
-                {/* Mobile Menu */}
-                {isMenuOpen && (
-                    <nav className="md:hidden pb-4 animate-fade-in border-t border-gray-100">
-                        <div className="flex flex-col gap-1 pt-3">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    to={link.href}
-                                    className={`px-4 py-3 rounded-lg text-[15px] transition-colors ${isActive(link.href)
-                                        ? 'text-[#A85236] font-medium bg-orange-50'
-                                        : 'text-[#1A1A1A] font-normal hover:text-[#A85236] hover:bg-gray-50'
-                                        }`}
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
-                            <div className="mt-4 px-4">
-                                <Link to="/auth" className="block">
-                                    <Button
-                                        className="w-full rounded-full bg-[#A85236] hover:bg-[#8f462e]"
-                                    >
-                                        {t("button.login")}
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-                    </nav>
-                )}
-            </div>
+            )}
         </header>
     );
 };
