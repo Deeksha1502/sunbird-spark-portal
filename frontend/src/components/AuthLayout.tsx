@@ -26,11 +26,11 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
       style={{ backgroundImage: `url(${authWaveBg})` }}
     >
       {/* Split Screen Container */}
-      <div className="login-split-container flex flex-col md:flex-row w-full max-w-6xl min-h-[660px] m-[10px] md:m-auto rounded-[3rem] overflow-hidden relative z-10 shadow-2xl">
+      <div className="login-split-container flex flex-col md:flex-row w-full max-w-6xl min-h-[730px] m-[10px] md:m-auto rounded-[3rem] overflow-hidden relative z-10 shadow-2xl">
 
         {/* Left Panel */}
         <div className="login-left-panel hidden md:flex flex-1 relative items-center justify-center overflow-hidden border-2 border-white/20 rounded-[3rem_0_0_3rem]">
-          <div className="login-left-panel-container absolute inset-0 z-[3] border-[3px] border-white rounded-[3rem] shadow-[0_0_0_2rem_rgba(255,255,255,0.05)]"></div>
+          <div className="login-left-panel-container absolute inset-0 z-[3] border-[4px] border-white rounded-[3rem] shadow-[0_0_0_2rem_rgba(255,255,255,0.05)]"></div>
           <div className="left-panel-content absolute z-[2] left-10 bottom-10 max-w-[calc(100%-80px)]">
             <h2 className="left-panel-title !font-rubik text-[30px] font-semibold text-white leading-[42px]">
               Empower your future<br />

@@ -41,13 +41,13 @@ const ForgotPassword: React.FC = () => {
   const InputLabel = ({ children, htmlFor, required }: { children: React.ReactNode, htmlFor?: string, required?: boolean }) => (
     <label htmlFor={htmlFor} className="block text-[14px] font-medium text-[#333] mb-2">
       {children}
-      {required && <span className="text-red-500 ml-1">*</span>}
+      {required && <span className="text-black ml-1">*</span>}
     </label>
   );
 
   const PrimaryButton = ({ children, onClick, disabled, className = "" }: { children: React.ReactNode, onClick: () => void, disabled?: boolean, className?: string }) => (
     <Button
-      className={`login-button w-full h-[52px] bg-[#A85236] hover:opacity-85 text-white text-[16px] font-medium rounded-2xl shadow-none border-none transition-all ${className}`}
+      className={`login-button w-full h-[52px] bg-[#A85236] !bg-[#A85236] text-white text-[16px] font-medium rounded-none shadow-none border-none transition-all ${className}`}
       disabled={disabled}
       onClick={onClick}
     >
@@ -74,7 +74,7 @@ const ForgotPassword: React.FC = () => {
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                   placeholder="Enter Email ID / Mobile Number"
-                  className="h-12 !bg-white rounded-none border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
+                  className="h-12 !bg-white rounded-[10px] border-[#828282] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
                 />
               </div>
 
@@ -84,7 +84,7 @@ const ForgotPassword: React.FC = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter name"
-                  className="h-12 !bg-white rounded-none border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
+                  className="h-12 !bg-white rounded-[10px] border-[#828282] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
                 />
               </div>
 
@@ -106,7 +106,7 @@ const ForgotPassword: React.FC = () => {
               subtitle="You will receive an OTP. After you validate it, you can recover your account."
             />
 
-            <div className="space-y-6">
+            <div className="space-y-14">
               <p className="text-[14px] font-medium text-center text-[#222222]">
                 Where would you like to receive the OTP?
               </p>
@@ -133,9 +133,9 @@ const ForgotPassword: React.FC = () => {
               subtitle="Enter the 6 digit code sent to your phone number and complete the verification"
             />
 
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <p className="otp-validity-text text-center text-[13.6px] text-[#4A5568] font-medium">
+            <div className="space-y-16">
+              <div className="space-y-6">
+                <p className="otp-validity-text text-center text-[13.6px] text-[#4A5568]">
                   OTP is valid for 30 minutes
                 </p>
 
@@ -146,7 +146,7 @@ const ForgotPassword: React.FC = () => {
                       id={`otp-${index}`}
                       type="text"
                       maxLength={1}
-                      className="otp-input w-[52px] h-[52px] border-2 border-[#A85236] !bg-white rounded-none text-center text-[1.25rem] focus:outline-none focus:shadow-[0_0_0_2px_rgba(167,58,36,0.2)]"
+                      className="otp-input w-[52px] h-[52px] border-2 border-[#A85236] !bg-white rounded-[4px] text-center text-[1.25rem] focus:outline-none focus:shadow-[0_0_0_2px_rgba(167,58,36,0.2)]"
                       value={digit}
                       onChange={(e) => {
                         const val = e.target.value.replace(/\D/g, '');
@@ -176,7 +176,7 @@ const ForgotPassword: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="resend-otp-container text-center text-[14px] font-medium text-[#4A5568]">
+                <div className="resend-otp-container text-center text-[14px] font-medium text-[#4A5568] mt-6">
                   <span>04:00 </span>
                   <button className="text-[#A85236] hover:underline font-semibold ml-1">
                     Resend OTP
@@ -202,7 +202,7 @@ const ForgotPassword: React.FC = () => {
               subtitle="Please choose a strong password to protect your account."
             />
 
-            <div className="space-y-4">
+            <div className="space-y-12">
               {/* New Password */}
               <div className="form-group mb-5">
                 <InputLabel required>New Password</InputLabel>
@@ -212,7 +212,7 @@ const ForgotPassword: React.FC = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter New Password"
-                    className="h-12 !bg-white rounded-none border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
+                    className="h-12 !bg-white rounded-[10px] border-[#828282] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
                   />
                   <button
                     type="button"
@@ -238,7 +238,7 @@ const ForgotPassword: React.FC = () => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Confirm New Password"
-                    className="h-12 !bg-white rounded-none border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
+                    className="h-12 !bg-white rounded-[10px] border-[#828282] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
                   />
                   <button
                     type="button"
