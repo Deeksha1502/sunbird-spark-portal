@@ -34,51 +34,67 @@ const ForgotPassword: React.FC = () => {
 
   /* ---------- SUB-COMPONENTS ---------- */
   const Header = ({ title, subtitle }: { title: string; subtitle?: string }) => (
-    <div className="text-center mb-8">
-      <h1 className="text-2xl font-bold text-gray-900 mb-2">{title}</h1>
-      {subtitle && <p className="text-sm text-gray-500">{subtitle}</p>}
+    <div className="login-header text-center mb-8">
+      <h1 className="welcome-title text-[30px] font-semibold text-[#222222] leading-[30px] mb-2">{title}</h1>
+      {subtitle && <p className="welcome-subtitle text-[14px] font-normal text-[#757575] leading-relaxed mx-auto max-w-[320px]">{subtitle}</p>}
     </div>
+  );
+
+  const InputLabel = ({ children, htmlFor }: { children: React.ReactNode, htmlFor?: string }) => (
+    <label htmlFor={htmlFor} className="block text-[14px] font-medium text-[#333] mb-2">
+      {children}
+    </label>
+  );
+
+  const PrimaryButton = ({ children, onClick, disabled, className = "" }: { children: React.ReactNode, onClick: () => void, disabled?: boolean, className?: string }) => (
+    <Button
+      className={`login-button w-full h-[52px] bg-[#A85236] hover:opacity-85 text-white text-[16px] font-medium rounded-2xl shadow-none border-none transition-all ${className}`}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
+    </Button>
   );
 
   return (
     <AuthLayout>
-      <div className="w-full space-y-6">
+      <div className="w-full">
 
         {/* STEP 1: Identification */}
         {step === 1 && (
           <>
-            <Header title="Forgot Password" />
+            <Header
+              title="Welcome to Sunbird!"
+              subtitle="Your learning journey starts here—log in to continue."
+            />
 
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  Email ID / Mobile Number
-                </label>
+            <div className="space-y-5">
+              <div className="form-group mb-5">
+                <InputLabel>Email ID / Mobile Number</InputLabel>
                 <Input
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                   placeholder="Enter Email ID / Mobile Number"
+                  className="h-12 rounded-2xl border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  Name (as registered)
-                </label>
+              <div className="form-group mb-5">
+                <InputLabel>Name (as registered)</InputLabel>
                 <Input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter name"
+                  className="h-12 rounded-2xl border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] px-4 text-[14px] placeholder:text-[#B2B2B2]"
                 />
               </div>
 
-              <Button
-                className="w-full"
+              <PrimaryButton
                 disabled={!isRecoverValid}
                 onClick={() => setStep(2)}
               >
                 Continue
-              </Button>
+              </PrimaryButton>
             </div>
           </>
         )}
@@ -92,21 +108,20 @@ const ForgotPassword: React.FC = () => {
             />
 
             <div className="space-y-6">
-              <p className="text-sm font-medium text-center">
+              <p className="text-[14px] font-medium text-center text-[#222222]">
                 Where would you like to receive the OTP?
               </p>
 
-              <div className="flex items-center gap-3 p-4 border rounded-lg bg-gray-50">
-                <input type="radio" checked readOnly className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">{maskedIdentifier}</span>
+              <div className="flex items-center gap-3 p-4 border border-[#E2E8F0] rounded-2xl bg-[#ffffff]">
+                <input type="radio" checked readOnly className="w-4 h-4 accent-[#A85236]" />
+                <span className="text-[14px] font-medium text-[#4A5568]">{maskedIdentifier}</span>
               </div>
 
-              <Button
-                className="w-full"
+              <PrimaryButton
                 onClick={() => setStep(3)}
               >
                 Get OTP
-              </Button>
+              </PrimaryButton>
             </div>
           </>
         )}
@@ -114,27 +129,25 @@ const ForgotPassword: React.FC = () => {
         {/* STEP 3: OTP Verification */}
         {step === 3 && (
           <>
-            <div className="text-center mb-8">
-              <h1 className="text-[28px] font-bold text-gray-900 mb-2">Enter the code</h1>
-              <p className="text-sm text-gray-500 max-w-[280px] mx-auto leading-relaxed">
-                Enter the 6 digit code sent to your phone number and complete the verification
-              </p>
-            </div>
+            <Header
+              title="Enter the code"
+              subtitle="Enter the 6 digit code sent to your phone number and complete the verification"
+            />
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div className="space-y-4">
-                <p className="text-xs font-medium text-center text-gray-700">
+                <p className="otp-validity-text text-center text-[13.6px] text-[#4A5568] font-medium">
                   OTP is valid for 30 minutes
                 </p>
 
-                <div className="flex justify-center gap-2 sm:gap-4">
+                <div className="otp-container flex justify-between gap-2 max-w-[400px] mx-auto">
                   {otp.map((digit, index) => (
                     <input
                       key={index}
                       id={`otp-${index}`}
                       type="text"
                       maxLength={1}
-                      className="w-10 h-10 sm:w-12 sm:h-12 border border-[#A0522D] rounded-md text-center text-xl font-medium focus:outline-none focus:ring-1 focus:ring-[#A0522D]"
+                      className="otp-input w-[45px] h-[50px] border border-[#E2E8F0] rounded-lg text-center text-[1.25rem] focus:outline-none focus:border-[#A85236] focus:shadow-[0_0_0_2px_rgba(167,58,36,0.2)] bg-white"
                       value={digit}
                       onChange={(e) => {
                         const val = e.target.value.replace(/\D/g, '');
@@ -164,21 +177,20 @@ const ForgotPassword: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-center gap-2 text-xs font-medium text-gray-700">
-                  <span>04:00</span>
-                  <button className="text-[#A0522D] hover:underline">
+                <div className="resend-otp-container text-center text-[14px] font-medium text-[#4A5568]">
+                  <span>04:00 </span>
+                  <button className="text-[#A85236] hover:underline font-semibold ml-1">
                     Resend OTP
                   </button>
                 </div>
               </div>
 
-              <Button
-                className="w-full h-12 text-base bg-[#A0522D] hover:bg-[#8B4513] text-white rounded-xl"
+              <PrimaryButton
                 disabled={!isOtpValid}
                 onClick={() => setStep(4)}
               >
                 Confirm and Proceed
-              </Button>
+              </PrimaryButton>
             </div>
           </>
         )}
@@ -186,70 +198,70 @@ const ForgotPassword: React.FC = () => {
         {/* STEP 4: Reset Password */}
         {step === 4 && (
           <>
-            <Header title="Create New Password" />
+            <Header
+              title="Create New Password"
+              subtitle="Please choose a strong password to protect your account."
+            />
 
             <div className="space-y-4">
               {/* New Password */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium leading-none">
-                  New Password
-                </label>
+              <div className="form-group mb-5">
+                <InputLabel>New Password</InputLabel>
                 <div className="relative">
                   <Input
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pr-10"
+                    placeholder="Enter New Password"
+                    className="h-12 rounded-2xl border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword((v) => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#718096] hover:text-[#333] p-1"
                   >
-                    {showPassword ? <FiEyeOff /> : <FiEye />}
+                    {showPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
                   </button>
                 </div>
                 {!isPasswordValid && password && (
-                  <p className="text-xs text-red-500">
+                  <p className="passwderr text-[0.9rem] text-[#C53030] mt-2">
                     Password must be 8+ chars with upper, lower, number & special character
                   </p>
                 )}
               </div>
 
               {/* Confirm Password */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium leading-none">
-                  Confirm Password
-                </label>
+              <div className="form-group mb-6">
+                <InputLabel>Confirm Password</InputLabel>
                 <div className="relative">
                   <Input
                     type={showConfirmPassword ? 'text' : 'password'}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="pr-10"
+                    placeholder="Confirm New Password"
+                    className="h-12 rounded-2xl border-[#ddd] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_2px_#fff,0_0_0_4px_#A85236] pr-12 px-4 text-[14px] placeholder:text-[#B2B2B2]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword((v) => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#718096] hover:text-[#333] p-1"
                   >
-                    {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
+                    {showConfirmPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
                   </button>
                 </div>
                 {confirmPassword && password !== confirmPassword && (
-                  <p className="text-xs text-red-500">
+                  <p className="confpasswderr text-[0.9rem] text-[#C53030] mt-2">
                     Passwords do not match
                   </p>
                 )}
               </div>
 
-              <Button
-                className="w-full"
+              <PrimaryButton
                 disabled={!isPasswordValid || !isConfirmValid}
                 onClick={() => setStep(5)}
               >
                 Reset Password
-              </Button>
+              </PrimaryButton>
             </div>
           </>
         )}
@@ -263,20 +275,19 @@ const ForgotPassword: React.FC = () => {
               subtitle="Your password has been successfully reset."
             />
 
-            <div className="flex justify-center mb-8">
-              <div className="w-20 h-20 rounded-full bg-green-600 flex items-center justify-center shadow-lg">
+            <div className="flex justify-center mb-10">
+              <div className="success-icon w-[72px] h-[72px] rounded-full bg-[#2ECC71] flex items-center justify-center shadow-md">
                 <FiCheck className="text-white text-4xl" />
               </div>
             </div>
 
-            <Button
-              className="w-full bg-[#A0522D] hover:bg-[#8B4513] text-white"
+            <PrimaryButton
               onClick={() => {
                 window.location.href = '/login';
               }}
             >
               Proceed to Login
-            </Button>
+            </PrimaryButton>
           </div>
         )}
 
