@@ -52,8 +52,8 @@ const Explore = () => {
                     {/* Content Grid */}
                     <div className="flex-1">
                         <div>
-                            <div className="bg-white rounded-[20px] px-6 mb-6 flex flex-row justify-between items-center shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100" style={{ height: '60px' }}>
-                                <h1 className="font-medium text-foreground pl-2" style={{ fontFamily: 'Rubik, sans-serif', fontSize: '20px', lineHeight: '26px', letterSpacing: '0%' }}>
+                            <div className="bg-white rounded-[12px] px-6 mb-6 flex flex-row justify-between items-center shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[#D7D7D7]" style={{ height: '60px' }}>
+                                <h1 className="font-medium text-foreground" style={{ fontFamily: 'Rubik, sans-serif', fontSize: '20px', lineHeight: '26px', letterSpacing: '0%' }}>
                                     {t("startExploring")}
                                 </h1>
 
@@ -73,7 +73,7 @@ const Explore = () => {
                                         <DropdownMenuTrigger asChild>
                                             <button className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-md text-sm font-normal text-foreground hover:bg-gray-50 transition-colors min-w-[120px] justify-between">
                                                 Popular
-                                                <FiChevronDown className="w-4 h-4 text-gray-400" />
+                                                <FiChevronDown className="w-4 h-4 text-[#A85236]" />
                                             </button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end" className="w-[140px] bg-white z-50">

@@ -43,11 +43,11 @@ const Header = () => {
     );
 
     return (
-        <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
+        <header className="sticky top-0 z-50 bg-white border-b border-gray-100 pr-[56px] pl-[13px]">
             <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-16 md:h-[72px]">
+                <div className="flex items-center justify-between h-16 md:h-[72px] pl-[60px]">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center">
+                    <Link to="/" className="flex items-center md:pl-[30px]">
                         <img
                             src={sunbirdLogo}
                             alt="Sunbird"
@@ -68,7 +68,7 @@ const Header = () => {
                             >
                                 <span className="flex items-center gap-1">
                                     {link.label}
-                                    {link.href === "/explore" && <FiChevronDown className={`w-4 h-4 mt-0.5 ${isActive(link.href) ? 'text-[#A85236]' : 'text-gray-400'}`} />}
+                                    {link.href === "/explore" && <FiChevronDown className={`w-4 h-4 pl-[5px] mt-[3px] ${isActive(link.href) ? 'text-[#A85236]' : 'text-gray-400'}`} />}
                                 </span>
                             </Link>
                         ))}
@@ -113,7 +113,7 @@ const Header = () => {
                         {/* Login Button */}
                         <Link
                             to="/login"
-                            className="bg-[#A85236] hover:bg-[#8B442C] text-white px-6 py-2 rounded-[6px] text-sm font-medium transition-colors"
+                            className="bg-[#A85236] hover:bg-[#8B442C] text-white px-[15px] py-[4px] rounded-[6px] text-sm font-medium transition-colors"
                         >
                             {t("login")}
                         </Link>

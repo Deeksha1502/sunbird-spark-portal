@@ -157,12 +157,11 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
     return (
         <Link to={`/collection/${item.id}`} className="group h-full">
             <div className="bg-white rounded-[20px] overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow p-3 pb-4 h-full flex flex-col shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)]">
-                {/* Image - consistent 274x156 ratio with subtle rounded corners */}
-                <div className="aspect-[274/156] overflow-hidden rounded-[12px] flex-shrink-0">
+                <div className="aspect-[274/156] overflow-hidden rounded-[20px] flex-shrink-0">
                     <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-cover"
                     />
                 </div>
 
@@ -217,7 +216,7 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
                     <img
                         src={item.image}
                         alt={item.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="absolute inset-0 w-full h-full object-cover"
                     />
 
                     {/* Type Badge */}
