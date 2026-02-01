@@ -156,9 +156,9 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
     const { t } = useAppI18n();
     return (
         <Link to={`/collection/${item.id}`} className="group h-full block">
-            <div className="bg-white rounded-[20px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-4 h-full flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-                {/* Image Section */}
-                <div className="h-[180px] overflow-hidden rounded-[16px] flex-shrink-0">
+            <div className="bg-white rounded-[20px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-3.5 h-[320px] flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+                {/* Image Section - Inner Padded Rounded Rectangle */}
+                <div className="h-[130px] overflow-hidden rounded-[16px] flex-shrink-0 mb-3">
                     <img
                         src={item.image}
                         alt={item.title}
@@ -167,19 +167,19 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
                 </div>
 
                 {/* Content Section */}
-                <div className="pt-4 flex flex-col flex-1">
-                    {/* Type Badge */}
-                    <span className="inline-block text-[13px] font-medium text-foreground bg-[#FFF1C7] border border-[#CC8545] rounded-full px-3 py-1 mb-3 self-start">
+                <div className="flex flex-col flex-1">
+                    {/* Pill-shaped Type Badge */}
+                    <span className="inline-block text-[13px] font-bold text-black bg-[#FFF1C7] border border-[#CC8545] rounded-full px-4 py-1 mb-3 self-start whitespace-nowrap">
                         {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-[18px] font-bold text-foreground leading-[1.3] mb-4 line-clamp-2">
+                    <h3 className="text-[17px] font-bold text-foreground leading-[1.3] mb-3">
                         {item.title}
                     </h3>
 
                     {/* Metadata Section - Pinned to bottom */}
-                    <div className="mt-auto flex items-center gap-2 text-[13px] text-muted-foreground font-medium pt-2">
+                    <div className="mt-auto flex items-center gap-2 text-[13px] text-muted-foreground font-semibold pt-2">
                         <span className="flex items-center gap-1">
                             {item.rating || "4.5"}
                             <FiStar className="w-3.5 h-3.5 text-[#A85236] fill-[#A85236]" />
@@ -208,38 +208,39 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
     };
 
     return (
-        <Link to={`/collection/${item.id}`} className="block h-full w-full">
-            <div className="relative rounded-[20px] overflow-hidden h-full w-full flex flex-col shadow-[0_4px_25px_rgba(0,0,0,0.08)] min-h-[360px]">
-                {/* Full Card Background Image - inset-[-4px] and slightly larger to ensure zero gaps */}
-                <img
-                    src={item.image}
-                    alt={item.title}
-                    className="absolute -inset-1 w-[calc(100%+8px)] h-[calc(100%+8px)] object-cover object-center pointer-events-none scale-105 transition-none"
-                />
+        <Link
+            to={`/collection/${item.id}`}
+            className="relative block w-full h-[320px] rounded-[20px] overflow-hidden"
+        >
+            {/* Full Card Background Image */}
+            <img
+                src={item.image}
+                alt={item.title}
+                className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none scale-105 transition-none"
+            />
 
-                {/* Content Overlay */}
-                <div className="relative z-10 p-7 flex flex-col h-full justify-between items-start flex-1 bg-gradient-to-t from-black/20 via-transparent to-transparent">
-                    {/* Tag Overlay */}
-                    <span className="inline-block bg-white text-foreground text-[13px] font-bold px-4 py-1.5 rounded-[8px] shadow-sm">
-                        {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
-                    </span>
+            {/* Content Overlay */}
+            <div className="relative z-10 p-7 flex flex-col h-full items-start">
+                {/* Rectangular White Tag (Top-left) */}
+                <span className="inline-block bg-white text-foreground text-[14px] px-4 py-1.5 rounded-[4px] shadow-sm mb-auto">
+                    {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
+                </span>
 
-                    {/* Bottom Content Overlay */}
-                    <div className="w-full mt-auto">
-                        <h3
-                            className="text-white text-[22px] font-bold leading-[1.3] mb-4"
-                            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
-                        >
-                            {item.title}
-                        </h3>
-                        <p
-                            className="text-white text-[15px] font-semibold flex items-center gap-2"
-                            style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
-                        >
-                            {getCTAText(item.type)}
-                            <FiArrowRight className="w-4 h-4" />
-                        </p>
-                    </div>
+                {/* Bottom Content Overlay (Bottom-left) */}
+                <div className="w-full mt-auto">
+                    <h3
+                        className="text-white text-[20px] leading-[1.3] mb-3 font-normal"
+                        style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+                    >
+                        {item.title}
+                    </h3>
+                    <p
+                        className="text-white text-[14px] flex items-center gap-2 font-normal"
+                        style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+                    >
+                        {getCTAText(item.type)}
+                        <FiArrowRight className="w-4 h-4" />
+                    </p>
                 </div>
             </div>
         </Link>
