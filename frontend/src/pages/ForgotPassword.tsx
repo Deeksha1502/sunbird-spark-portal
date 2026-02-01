@@ -47,7 +47,7 @@ const ForgotPassword: React.FC = () => {
 
   const PrimaryButton = ({ children, onClick, disabled, className = "" }: { children: React.ReactNode, onClick: () => void, disabled?: boolean, className?: string }) => (
     <Button
-      className={`login-button w-full h-[52px] bg-[#A85236] !bg-[#A85236] text-white text-[16px] font-medium rounded-none shadow-none border-none transition-all ${className}`}
+      className={`login-button w-full h-[52px] bg-[#A85236] !bg-[#A85236] text-white text-[16px] font-medium rounded-[10px] shadow-none border-none transition-all ${className}`}
       disabled={disabled}
       onClick={onClick}
     >

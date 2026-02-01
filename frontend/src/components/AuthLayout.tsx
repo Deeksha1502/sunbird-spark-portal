@@ -26,15 +26,15 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
       style={{ backgroundImage: `url(${authWaveBg})` }}
     >
       {/* Unified White Container */}
-      <div className="login-split-container flex flex-col md:flex-row w-full max-w-7xl min-h-[730px] m-[10px] md:m-auto bg-white rounded-[3rem] p-[6px] relative z-10 shadow-2xl">
+      <div className="login-split-container flex flex-col md:flex-row w-full max-w-7xl min-h-[730px] m-[10px] md:m-auto bg-white rounded-[4rem] p-[6px] relative z-10 shadow-2xl">
 
         {/* Inset Left Panel */}
         <div
-          className="login-left-panel hidden md:flex flex-1 relative items-center justify-center overflow-hidden rounded-[2.5rem] bg-cover bg-center bg-fixed"
+          className="login-left-panel hidden md:flex flex-1 relative items-center justify-center overflow-hidden rounded-[3.5rem] bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${authWaveBg})` }}
         >
           {/* The visible white frame inset */}
-          <div className="login-left-panel-container absolute inset-0 z-[3] border-0 rounded-[2.5rem] shadow-[0_0_0_2rem_rgba(255,255,255,0.05)]"></div>
+          <div className="login-left-panel-container absolute inset-0 z-[3] border-0 rounded-[3.5rem] shadow-[0_0_0_2rem_rgba(255,255,255,0.05)]"></div>
           <div className="left-panel-content absolute z-[2] left-10 bottom-10 max-w-[calc(100%-80px)]">
             <h2 className="left-panel-title !font-rubik text-[30px] font-semibold text-white leading-[42px]">
               Empower your future<br />
