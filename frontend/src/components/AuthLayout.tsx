@@ -44,7 +44,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
         </div>
 
         {/* Right Content Area */}
-        <div className="login-card flex-1 p-6 md:p-10 relative flex flex-col justify-start md:pt-20 pt-16">
+        <div className="login-card flex-[0.85] p-6 md:p-10 relative flex flex-col justify-start md:pt-20 pt-16">
           {/* Close Button */}
           <button
             onClick={handleClose}
