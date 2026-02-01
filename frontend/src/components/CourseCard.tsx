@@ -1,5 +1,4 @@
-import { FiStar, FiClock, FiUsers, FiBookOpen } from "react-icons/fi";
-import { Card, CardContent } from "@/components/card";
+import { FiStar } from "react-icons/fi";
 import { Badge } from "@/components/badge";
 import { useAppI18n } from "@/hooks/useAppI18n";
 
@@ -26,65 +25,50 @@ const CourseCard = ({ course }: CourseCardProps) => {
   const { t } = useAppI18n();
 
   return (
-    <Card className="group overflow-hidden border-border hover:shadow-xl transition-all duration-300 bg-card h-full">
-      {/* Thumbnail */}
-      <div className="relative overflow-hidden">
-        <div
-          className="aspect-video bg-muted bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-          style={{
-            backgroundImage: `url(${course.thumbnail})`,
-            backgroundColor: 'hsl(var(--muted))'
-          }}
-        />
-        {course.isFeatured && (
-          <Badge className="absolute top-3 start-3 bg-secondary text-secondary-foreground">
-            {t("featured")}
-          </Badge>
-        )}
-        <Badge
-          variant="outline"
-          className="absolute top-3 end-3 bg-card/90 backdrop-blur-sm"
-        >
-          {t(`levels.${course.level}`)}
-        </Badge>
+    <div className="group h-full block">
+      <div className="bg-white rounded-[16px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-4 h-full flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+        {/* Thumbnail */}
+        <div className="h-[180px] overflow-hidden rounded-[12px] flex-shrink-0 relative">
+          <img
+            src={course.thumbnail}
+            alt={course.title}
+            className="w-full h-full object-cover object-center"
+          />
+          {course.isFeatured && (
+            <Badge className="absolute top-2 start-2 bg-secondary text-secondary-foreground text-[10px] px-2 py-0">
+              {t("featured")}
+            </Badge>
+          )}
+        </div>
+
+        <div className="pt-4 flex flex-col flex-1">
+          {/* Category Badge */}
+          <span className="inline-block text-[13px] font-medium text-foreground bg-[#FFF1C7] border border-[#CC8545] rounded-full px-3 py-1 mb-3 self-start">
+            {course.category}
+          </span>
+
+          {/* Title */}
+          <h3 className="text-[18px] font-bold text-foreground leading-[1.3] mb-2 line-clamp-2">
+            {course.title}
+          </h3>
+
+          {/* Instructor */}
+          <p className="text-[13px] text-muted-foreground mb-4">{t("by")} {course.instructor}</p>
+
+          {/* Metadata Section - Pinned to bottom */}
+          <div className="mt-auto flex flex-col gap-2 pt-2">
+            <div className="flex items-center gap-2 text-[13px] text-muted-foreground font-medium">
+              <span className="flex items-center gap-1">
+                {course.rating.toFixed(1)}
+                <FiStar className="w-3.5 h-3.5 text-[#A85236] fill-[#A85236]" />
+              </span>
+              <span className="text-gray-300">•</span>
+              <span>{course.enrolledCount.toLocaleString()} {t("students")}</span>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <CardContent className="p-4 md:p-5">
-        {/* Category */}
-        <p className="text-xs font-medium text-primary mb-2">{course.category}</p>
-
-        {/* Title */}
-        <h3 className="font-semibold text-foreground line-clamp-2 mb-2 group-hover:text-primary transition-colors">
-          {course.title}
-        </h3>
-
-        {/* Instructor */}
-        <p className="text-sm text-muted-foreground mb-3">{t("by")} {course.instructor}</p>
-
-        {/* Stats */}
-        <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-4">
-          <div className="flex items-center gap-1">
-            <FiStar className="w-4 h-4 fill-secondary text-secondary" />
-            <span className="font-medium text-foreground">{course.rating.toFixed(1)}</span>
-            <span>({course.reviewCount.toLocaleString()})</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <FiClock className="w-3.5 h-3.5" />
-            <span>{course.duration}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <FiBookOpen className="w-3.5 h-3.5" />
-            <span>{course.lessons} {t("lessons")}</span>
-          </div>
-        </div>
-
-        {/* Enrolled count */}
-        <div className="flex items-center gap-1 text-xs text-muted-foreground">
-          <FiUsers className="w-3.5 h-3.5" />
-          <span>{course.enrolledCount.toLocaleString()} {t("students")}</span>
-        </div>
-      </CardContent>
-    </Card>
+    </div>
   );
 };
 

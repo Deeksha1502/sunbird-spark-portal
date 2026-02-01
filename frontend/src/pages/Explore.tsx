@@ -40,7 +40,7 @@ const Explore = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#F9F9F9] shadow-[inset_0px_10px_30px_rgba(0,0,0,0.02)]">
+        <div className="min-h-screen bg-[#F8F9FB] shadow-[inset_0px_10px_30px_rgba(0,0,0,0.02)]">
             <Header />
             <main className="w-full px-[30px] py-6 md:py-8">
                 <div className="flex flex-col md:flex-row gap-6 md:gap-8">

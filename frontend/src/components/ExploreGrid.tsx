@@ -140,12 +140,12 @@ const ExploreGrid = ({ filters }: ExploreGridProps) => {
     const items = exploreItems;
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
             {items.map((item) =>
-                item.isResource ? (
-                    <ResourceCard key={item.id} item={item} />
-                ) : (
+                item.type === "Course" || item.type === "Textbook" ? (
                     <CourseCard key={item.id} item={item} />
+                ) : (
+                    <ResourceCard key={item.id} item={item} />
                 )
             )}
         </div>
@@ -155,38 +155,39 @@ const ExploreGrid = ({ filters }: ExploreGridProps) => {
 const CourseCard = ({ item }: { item: ExploreItem }) => {
     const { t } = useAppI18n();
     return (
-        <Link to={`/collection/${item.id}`} className="group h-full">
-            <div className="bg-white rounded-[20px] overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow p-3 pb-4 h-full flex flex-col shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)]">
-                <div className="aspect-[274/156] overflow-hidden rounded-[20px] flex-shrink-0">
+        <Link to={`/collection/${item.id}`} className="group h-full block">
+            <div className="bg-white rounded-[20px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-4 h-full flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+                {/* Image Section */}
+                <div className="h-[180px] overflow-hidden rounded-[16px] flex-shrink-0">
                     <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-center"
                     />
                 </div>
 
-                {/* Content */}
-                <div className="pt-3 px-1 flex flex-col flex-1">
-                    {/* Type Badge - cream background with golden border */}
-                    <span className="inline-block text-xs font-medium text-foreground bg-[#FFF1C7] border border-[#CC8545] rounded-full px-3 py-1 mb-2 self-start">
+                {/* Content Section */}
+                <div className="pt-4 flex flex-col flex-1">
+                    {/* Type Badge */}
+                    <span className="inline-block text-[13px] font-medium text-foreground bg-[#FFF1C7] border border-[#CC8545] rounded-full px-3 py-1 mb-3 self-start">
                         {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-[17px] font-bold text-foreground leading-snug mb-auto line-clamp-3 mt-1">
+                    <h3 className="text-[18px] font-bold text-foreground leading-[1.3] mb-4 line-clamp-2">
                         {item.title}
                     </h3>
 
-                    {/* Stats */}
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-4 font-medium">
+                    {/* Metadata Section - Pinned to bottom */}
+                    <div className="mt-auto flex items-center gap-2 text-[13px] text-muted-foreground font-medium pt-2">
                         <span className="flex items-center gap-1">
-                            {item.rating}
+                            {item.rating || "4.5"}
                             <FiStar className="w-3.5 h-3.5 text-[#A85236] fill-[#A85236]" />
                         </span>
                         <span className="text-gray-300">•</span>
-                        <span>{item.learners} {t("contentStats.learners")}</span>
+                        <span>{item.learners || "9k"} {t("contentStats.learners")}</span>
                         <span className="text-gray-300">•</span>
-                        <span>{item.lessons} {t("contentStats.lessons")}</span>
+                        <span>{item.lessons || "25"} {t("contentStats.lessons")}</span>
                     </div>
                 </div>
             </div>
@@ -195,51 +196,48 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
 };
 
 const ResourceCard = ({ item }: { item: ExploreItem }) => {
-    const { t, isRTL } = useAppI18n();
-    const getViewLabel = (type: ContentType) => {
-        switch (type) {
-            case "Video":
-                return t("resource.viewVideo");
-            case "PDF":
-                return t("resource.viewPdf");
-            case "Epub":
-                return t("resource.viewEpub");
-            default:
-                return t("view");
+    const { t } = useAppI18n();
+
+    const getCTAText = (type: string) => {
+        switch (type.toLowerCase()) {
+            case 'video': return t("resource.viewVideo") || "Watch the Video";
+            case 'pdf': return t("resource.viewPdf") || "View the PDF";
+            case 'epub': return t("resource.readEpub") || "View the Epub";
+            default: return t("resource.view") || "View Resource";
         }
     };
 
     return (
-        <Link to={`/collection/${item.id}`} className="block h-full">
-            <div className="group rounded-[20px] overflow-hidden cursor-pointer h-full shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)]">
-                <div className="relative h-full">
-                    <img
-                        src={item.image}
-                        alt={item.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                    />
+        <Link to={`/collection/${item.id}`} className="block h-full w-full">
+            <div className="relative rounded-[20px] overflow-hidden h-full w-full flex flex-col shadow-[0_4px_25px_rgba(0,0,0,0.08)] min-h-[360px]">
+                {/* Full Card Background Image - inset-[-4px] and slightly larger to ensure zero gaps */}
+                <img
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute -inset-1 w-[calc(100%+8px)] h-[calc(100%+8px)] object-cover object-center pointer-events-none scale-105 transition-none"
+                />
 
-                    {/* Type Badge */}
-                    <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'}`}>
-                        <span className="inline-block bg-white/95 text-foreground text-xs font-medium px-3 py-1.5 rounded-full">
-                            {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
-                        </span>
-                    </div>
+                {/* Content Overlay */}
+                <div className="relative z-10 p-7 flex flex-col h-full justify-between items-start flex-1 bg-gradient-to-t from-black/20 via-transparent to-transparent">
+                    {/* Tag Overlay */}
+                    <span className="inline-block bg-white text-foreground text-[13px] font-bold px-4 py-1.5 rounded-[8px] shadow-sm">
+                        {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
+                    </span>
 
-                    {/* Content */}
-                    <div className="absolute inset-x-0 bottom-0 px-5 pb-5">
+                    {/* Bottom Content Overlay */}
+                    <div className="w-full mt-auto">
                         <h3
-                            className="text-white font-semibold text-lg leading-snug max-w-[90%]"
-                            style={{ textShadow: "var(--shadow-on-image)" }}
+                            className="text-white text-[22px] font-bold leading-[1.3] mb-4"
+                            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
                         >
                             {item.title}
                         </h3>
                         <p
-                            className="mt-2 text-white/90 text-sm font-medium flex items-center gap-2 hover:opacity-80 transition-opacity"
-                            style={{ textShadow: "var(--shadow-on-image-soft)" }}
+                            className="text-white text-[15px] font-semibold flex items-center gap-2"
+                            style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
                         >
-                            {getViewLabel(item.type)}
-                            <FiArrowRight className="w-3.5 h-3.5" />
+                            {getCTAText(item.type)}
+                            <FiArrowRight className="w-4 h-4" />
                         </p>
                     </div>
                 </div>
