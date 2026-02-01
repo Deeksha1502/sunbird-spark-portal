@@ -25,7 +25,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
     >
       {/* Unified White Container */}
       <div
-        className="login-split-container flex flex-col md:flex-row w-full max-w-7xl m-[0.625rem] md:m-auto bg-white rounded-[4rem] p-[0.375rem] relative z-10 shadow-2xl"
+        className="login-split-container flex flex-col md:flex-row w-full max-w-5xl m-[0.625rem] md:m-auto bg-white rounded-[4rem] p-[0.375rem] relative z-10 shadow-2xl"
         style={{ minHeight: 'max(30rem, calc(100vh - 7.5rem))' }}
       >
 
@@ -44,7 +44,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
         </div>
 
         {/* Right Content Area */}
-        <div className="login-card flex-1 p-6 md:p-12 relative flex flex-col justify-start md:pt-24 pt-16">
+        <div className="login-card flex-1 p-6 md:p-10 relative flex flex-col justify-start md:pt-20 pt-16">
           {/* Close Button */}
           <button
             onClick={handleClose}
