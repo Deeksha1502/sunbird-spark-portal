@@ -41,7 +41,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
         </div>
 
         {/* Right Content Area */}
-        <div className="login-card flex-1 p-6 md:p-12 relative flex flex-col justify-center">
+        <div className="login-card flex-1 p-6 md:p-12 relative flex flex-col justify-start md:pt-24 pt-16">
           {/* Close Button */}
           <button
             onClick={handleClose}
@@ -50,8 +50,8 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
             <FiX className="w-6 h-6" />
           </button>
 
-          <div className="mx-auto w-full max-w-sm flex flex-col justify-center">
-            <div className="login-header text-center mb-8">
+          <div className="mx-auto w-full max-w-sm flex flex-col justify-start">
+            <div className="logo-container text-center mb-12">
               <div className="sunbird-logo mb-5">
                 <a href="/">
                   <img
