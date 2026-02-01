@@ -24,7 +24,10 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
       className="login-wrapper font-rubik min-h-screen w-full flex items-center justify-center relative bg-[#4A8C8C] auth-bg-wave overflow-x-hidden"
     >
       {/* Unified White Container */}
-      <div className="login-split-container flex flex-col md:flex-row w-full max-w-7xl min-h-[45.625rem] m-[0.625rem] md:m-auto bg-white rounded-[4rem] p-[0.375rem] relative z-10 shadow-2xl">
+      <div
+        className="login-split-container flex flex-col md:flex-row w-full max-w-7xl m-[0.625rem] md:m-auto bg-white rounded-[4rem] p-[0.375rem] relative z-10 shadow-2xl"
+        style={{ minHeight: 'max(30rem, calc(100vh - 7.5rem))' }}
+      >
 
         {/* Inset Left Panel */}
         <div

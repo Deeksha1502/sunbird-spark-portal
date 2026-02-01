@@ -20,6 +20,7 @@ const ForgotPassword: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isOtpSourceSelected, setIsOtpSourceSelected] = useState(false);
 
   const maskedIdentifier = maskIdentifier(identifier.trim());
 
@@ -76,6 +77,9 @@ const ForgotPassword: React.FC = () => {
                   placeholder="Enter Email ID / Mobile Number"
                   className="h-12 !bg-white rounded-[0.625rem] border-[#828282] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_0.125rem_#fff,0_0_0_0.25rem_#A85236] px-4 text-[0.875rem] placeholder:text-[#B2B2B2]"
                 />
+                <p className="text-[0.75rem] text-[#757575] mt-1">
+                  Email (e.g. user@example.com) or Mobile Number (10 digits starting with 6-9)
+                </p>
               </div>
 
               <div className="form-group mb-5">
@@ -112,12 +116,21 @@ const ForgotPassword: React.FC = () => {
                 Where would you like to receive the OTP?
               </p>
 
-              <div className="flex items-center gap-3 p-4 border border-[#E2E8F0] rounded-2xl bg-[#ffffff]">
-                <input type="radio" checked readOnly className="w-4 h-4 accent-[#A85236]" />
+              <div
+                className={`flex items-center gap-3 p-4 border rounded-2xl cursor-pointer transition-colors ${isOtpSourceSelected ? 'border-[#A85236] bg-[#FFF5F2]' : 'border-[#E2E8F0] bg-[#ffffff]'}`}
+                onClick={() => setIsOtpSourceSelected(!isOtpSourceSelected)}
+              >
+                <input
+                  type="radio"
+                  checked={isOtpSourceSelected}
+                  onChange={() => setIsOtpSourceSelected(!isOtpSourceSelected)}
+                  className="w-4 h-4 accent-[#A85236]"
+                />
                 <span className="text-[0.875rem] font-medium text-[#4A5568]">{maskedIdentifier}</span>
               </div>
 
               <PrimaryButton
+                disabled={!isOtpSourceSelected}
                 onClick={() => setStep(3)}
               >
                 Get OTP
