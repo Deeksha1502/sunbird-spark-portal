@@ -291,7 +291,7 @@ const CollectionDetail = () => {
                                             {module.lessons.map((lesson) => (
                                                 <Link
                                                     key={lesson.id}
-                                                    to={`/course/${collectionId}/lesson/${lesson.id}`}
+                                                    to={lesson.type === "video" ? `/content/${lesson.id}` : `/course/${collectionId}/lesson/${lesson.id}`}
                                                     className="flex items-center gap-3 bg-[#F5F5F5] rounded-xl px-4 py-3 hover:bg-gray-200 transition-colors"
                                                 >
                                                     {lesson.type === "video" ? <VideoIcon /> : <DocumentIcon />}
