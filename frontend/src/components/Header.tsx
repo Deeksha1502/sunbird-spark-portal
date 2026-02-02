@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiMenu, FiX, FiSearch, FiChevronDown } from "react-icons/fi";
+import { FiMenu, FiX, FiSearch, FiChevronDown, FiBell } from "react-icons/fi";
 import { Button } from "@/components/button";
 import {
   DropdownMenu,
@@ -34,17 +34,7 @@ const Header = () => {
     return location.pathname.startsWith(href) && href !== "/";
   };
 
-  // Filled Bell Icon with notification dot
-  const BellFilledIcon = () => (
-    <div className="relative">
-      <svg width="21" height="21.34" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C8.97 2 6.5 4.47 6.5 7.5V11.5L5.17 13.4C4.78 13.96 5.18 14.75 5.88 14.75H18.12C18.82 14.75 19.22 13.96 18.83 13.4L17.5 11.5V7.5C17.5 4.47 15.03 2 12 2Z" />
-        <path d="M12 22C13.38 22 14.5 20.88 14.5 19.5H9.5C9.5 20.88 10.62 22 12 22Z" />
-      </svg>
-      {/* Green notification dot */}
-      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-[#22C55E] rounded-full border-2 border-white"></span>
-    </div>
-  );
+
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 pr-[56px] pl-[13px]">
@@ -88,7 +78,7 @@ const Header = () => {
 
               {/* Notifications - Filled Bell */}
               <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
-                <BellFilledIcon />
+                <FiBell className="w-[21px] h-[21px]" fill="#A85236" />
               </button>
 
               {/* Language Selector */}

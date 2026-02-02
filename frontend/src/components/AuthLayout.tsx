@@ -25,8 +25,8 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
     >
       {/* Unified White Container */}
       <div
-        className="login-split-container flex flex-col md:flex-row w-full max-w-5xl m-[0.625rem] md:m-auto bg-white rounded-[4rem] p-[0.375rem] relative z-10 shadow-2xl overflow-hidden"
-        style={{ height: 'max(36rem, calc(100vh - 7.5rem))' }}
+        className="login-split-container flex flex-col md:flex-row m-[0.625rem] md:m-auto bg-white rounded-[4rem] p-[0.375rem] relative z-10 shadow-2xl overflow-hidden"
+        style={{ width: '1024px', height: '650px', minHeight: '650px' }}
       >
 
         {/* Inset Left Panel */}
@@ -54,7 +54,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
           </button>
 
           <div className="mx-auto w-full max-w-sm flex flex-col justify-start">
-            <div className="logo-container text-center mb-8">
+            <div className="logo-container text-center mb-0">
               <div className="sunbird-logo mb-5">
                 <a href="/">
                   <img

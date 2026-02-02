@@ -10,6 +10,7 @@ import ReportsPage from './pages/ReportsPage';
 import CreateContentPage from './pages/CreateContentPage';
 import Index from './pages/Index';
 import ForgotPassword from './pages/ForgotPassword';
+import SignUp from './pages/SignUp';
 import Courses from './pages/Courses';
 import Explore from './pages/Explore';
 import CollectionDetail from './pages/CollectionDetail';
@@ -55,6 +56,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/workspace" element={<Workspace />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/signup" element={<SignUp />} />
 
 
         {/* Protected routes */}

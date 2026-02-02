@@ -12,14 +12,13 @@ import {
 import PageLoader from "@/components/PageLoader";
 import Footer from "@/components/Footer";
 import { useAppI18n } from "@/hooks/useAppI18n";
+// import { languages, type Language, type LanguageCode } from "@/lib/translations";
 import HomeSidebar from "@/components/HomeSidebar";
 import HomeStatsCards from "@/components/HomeStatsCards";
 import HomeContinueLearning from "@/components/HomeContinueLearning";
 import HomePerformanceChart from "@/components/HomePerformanceChart";
 import HomeInProgressGrid from "@/components/HomeInProgressGrid";
 import HomeRecommendedSection from "@/components/HomeRecommendedSection";
-import heroWoman from "@/assets/hero-woman-new.png";
-import tealShape from "@/assets/teal-shape.png";
 
 // Custom language icon matching design
 const LanguageIcon = () => (
@@ -31,13 +30,11 @@ const LanguageIcon = () => (
 
 const Home = () => {
     const navigate = useNavigate();
-    const { languages, currentCode, changeLanguage } = useAppI18n();
+    const { t, languages, currentCode, changeLanguage, currentLanguage } = useAppI18n();
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [activeNav, setActiveNav] = useState("home");
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-    const currentLanguage = languages.find(l => l.code === currentCode) || languages[0];
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -45,8 +42,6 @@ const Home = () => {
         }, 600);
         return () => clearTimeout(timer);
     }, []);
-
-    const handleLanguageChange = (lang: any) => changeLanguage(lang.code);
 
     if (isLoading) {
         return <PageLoader message="Loading your dashboard..." />;
@@ -76,7 +71,7 @@ const Home = () => {
                                     <path d="M1 13H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                                 </svg>
                             </button>
-                            <h1 className="text-lg font-semibold text-gray-900">Home</h1>
+                            <h1 className="text-lg font-semibold text-gray-900">{t("home")}</h1>
                         </div>
 
                         {/* Right: Search + Language */}
@@ -110,7 +105,7 @@ const Home = () => {
                                     {languages.map((lang) => (
                                         <DropdownMenuItem
                                             key={lang.code}
-                                            onClick={() => handleLanguageChange(lang)}
+                                            onClick={() => changeLanguage(lang.code)}
                                             className={currentCode === lang.code ? "bg-home-ivory" : ""}
                                         >
                                             <span className="mr-2">{lang.label}</span>
@@ -126,31 +121,9 @@ const Home = () => {
                 <main className="flex-1 overflow-y-auto bg-home-ivory">
                     <div className="p-6 md:p-8">
                         {/* Welcome Section */}
-                        {/* Hero Section */}
-                        <div className="mb-8">
-                            <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[300px] lg:min-h-[400px]">
-                                <div className="text-left max-w-xl">
-                                    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Hi John Deo</h2>
-                                    <p className="text-lg text-gray-600">Welcome to a learning experience made just for you.</p>
-                                </div>
-                                <div className="hidden lg:flex justify-end items-end relative h-[400px]">
-                                    <div className="absolute bottom-0 right-0 w-[340px]">
-                                        <img
-                                            src={tealShape}
-                                            alt=""
-                                            className="w-full h-auto"
-                                            style={{ transform: 'rotate(-0.5deg)', transformOrigin: 'center center' }}
-                                        />
-                                    </div>
-                                    <div className="relative z-10 flex items-end justify-center h-full">
-                                        <img
-                                            src={heroWoman}
-                                            alt="Professional learning"
-                                            className="w-[360px] h-auto object-contain"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="mb-6">
+                            <h2 className="text-xl font-semibold text-gray-900">Hi John Deo</h2>
+                            <p className="text-gray-500 text-sm">Welcome to a learning experience made just for you.</p>
                         </div>
 
                         {/* Stats Cards */}
