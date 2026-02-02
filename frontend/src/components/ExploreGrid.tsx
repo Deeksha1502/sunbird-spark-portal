@@ -1,5 +1,5 @@
 import { FiArrowRight } from "react-icons/fi";
-import { FiStar } from "react-icons/fi";
+import { FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import type { FilterState } from "@/pages/Explore";
 
@@ -156,9 +156,9 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
     const { t } = useAppI18n();
     return (
         <Link to={`/collection/${item.id}`} className="group h-full block">
-            <div className="bg-white rounded-[20px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-3.5 h-[320px] flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+            <div className="bg-white rounded-[28px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-[18px] h-[386px] flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-[#E5E7EB]">
                 {/* Image Section - Inner Padded Rounded Rectangle */}
-                <div className="h-[130px] overflow-hidden rounded-[16px] flex-shrink-0 mb-3">
+                <div className="h-[180px] overflow-hidden rounded-[22px] flex-shrink-0 mb-4">
                     <img
                         src={item.image}
                         alt={item.title}
@@ -167,22 +167,22 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
                 </div>
 
                 {/* Content Section */}
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 px-1">
                     {/* Pill-shaped Type Badge */}
                     <span className="inline-block text-[13px] font-bold text-black bg-[#FFF1C7] border border-[#CC8545] rounded-full px-4 py-1 mb-3 self-start whitespace-nowrap">
                         {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-[17px] font-bold text-foreground leading-[1.3] mb-3">
+                    <h3 className="text-[19px] font-bold text-foreground leading-[1.25] mb-3 line-clamp-2">
                         {item.title}
                     </h3>
 
                     {/* Metadata Section - Pinned to bottom */}
-                    <div className="mt-auto flex items-center gap-2 text-[13px] text-muted-foreground font-semibold pt-2">
-                        <span className="flex items-center gap-1">
+                    <div className="mt-auto flex items-center gap-2 text-[14px] text-[#6B7280] font-medium pb-1">
+                        <span className="flex items-center gap-1.5">
                             {item.rating || "4.5"}
-                            <FiStar className="w-3.5 h-3.5 text-[#A85236] fill-[#A85236]" />
+                            <FaStar className="w-4 h-4 text-[#A85236]" />
                         </span>
                         <span className="text-gray-300">•</span>
                         <span>{item.learners || "9k"} {t("contentStats.learners")}</span>
@@ -203,14 +203,15 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
             case 'video': return t("resource.viewVideo") || "Watch the Video";
             case 'pdf': return t("resource.viewPdf") || "View the PDF";
             case 'epub': return t("resource.readEpub") || "View the Epub";
+            case 'textbook': return t("resource.readTextbook") || "Read Textbook";
             default: return t("resource.view") || "View Resource";
         }
-    };
+    }
 
     return (
         <Link
             to={`/collection/${item.id}`}
-            className="relative block w-full h-[320px] rounded-[20px] overflow-hidden"
+            className="relative block w-full h-[386px] rounded-[20px] overflow-hidden"
         >
             {/* Full Card Background Image */}
             <img
