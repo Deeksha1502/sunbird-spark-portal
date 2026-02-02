@@ -111,13 +111,13 @@ const ForgotPassword: React.FC = () => {
               subtitle="You will receive an OTP. After you validate it, you can recover your account."
             />
 
-            <div className="space-y-14">
+            <div className="space-y-5">
               <p className="text-[0.875rem] font-medium text-center text-[#222222]">
                 Where would you like to receive the OTP?
               </p>
 
               <div
-                className={`flex items-center gap-3 p-4 border rounded-2xl cursor-pointer transition-colors ${isOtpSourceSelected ? 'border-[#A85236] bg-[#FFF5F2]' : 'border-[#E2E8F0] bg-[#ffffff]'}`}
+                className={`flex items-center gap-3 p-4 border rounded-[0.625rem] cursor-pointer transition-colors ${isOtpSourceSelected ? 'border-[#A85236] bg-[#FFF5F2]' : 'border-[#828282] bg-[#ffffff]'}`}
                 onClick={() => setIsOtpSourceSelected(!isOtpSourceSelected)}
               >
                 <input
@@ -147,7 +147,7 @@ const ForgotPassword: React.FC = () => {
               subtitle="Enter the 6 digit code sent to your phone number and complete the verification"
             />
 
-            <div className="space-y-16">
+            <div className="space-y-5">
               <div className="space-y-6">
                 <p className="otp-validity-text text-center text-[0.85rem] text-[#4A5568]">
                   OTP is valid for 30 minutes
@@ -216,7 +216,7 @@ const ForgotPassword: React.FC = () => {
               subtitle="Please choose a strong password to protect your account."
             />
 
-            <div className="space-y-12">
+            <div className="space-y-5">
               {/* New Password */}
               <div className="form-group mb-5">
                 <InputLabel required>New Password</InputLabel>
@@ -272,7 +272,7 @@ const ForgotPassword: React.FC = () => {
               <PrimaryButton
                 disabled={!isPasswordValid || !isConfirmValid}
                 onClick={() => setStep(5)}
-                className="mt-10"
+                className="mt-6"
               >
                 Reset Password
               </PrimaryButton>
