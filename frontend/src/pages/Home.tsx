@@ -18,6 +18,8 @@ import HomeContinueLearning from "@/components/HomeContinueLearning";
 import HomePerformanceChart from "@/components/HomePerformanceChart";
 import HomeInProgressGrid from "@/components/HomeInProgressGrid";
 import HomeRecommendedSection from "@/components/HomeRecommendedSection";
+import heroWoman from "@/assets/hero-woman-new.png";
+import tealShape from "@/assets/teal-shape.png";
 
 // Custom language icon matching design
 const LanguageIcon = () => (
@@ -124,9 +126,31 @@ const Home = () => {
                 <main className="flex-1 overflow-y-auto bg-home-ivory">
                     <div className="p-6 md:p-8">
                         {/* Welcome Section */}
-                        <div className="mb-6">
-                            <h2 className="text-xl font-semibold text-gray-900">Hi John Deo</h2>
-                            <p className="text-gray-500 text-sm">Welcome to a learning experience made just for you.</p>
+                        {/* Hero Section */}
+                        <div className="mb-8">
+                            <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[300px] lg:min-h-[400px]">
+                                <div className="text-left max-w-xl">
+                                    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Hi John Deo</h2>
+                                    <p className="text-lg text-gray-600">Welcome to a learning experience made just for you.</p>
+                                </div>
+                                <div className="hidden lg:flex justify-end items-end relative h-[400px]">
+                                    <div className="absolute bottom-0 right-0 w-[340px]">
+                                        <img
+                                            src={tealShape}
+                                            alt=""
+                                            className="w-full h-auto"
+                                            style={{ transform: 'rotate(-0.5deg)', transformOrigin: 'center center' }}
+                                        />
+                                    </div>
+                                    <div className="relative z-10 flex items-end justify-center h-full">
+                                        <img
+                                            src={heroWoman}
+                                            alt="Professional learning"
+                                            className="w-[360px] h-auto object-contain"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Stats Cards */}

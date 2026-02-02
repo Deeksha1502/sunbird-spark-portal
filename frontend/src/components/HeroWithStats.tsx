@@ -145,29 +145,19 @@ const HeroWithStats = () => {
 
                         {/* Hero Image with teal shape - Right Side (becomes Left in RTL grid) */}
                         <div className="hidden lg:flex justify-end items-end relative h-[400px]">
-                            {/* Woman image */}
+                            <div className="absolute bottom-0 right-0 w-[340px]">
+                                <img
+                                    src={tealShape}
+                                    alt=""
+                                    className="w-full h-auto"
+                                    style={{ transform: 'rotate(-0.5deg)', transformOrigin: 'center center' }}
+                                />
+                            </div>
                             <div className="relative z-10 flex items-end justify-center h-full">
-                                {/* Teal pill shape background - Centered behind image */}
-                                <div
-                                    className="absolute bottom-0 w-[500px]"
-                                    style={{
-                                        left: '58%',
-                                        transform: `translateX(-50%) rotate(${isRTL ? '25deg' : '-25deg'})`,
-                                        transformOrigin: 'center',
-                                        zIndex: -1
-                                    }}
-                                >
-                                    <img
-                                        src={tealShape}
-                                        alt=""
-                                        className="w-full h-auto"
-                                    />
-                                </div>
                                 <img
                                     src={heroWoman}
                                     alt="Professional learning"
                                     className="w-[360px] h-auto object-contain"
-                                    style={isRTL ? { transform: 'scaleX(-1)' } : undefined}
                                 />
                             </div>
                         </div>
