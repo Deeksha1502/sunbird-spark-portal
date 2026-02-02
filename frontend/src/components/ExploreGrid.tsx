@@ -156,9 +156,9 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
     const { t } = useAppI18n();
     return (
         <Link to={`/collection/${item.id}`} className="group h-full block">
-            <div className="bg-white rounded-[28px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-[18px] h-[386px] flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-[#E5E7EB]">
+            <div className="bg-white rounded-[28px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-[18px] h-[360px] flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-[#E5E7EB]">
                 {/* Image Section - Inner Padded Rounded Rectangle */}
-                <div className="h-[180px] overflow-hidden rounded-[22px] flex-shrink-0 mb-4">
+                <div className="h-[150px] overflow-hidden rounded-[22px] flex-shrink-0 mb-4">
                     <img
                         src={item.image}
                         alt={item.title}
@@ -174,7 +174,7 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-[19px] font-bold text-foreground leading-[1.25] mb-3 line-clamp-2">
+                    <h3 className="text-[19px] font-bold text-foreground leading-[1.25] mb-3">
                         {item.title}
                     </h3>
 
@@ -211,7 +211,7 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
     return (
         <Link
             to={`/collection/${item.id}`}
-            className="relative block w-full h-[386px] rounded-[20px] overflow-hidden"
+            className={`relative block w-full h-[360px] rounded-[20px] overflow-hidden ${item.type === 'Epub' ? 'bg-[#E86C00]' : ''}`}
         >
             {/* Full Card Background Image */}
             <img
