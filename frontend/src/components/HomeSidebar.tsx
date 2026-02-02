@@ -17,10 +17,10 @@ const ExploreIcon = ({ className }: { className?: string }) => (
 
 const navItems = [
     { id: "home", label: "Home", icon: FiHome, path: "/home" },
-    { id: "learning", label: "My Learning", icon: FiBook, path: "/explore" },
+    { id: "learning", label: "My Learning", icon: FiBook, path: "/my-learning" },
     { id: "explore", label: "Explore", icon: ExploreIcon, path: "/explore", isCustomIcon: true },
     { id: "notifications", label: "Notifications", icon: FiBell, path: "/home" },
-    { id: "profile", label: "Profile", icon: FiUser, path: "/home" },
+    { id: "profile", label: "Profile", icon: FiUser, path: "/profile" },
 ];
 
 const HomeSidebar = ({ activeNav, onNavChange }: HomeSidebarProps) => {

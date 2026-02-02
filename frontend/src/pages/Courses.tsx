@@ -12,10 +12,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
 import CourseCard from "@/components/CourseCard";
-import { featuredCourses, popularCourses, categories } from "@/configs/mockData"
+import { featuredCourses, popularCourses, categories } from "@/configs/mockData";
 import { useAppI18n } from "@/hooks/useAppI18n";
 import { Link } from "react-router-dom";
-import { Skeleton } from "@/components/skeleton"
+import { Skeleton } from "@/components/skeleton";
 
 const allCourses = [...featuredCourses, ...popularCourses];
 
@@ -35,7 +35,7 @@ const CourseCardSkeleton = () => (
 );
 
 const Courses = () => {
-    const { t } = useAppI18n();
+    const { currentCode } = useAppI18n();
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<string>("all");
     const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -74,7 +74,7 @@ const Courses = () => {
     const levels = ["Beginner", "Intermediate", "Advanced"];
 
     if (isPageLoading) {
-        return <PageLoader message={t("loading")} />;
+        return <PageLoader message="Loading courses..." />;
     }
 
     return (
@@ -85,10 +85,10 @@ const Courses = () => {
                 {/* Page Header */}
                 <div className="mb-8">
                     <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                        {t("courses")}
+                        All Courses
                     </h1>
                     <p className="text-muted-foreground">
-                        {t("heroSubtitle")}
+                        Explore our comprehensive library of courses to enhance your skills
                     </p>
                 </div>
 
@@ -98,7 +98,7 @@ const Courses = () => {
                     <div className="relative flex-1">
                         <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                         <Input
-                            placeholder={t("searchPlaceholder")}
+                            placeholder="Search courses..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="pl-10 bg-muted/30 border-border"
@@ -110,13 +110,13 @@ const Courses = () => {
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" className="gap-2 min-w-[160px] justify-between">
                                 <FiFilter className="w-4 h-4" />
-                                {selectedCategory === "all" ? t("allTypes") : selectedCategory}
+                                {selectedCategory === "all" ? "All Categories" : selectedCategory}
                                 <FiChevronDown className="w-4 h-4" />
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="bg-card border-border w-48">
                             <DropdownMenuItem onClick={() => setSelectedCategory("all")}>
-                                {t("allTypes")}
+                                All Categories
                             </DropdownMenuItem>
                             {categories.map((cat) => (
                                 <DropdownMenuItem
@@ -133,13 +133,13 @@ const Courses = () => {
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" className="gap-2 min-w-[140px] justify-between">
-                                {selectedLevel === "all" ? t("allTypes") : selectedLevel}
+                                {selectedLevel === "all" ? "All Levels" : selectedLevel}
                                 <FiChevronDown className="w-4 h-4" />
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="bg-card border-border">
                             <DropdownMenuItem onClick={() => setSelectedLevel("all")}>
-                                {t("allTypes")}
+                                All Levels
                             </DropdownMenuItem>
                             {levels.map((level) => (
                                 <DropdownMenuItem
@@ -155,7 +155,7 @@ const Courses = () => {
 
                 {/* Results Count */}
                 <p className="text-muted-foreground mb-6">
-                    {isSearching ? t("loading") : `${t("viewAll")} ${filteredCourses.length} ${t("coursesCount")}`}
+                    {isSearching ? "Searching..." : `Showing ${filteredCourses.length} course${filteredCourses.length !== 1 ? "s" : ""}`}
                 </p>
 
                 {/* Courses Grid */}
@@ -179,7 +179,7 @@ const Courses = () => {
                 {!isSearching && filteredCourses.length === 0 && (
                     <div className="text-center py-16">
                         <p className="text-muted-foreground text-lg">
-                            {t("noContentFound")}
+                            No courses found matching your criteria.
                         </p>
                         <Button
                             variant="outline"
@@ -190,7 +190,7 @@ const Courses = () => {
                                 setSelectedLevel("all");
                             }}
                         >
-                            {t("cancel")}
+                            Clear Filters
                         </Button>
                     </div>
                 )}

@@ -9,12 +9,13 @@ import {
 } from "@/components/dropdown-menu";
 import sunbirdLogo from "@/assets/sunbird-logo.png";
 import translationIcon from "@/assets/translation_icon.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppI18n, type LanguageCode } from "@/hooks/useAppI18n";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
     const { t, languages, currentCode, changeLanguage } = useAppI18n();
 
     const navLinks = [
@@ -78,7 +79,7 @@ const Header = () => {
                     <div className="hidden md:flex items-center gap-4">
                         <div className="flex items-center gap-1">
                             {/* Search */}
-                            <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
+                            <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors" onClick={() => { navigate("/search") }}>
                                 <FiSearch className="w-[18px] h-[18px]" style={{ strokeWidth: 2 }} />
                             </button>
 
@@ -111,12 +112,12 @@ const Header = () => {
                         </div>
 
                         {/* Login Button */}
-                        <Link
-                            to="/login"
-                            className="bg-[#A85236] hover:bg-[#8B442C] text-white px-[15px] py-[4px] rounded-[6px] text-sm font-medium transition-colors"
+                        <Button
+                            onClick={() => window.location.href = "/home"}
+                            className="block w-full text-center bg-[#A85236] text-white px-4 py-2 rounded-lg text-sm font-medium"
                         >
                             {t("login")}
-                        </Link>
+                        </Button>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -145,13 +146,12 @@ const Header = () => {
                             </Link>
                         ))}
                         <hr />
-                        <Link
-                            to="/login"
+                        <Button
+                            onClick={() => window.location.href = "/home"}
                             className="block w-full text-center bg-[#A85236] text-white px-4 py-2 rounded-lg text-sm font-medium"
-                            onClick={() => setIsMenuOpen(false)}
                         >
                             {t("login")}
-                        </Link>
+                        </Button>
                     </div>
                 </div>
             )}
