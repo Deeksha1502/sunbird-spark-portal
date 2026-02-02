@@ -117,7 +117,10 @@ const ForgotPassword: React.FC = () => {
               </p>
 
               <div
-                className={`flex items-center gap-3 p-4 border rounded-[0.625rem] cursor-pointer transition-colors ${isOtpSourceSelected ? 'border-[#A85236] bg-[#FFF5F2]' : 'border-[#828282] bg-[#ffffff]'}`}
+                className={`flex items-center gap-3 p-4 border rounded-[0.625rem] cursor-pointer transition-all ${isOtpSourceSelected
+                  ? 'border-[#A85236] bg-[#FFF5F2] shadow-[0_0_0_0.125rem_#fff,0_0_0_0.25rem_#A85236]'
+                  : 'border-[#828282] bg-[#ffffff]'
+                  }`}
                 onClick={() => setIsOtpSourceSelected(!isOtpSourceSelected)}
               >
                 <input
@@ -236,11 +239,11 @@ const ForgotPassword: React.FC = () => {
                     {showPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
                   </button>
                 </div>
-                {!isPasswordValid && password && (
-                  <p className="passwderr text-[0.9rem] text-[#C53030] mt-2">
+                <div className="h-[1.25rem] mt-1">
+                  <p className={`passwderr text-[0.75rem] text-[#C53030] ${(!isPasswordValid && password) ? '' : 'invisible'}`}>
                     Password must be 8+ chars with upper, lower, number & special character
                   </p>
-                )}
+                </div>
               </div>
 
               {/* Confirm Password */}
@@ -262,11 +265,11 @@ const ForgotPassword: React.FC = () => {
                     {showConfirmPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
                   </button>
                 </div>
-                {confirmPassword && password !== confirmPassword && (
-                  <p className="confpasswderr text-[0.9rem] text-[#C53030] mt-2">
+                <div className="h-[1.25rem] mt-1">
+                  <p className={`confpasswderr text-[0.75rem] text-[#C53030] ${(confirmPassword && password !== confirmPassword) ? '' : 'invisible'}`}>
                     Passwords do not match
                   </p>
-                )}
+                </div>
               </div>
 
               <PrimaryButton
