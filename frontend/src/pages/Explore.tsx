@@ -52,7 +52,7 @@ const Explore = () => {
                     {/* Content Grid */}
                     <div className="flex-1">
                         <div>
-                            <div className="bg-white rounded-[12px] px-6 mb-6 flex flex-row justify-between items-center shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[#D7D7D7]" style={{ height: '60px' }}>
+                            <div className="bg-white rounded-[12px] px-4 mb-6 flex flex-row justify-between items-center shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[#D7D7D7]" style={{ height: '60px' }}>
                                 <h1 className="font-medium text-foreground" style={{ fontFamily: 'Rubik, sans-serif', fontSize: '20px', lineHeight: '26px', letterSpacing: '0%' }}>
                                     {t("startExploring")}
                                 </h1>
