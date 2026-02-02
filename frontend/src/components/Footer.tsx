@@ -53,13 +53,13 @@ const Footer = () => {
             </div>
 
             {/* Company */}
-            <div>
+            <div id="about">
               <h4 className="font-semibold text-[14px] mb-4 text-white">
                 {t("footer.company")}
               </h4>
               <ul className="space-y-3">
                 {companyLinks.map((link) => (
-                  <li key={link.label}>
+                  <li key={link.label} id={link.href === "#contact" ? "contact" : undefined}>
                     <Link
                       to={link.href}
                       className="text-[14px] text-gray-400 hover:text-white transition-colors"

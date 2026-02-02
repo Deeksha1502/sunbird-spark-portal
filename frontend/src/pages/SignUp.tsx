@@ -7,8 +7,14 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { FcGoogle } from 'react-icons/fc';
 import { OTP_REGEX } from '@/lib/auth-utils';
 
+import { useNavigate } from 'react-router-dom';
+import { useToast } from "@/hooks/use-toast";
+import { IDENTIFIER_REGEX, PASSWORD_REGEX } from '@/lib/auth-utils';
+
 const SignUp: React.FC = () => {
+    const navigate = useNavigate();
     const [step, setStep] = useState<1 | 2>(1);
+    const { toast } = useToast();
 
     // Form State
     const [emailOrMobile, setEmailOrMobile] = useState('');
@@ -21,7 +27,21 @@ const SignUp: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    // Validation
+    // Dynamic Validation Checkers
+    const isValidIdentifier = (value: string) => {
+        // Check if it's a valid email
+        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$/;
+        if (emailRegex.test(value)) return true;
+
+        // Check if it's a valid 10-digit mobile starting with 6-9
+        const mobileRegex = /^[6-9]\d{9}$/;
+        return mobileRegex.test(value);
+    };
+
+    const isStrongPassword = (value: string) => {
+        return PASSWORD_REGEX.test(value);
+    };
+
     const isStep1Valid =
         emailOrMobile.trim().length > 0 &&
         password.length > 0 &&
@@ -56,14 +76,64 @@ const SignUp: React.FC = () => {
     );
 
     const handleContinue = () => {
-        // Here you would typically validate against backend
+        // 1. Validate Identifier (Email or Mobile)
+        if (!isValidIdentifier(emailOrMobile)) {
+            toast({
+                title: "Invalid Email or Mobile",
+                description: "Please enter a valid email or a 10-digit mobile number starting with 6-9.",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        // 2. Validate Password Strength
+        if (!isStrongPassword(password)) {
+            toast({
+                title: "Weak Password",
+                description: "Password must be at least 8 characters, include an uppercase, a lowercase, a number, and a special character.",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        // 3. Validate Password Match
+        if (password !== confirmPassword) {
+            toast({
+                title: "Passwords Mismatch",
+                description: "The confirmed password does not match the entered password.",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        // 4. Validate Terms
+        if (!isTermsAccepted) {
+            toast({
+                title: "Terms Not Accepted",
+                description: "Please accept the Terms of Use to continue.",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        // If all validations pass
         setStep(2);
     };
 
     const handleVerifyOtp = () => {
         // Verify OTP logic
         console.log("OTP Verified");
+
+        toast({
+            title: "Account Created",
+            description: "You have successfully signed up. Redirecting...",
+            variant: "default", // or success if available
+        });
+
         // Redirect or show success
+        setTimeout(() => {
+            navigate('/onboarding');
+        }, 1000);
     };
 
     return (
@@ -106,6 +176,12 @@ const SignUp: React.FC = () => {
                                         placeholder="Enter Email ID / Mobile Number"
                                         className="h-10 !bg-white rounded-[0.5rem] border-[#828282] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_0.125rem_#fff,0_0_0_0.25rem_#A85236] px-3 text-[0.875rem] placeholder:text-[#B2B2B2]"
                                     />
+                                    {/* Inline Error (Optional/Complementary) */}
+                                    {emailOrMobile && !isValidIdentifier(emailOrMobile) && (
+                                        <p className="text-[0.75rem] text-red-500 mt-1">
+                                            Enter valid Email or 10-digit Mobile (6-9)
+                                        </p>
+                                    )}
                                 </div>
 
                                 {/* Password */}
@@ -148,6 +224,11 @@ const SignUp: React.FC = () => {
                                             {showConfirmPassword ? <FiEyeOff className="w-4 h-4" /> : <FiEye className="w-4 h-4" />}
                                         </button>
                                     </div>
+                                    {confirmPassword && password !== confirmPassword && (
+                                        <p className="text-[0.75rem] text-red-500 mt-1">
+                                            Passwords do not match
+                                        </p>
+                                    )}
                                 </div>
 
                                 {/* Terms Checkbox */}

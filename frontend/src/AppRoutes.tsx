@@ -27,6 +27,8 @@ import NotFound from './pages/NotFound';
 import CourseDetail from './pages/CourseDetail';
 import Onboarding from './pages/Onboarding';
 
+import ScrollToHash from './components/ScrollToHash';
+
 const AdminProtected = withRoles(['admin'])(AdminPage);
 const WorkspaceProtected = withRoles(['content_creator', 'content_reviewer'])(WorkspacePage);
 const ReportsProtected = withRoles(['admin'])(ReportsPage);
@@ -35,6 +37,7 @@ const CreateContentProtected = withRoles(['content_creator'])(CreateContentPage)
 const AppRoutes: React.FC = () => {
   return (
     <AuthProvider>
+      <ScrollToHash />
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Index />} />
