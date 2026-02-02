@@ -1,0 +1,168 @@
+import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { useAppI18n } from "@/hooks/useAppI18n";
+import resourceRobotHand from "@/assets/resource-robot-hand.png";
+import resourceVR from "@/assets/resource-vr.png";
+import resourceHardware from "@/assets/resource-hardware.png";
+import resourceBitcoin from "@/assets/resource-bitcoin.png";
+import resourceHacker from "@/assets/resource-hacker.png";
+import resourceEthereum from "@/assets/resource-ethereum.png";
+
+interface ResourceCard {
+    id: string;
+    title: string;
+    type: "Video" | "PDF" | "HTML" | "Epub";
+    image: string;
+}
+
+const ResourceCenter = () => {
+    const { t } = useAppI18n();
+
+    return (
+        <section className="py-14 md:py-20" style={{ backgroundColor: '#FDF5E6' }}>
+            <div className="container mx-auto px-4">
+                {/* Header with lines */}
+                <div className="flex items-center justify-center gap-4 mb-4">
+                    <div className="h-px w-16 bg-gray-300" />
+                    <p className="text-[14px] font-medium text-foreground">
+                        {t("resource.header")}
+                    </p>
+                    <div className="h-px w-16 bg-gray-300" />
+                </div>
+
+                <h2 className="text-2xl md:text-3xl lg:text-[40px] font-bold text-foreground text-center mb-10 md:mb-14">
+                    {t("resource.title")}
+                </h2>
+
+                {/* Masonry Grid - 3 columns matching container width */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {/* Column 1 - Left */}
+                    <div className="flex flex-col gap-5">
+                        {/* Tall card - Robot Hand */}
+                        <ResourceCardComponent
+                            id="1"
+                            title="Elm Partners with Udacity to Build a Graduate Development Program"
+                            type="Video"
+                            image={resourceRobotHand}
+                            aspectClass="aspect-[2/3]"
+                        />
+                        {/* Short card - Bitcoin */}
+                        <ResourceCardComponent
+                            id="4"
+                            title="Bitcoin Engineering Foundations"
+                            type="Epub"
+                            image={resourceBitcoin}
+                            aspectClass="aspect-[5/4]"
+                        />
+                    </div>
+
+                    {/* Column 2 - Middle (offset down) */}
+                    <div className="flex flex-col gap-5 md:mt-16">
+                        {/* Short card - VR */}
+                        <ResourceCardComponent
+                            id="2"
+                            title="Data Engineering Foundations"
+                            type="PDF"
+                            image={resourceVR}
+                            aspectClass="aspect-[4/3]"
+                        />
+                        {/* Tall card - Hacker */}
+                        <ResourceCardComponent
+                            id="5"
+                            title="Generative AI for Cybersecurity Professionals"
+                            type="Video"
+                            image={resourceHacker}
+                            aspectClass="aspect-[2/3]"
+                        />
+                    </div>
+
+                    {/* Column 3 - Right */}
+                    <div className="flex flex-col gap-5">
+                        {/* Tall card - Hardware */}
+                        <ResourceCardComponent
+                            id="3"
+                            title="Generative AI for Cybersecurity Professionals"
+                            type="HTML"
+                            image={resourceHardware}
+                            aspectClass="aspect-[3/4]"
+                        />
+                        {/* Short card - Ethereum */}
+                        <ResourceCardComponent
+                            id="6"
+                            title="Data Engineering Foundations"
+                            type="Video"
+                            image={resourceEthereum}
+                            aspectClass="aspect-[4/3]"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const ResourceCardComponent = ({
+    id,
+    title,
+    type,
+    image,
+    aspectClass,
+}: {
+    id: string;
+    title: string;
+    type: "Video" | "PDF" | "HTML" | "Epub";
+    image: string;
+    aspectClass: string;
+}) => {
+    const { t, isRTL } = useAppI18n();
+
+    const getViewLabel = (type: string) => {
+        switch (type) {
+            case "Video": return t("resource.viewVideo");
+            case "PDF": return t("resource.viewPdf");
+            case "HTML": return t("resource.viewHtml");
+            case "Epub": return t("resource.viewEpub");
+            default: return t("view");
+        }
+    };
+
+    return (
+        <Link to={`/course/${id}`} className="block w-full">
+            <div className="group w-full rounded-2xl overflow-hidden cursor-pointer">
+                <div className={`relative w-full ${aspectClass}`}>
+                    <img
+                        src={image}
+                        alt={title}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+
+                    {/* Type Badge */}
+                    <div className={`absolute top-5 ${isRTL ? 'right-5' : 'left-5'}`}>
+                        <span className="inline-block bg-white/95 text-foreground text-[12px] font-medium px-4 py-1.5 rounded-md">
+                            {type}
+                        </span>
+                    </div>
+
+                    {/* Content */}
+                    <div className="absolute inset-x-0 bottom-0 px-6 pb-6">
+                        <h3
+                            className="text-white font-semibold text-[18px] md:text-[20px] leading-[1.25] max-w-[92%]"
+                            style={{ textShadow: "var(--shadow-on-image)" }}
+                        >
+                            {title}
+                        </h3>
+                        <p
+                            className="mt-2 text-white/90 text-[13px] md:text-[14px] font-medium flex items-center gap-2 hover:opacity-80 transition-opacity"
+                            style={{ textShadow: "var(--shadow-on-image-soft)" }}
+                        >
+                            {getViewLabel(type)}
+                            <FiArrowRight className="w-3.5 h-3.5" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </Link>
+    );
+};
+
+export default ResourceCenter;

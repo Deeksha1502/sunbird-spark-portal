@@ -15,7 +15,7 @@
   "dashboard": "Dashboard",
   "profile": "Profile",
   "settings": "Settings",
-  "login": "Log In",
+  "login": "Login",
   "logout": "Logout",
   "email": "Email",
   "password": "Password",
@@ -40,15 +40,59 @@
   "cloud": "Cloud/Mobile Native",
   "courses": "Courses",
   "categories": "Categories",
+  "filters": "Filters",
+  "collections": "Collections",
+  "contentType": "Content Type",
+  "filterOptions": {
+    "courses": "Courses",
+    "resources": "Resources",
+    "textbooks": "Textbooks",
+    "skills": "Skills"
+  },
+  "contentTypes": {
+    "video": "Video",
+    "audio": "Audio",
+    "pdf": "PDF",
+    "epub": "Epub",
+    "youtube": "YouTube",
+    "html": "HTML",
+    "interactive": "Interactive",
+    "course": "Course",
+    "textbook": "Textbook",
+    "skills": "Skills"
+  },
+  "categoriesList": {
+    "ai-ml": "AI/ML",
+    "cyber-security": "Cyber Security",
+    "ux-design": "UX Design",
+    "devops": "DevOps",
+    "data-science": "Data Science",
+    "blockchain": "Blockchain",
+    "ui-ux-design": "UI/UX\nDesign",
+    "it-development": "IT\nDevelopment",
+    "digital-marketing": "Digital\nMarketing",
+    "entrepreneurship": "Entrepreneurship"
+  },
+  "viewMore": "View More",
+  "viewLess": "View Less",
+  "featured": "Featured",
+  "by": "by",
+  "levels": {
+    "Beginner": "Beginner",
+    "Intermediate": "Intermediate",
+    "Advanced": "Advanced"
+  },
   "about": "About",
   "contact": "Contact",
   "signup": "Sign Up",
   "searchPlaceholder": "Search courses...",
   "featuredCourses": "Featured Courses",
   "popularCourses": "Popular Courses",
-  "browseCategories": "Browse by Category",
+  "browseCategories": "Browse through Categories",
+  "categoryDescription": "Explore our diverse range of professional training categories",
   "viewAll": "View All",
   "startLearning": "Start Learning",
+  "startExploring": "Start Exploring",
   "exploreCourses": "Explore Courses",
   "heroTitle": "Unlock Your Potential with Expert-Led Training",
   "heroSubtitle": "Access thousands of courses designed to help you grow professionally and personally. Learn at your own pace, anywhere, anytime.",
@@ -112,5 +156,71 @@
   "joinThousands": "Join thousands of professionals who have advanced their careers with our comprehensive training programs.",
   "certifiedProfessionals": "Certified Professional Training",
   "watchDemo": "Watch Demo",
-  "certifications": "Certifications"
+  "certifications": "Certifications",
+  "nav": {
+    "home": "Home",
+    "explore": "Explore",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "button": {
+    "login": "Login",
+    "goBack": "Go Back",
+    "share": "Share"
+  },
+  "hero": {
+    "title": "Knowledge that moves you forward.",
+    "subtitle": "Unlock your potential and explore a world of knowledge. Start your journey with 100+ courses built for your future.",
+    "cta": "Start Your Learning Journey",
+    "processSimple": "The learning process\nis simple",
+    "online": "Online",
+    "studyPace": "Study at your own\npace"
+  },
+  "stats": {
+    "courses": "Courses",
+    "activeLearners": "Active Learners",
+    "certifications": "Certifications"
+  },
+  "popular": {
+    "title": "Most Popular Content",
+    "viewAll": "View All"
+  },
+  "contentStats": {
+    "learners": "Learners",
+    "lessons": "Lessons",
+    "view": "View"
+  },
+  "courseDetails": {
+    "overview": "Course Overview",
+    "weeks": "Weeks",
+    "skills": "Skills you will learn",
+    "suitedFor": "Best Suited For",
+    "relatedContent": "Related Content"
+  },
+  "resource": {
+    "title": "Stay ahead. What's next starts here.",
+    "header": "Resource Center",
+    "viewVideo": "Watch The Video",
+    "viewPdf": "View The PDF",
+    "viewHtml": "View The HTML",
+    "viewEpub": "View the Epub",
+    "readEpub": "View the Epub",
+    "readTextbook": "View the Textbook",
+    "seeCaseStudy": "See the Case Study"
+  },
+  "trending": {
+    "mostViewed": "Most Viewed Content",
+    "trending": "Trending Content"
+  },
+  "faq": {
+    "title": "Frequently asked questions"
+  },
+  "footer": {
+    "products": "Products",
+    "company": "Company",
+    "resources": "Resources",
+    "videos": "Videos",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy"
+  }
 }

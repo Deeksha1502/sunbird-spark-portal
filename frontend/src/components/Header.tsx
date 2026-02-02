@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import { FiMenu, FiX, FiSearch, FiGlobe, FiChevronDown } from "react-icons/fi";
+import { useState } from "react";
+import { FiMenu, FiX, FiSearch, FiChevronDown } from "react-icons/fi";
 import { Button } from "@/components/button";
-import { Input } from "@/components/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,214 +8,156 @@ import {
   DropdownMenuTrigger,
 } from "@/components/dropdown-menu";
 import sunbirdLogo from "@/assets/sunbird-logo.png";
+import translationIcon from "@/assets/translation_icon.png";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppI18n, type LanguageCode } from "@/hooks/useAppI18n";
-import { NotificationPopover } from "./NotificationPopover";
-
-interface Notification {
-  id: string;
-  message: string;
-  date: string;
-}
-
-const mockNotifications: Notification[] = [
-  {
-    id: "1",
-    message: "COURSE_TEST_1 has been assigned to Group 1312 group by Content Creator",
-    date: "Tue, 13 January 3:12",
-  },
-  {
-    id: "2",
-    message: "You have been added to Group 1312 group by Content Creator",
-    date: "Tue, 13 January 2:48",
-  },
-];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
+  // const [isSearchOpen, setIsSearchOpen] = useState(false);
+  // const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
-
-  const { t, languages, currentLanguage, changeLanguage, dir } = useAppI18n();
-
-  const handleDeleteNotification = (id: string) => {
-    setNotifications(prev => prev.filter(n => n.id !== id));
-  };
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { t, languages, currentCode, changeLanguage } = useAppI18n();
 
   const navLinks = [
-    { label: t("courses"), href: "/courses" },
-    { label: t("categories"), href: "#categories" },
-    { label: t("about"), href: "#about" },
-    { label: t("contact"), href: "#contact" },
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.explore"), href: "/explore" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.contact"), href: "#contact" },
   ];
 
-  useEffect(() => {
-    document.documentElement.dir = dir;
-    document.documentElement.lang = currentLanguage.code;
-  }, [currentLanguage, dir]);
-
-  const handleLanguageChange = (code: string) => {
-    changeLanguage(code as LanguageCode);
+  const isActive = (href: string) => {
+    if (href === "/") return location.pathname === "/";
+    if (href === "/explore") return location.pathname === "/explore";
+    return location.pathname.startsWith(href) && href !== "/";
   };
 
-  const handleLogin = () => {
-    window.location.assign('/portal/auth');
-  };
+  // Filled Bell Icon with notification dot
+  const BellFilledIcon = () => (
+    <div className="relative">
+      <svg width="21" height="21.34" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C8.97 2 6.5 4.47 6.5 7.5V11.5L5.17 13.4C4.78 13.96 5.18 14.75 5.88 14.75H18.12C18.82 14.75 19.22 13.96 18.83 13.4L17.5 11.5V7.5C17.5 4.47 15.03 2 12 2Z" />
+        <path d="M12 22C13.38 22 14.5 20.88 14.5 19.5H9.5C9.5 20.88 10.62 22 12 22Z" />
+      </svg>
+      {/* Green notification dot */}
+      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-[#22C55E] rounded-full border-2 border-white"></span>
+    </div>
+  );
 
   return (
-    <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border shadow-sm">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 pr-[56px] pl-[13px]">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-[72px] pl-[60px]">
           {/* Logo */}
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center md:pl-[30px]">
             <img
               src={sunbirdLogo}
-              alt="Sunbird Spark"
-              className="h-10 w-auto"
+              alt="Sunbird"
+              className="h-8 w-auto"
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                className="text-foreground/80 hover:text-primary font-medium transition-colors"
+                to={link.href}
+                className={`text-[15px] transition-colors ${isActive(link.href)
+                  ? 'text-[#A85236] font-medium'
+                  : 'text-[#1A1A1A] font-normal hover:text-[#A85236]'
+                  }`}
               >
-                {link.label}
-              </a>
+                <span className="flex items-center gap-1">
+                  {link.label}
+                  {link.href === "/explore" && <FiChevronDown className={`w-4 h-4 pl-[5px] mt-[3px] ${isActive(link.href) ? 'text-[#A85236]' : 'text-gray-400'}`} />}
+                </span>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
-            {/* Search */}
-            <div className="relative">
-              <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input
-                placeholder={t("searchPlaceholder")}
-                className="pl-10 w-56 bg-muted/50 border-border focus:bg-card focus:ring-2 focus:ring-primary/30"
-              />
+            <div className="flex items-center gap-1">
+              {/* Search */}
+              <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors" onClick={() => { navigate("/search") }}>
+                <FiSearch className="w-[18px] h-[18px]" style={{ strokeWidth: 2 }} />
+              </button>
+
+              {/* Notifications - Filled Bell */}
+              <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
+                <BellFilledIcon />
+              </button>
+
+              {/* Language Selector */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="flex items-center gap-1 p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
+                    <img src={translationIcon} alt="Language" width={21} height={21} />
+                    <FiChevronDown className="w-3.5 h-3.5" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-[150px] bg-white z-50">
+                  {languages.map((lang) => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      className={`cursor-pointer hover:bg-gray-50 ${currentCode === lang.code ? 'font-medium text-[#A85236]' : ''
+                        }`}
+                      onClick={() => changeLanguage(lang.code)}
+                    >
+                      {lang.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
-            {/* Notifications */}
-            <NotificationPopover
-              notifications={notifications}
-              onDelete={handleDeleteNotification}
-              isOpen={isNotificationOpen}
-              onOpenChange={setIsNotificationOpen}
-            />
-
-            {/* Language Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="gap-2">
-                  <FiGlobe className="w-4 h-4" />
-                  <span className="hidden lg:inline">{currentLanguage.label}</span>
-                  <FiChevronDown className="w-3 h-3" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-card border-border">
-                {languages.map((lang) => (
-                  <DropdownMenuItem
-                    key={lang.code}
-                    onClick={() => handleLanguageChange(lang.code)}
-                    className={currentLanguage.code === lang.code ? "bg-muted" : ""}
-                  >
-                    <span className="mr-2">{lang.label}</span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <Button size="sm" className="bg-primary hover:bg-primary/90" onClick={handleLogin}>
+            {/* Login Button */}
+            <Button
+              onClick={() => window.location.href = "/home"}
+              className="block w-full text-center bg-[#A85236] text-white px-4 py-2 rounded-lg text-sm font-medium"
+            >
               {t("login")}
             </Button>
           </div>
 
-          {/* Mobile Actions */}
-          <div className="flex items-center gap-2 md:hidden">
-            {/* Mobile Notifications */}
-            <NotificationPopover
-              notifications={notifications}
-              onDelete={handleDeleteNotification}
-              isMobile
-            />
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-[#A85236]"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+        </div>
+      </div>
 
-            {/* Mobile Language Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <FiGlobe className="w-5 h-5" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-card border-border">
-                {languages.map((lang) => (
-                  <DropdownMenuItem
-                    key={lang.code}
-                    onClick={() => handleLanguageChange(lang.code)}
-                    className={currentLanguage.code === lang.code ? "bg-muted" : ""}
-                  >
-                    <span className="mr-2">{lang.label}</span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden border-t border-gray-100">
+          <div className="container mx-auto px-4 py-4 space-y-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={`block text-sm font-medium ${isActive(link.href) ? 'text-[#A85236]' : 'text-gray-600'
+                  }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <hr />
             <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              onClick={() => window.location.href = "/home"}
+              className="block w-full text-center bg-[#A85236] text-white px-4 py-2 rounded-lg text-sm font-medium"
             >
-              <FiSearch className="w-5 h-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
+              {t("login")}
             </Button>
           </div>
         </div>
-
-        {/* Mobile Search */}
-        {isSearchOpen && (
-          <div className="md:hidden pb-4 animate-fade-in">
-            <div className="relative">
-              <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input
-                placeholder={t("searchPlaceholder")}
-                className="pl-10 w-full bg-muted/50"
-                autoFocus
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <nav className="md:hidden pb-4 animate-fade-in">
-            <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-muted/50 rounded-lg font-medium transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <div className="mt-4 px-4">
-                <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleLogin}>
-                  {t("login")}
-                </Button>
-              </div>
-            </div>
-          </nav>
-        )}
-      </div>
+      )}
     </header>
   );
 };

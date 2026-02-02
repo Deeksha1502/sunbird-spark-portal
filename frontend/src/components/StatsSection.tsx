@@ -36,7 +36,7 @@ const StatsSection = () => {
     <section id="about" className="py-16 md:py-24 bg-primary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-primary-foreground mb-4">
             {t("trustedByProfessionals")}
           </h2>
           <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
