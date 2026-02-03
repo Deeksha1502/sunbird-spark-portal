@@ -169,7 +169,7 @@ const HeroWithStats = () => {
             <div className="relative z-20 -mt-24 lg:-mt-36">
                 <div className="w-full px-4 lg:px-0" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                     {/* Cards aligned to match hero content width - no centering */}
-                    <div className="flex w-full flex-wrap items-center gap-4 lg:gap-6 lg:flex-nowrap">
+                    <div className="flex w-full flex-wrap items-center gap-4 lg:gap-10 lg:flex-nowrap">
                         {/* Stats Card */}
                         <div
                             className={`flex items-center justify-between px-12 rounded-2xl bg-surface ${floatingShadow} lg:w-[568px] h-[186px]`}

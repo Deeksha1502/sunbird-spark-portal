@@ -88,9 +88,9 @@
   "searchPlaceholder": "Search courses...",
   "featuredCourses": "Featured Courses",
   "popularCourses": "Popular Courses",
-  "browseCategories": "Browse through Categories",
+  "browseCategories": "Browse Through Categories",
   "categoryDescription": "Explore our diverse range of professional training categories",
-  "viewAll": "View All",
+  "viewAll": "Browse All",
   "startLearning": "Start Learning",
   "startExploring": "Start Exploring",
   "exploreCourses": "Explore Courses",
@@ -183,7 +183,7 @@
   },
   "popular": {
     "title": "Most Popular Content",
-    "viewAll": "View All"
+    "viewAll": "Browse All"
   },
   "contentStats": {
     "learners": "Learners",
