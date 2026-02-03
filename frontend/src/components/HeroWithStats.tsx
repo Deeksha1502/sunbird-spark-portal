@@ -72,7 +72,7 @@ const HeroWithStats = () => {
             {/* Hero Section */}
             <div className="relative overflow-hidden bg-white pb-32 lg:pb-40">
                 {/* Cream Wave Background - positioned at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 w-full">
+                <div className="absolute bottom-12 left-0 right-0 w-full">
                     <img
                         src={creamWave}
                         alt=""
@@ -107,8 +107,8 @@ const HeroWithStats = () => {
                     }}
                 />
 
-                <div className="container mx-auto px-4 relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[420px] py-12 lg:py-16">
+                <div className="w-full px-6 lg:px-16 relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[420px] py-8 lg:py-12">
                         {/* Content - Left Side (becomes Right in RTL grid) */}
                         <div className="max-w-xl">
                             <h1
@@ -130,8 +130,8 @@ const HeroWithStats = () => {
                             <Link to="/explore">
                                 <Button
                                     size="lg"
-                                    className="text-white font-semibold text-[15px] px-7 h-12 rounded-full shadow-md hover:shadow-lg transition-all"
-                                    style={{ backgroundColor: '#B94A2C' }}
+                                    className="text-white font-semibold text-[15px] w-[320px] h-[60px] rounded-[12px] shadow-md hover:shadow-lg transition-all flex items-center justify-center"
+                                    style={{ backgroundColor: '#A85236' }}
                                 >
                                     {t("hero.cta")}
                                     {isRTL ? (
@@ -169,7 +169,7 @@ const HeroWithStats = () => {
             <div className="relative z-20 -mt-24 lg:-mt-28">
                 <div className="container mx-auto px-4">
                     {/* Cards aligned to match hero content width - no centering */}
-                    <div className="flex w-full flex-wrap items-end gap-4 lg:gap-5 lg:flex-nowrap lg:justify-between">
+                    <div className="flex w-full flex-wrap items-center gap-4 lg:gap-5 lg:flex-nowrap lg:justify-between">
                         {/* Stats Card */}
                         <div
                             className={`flex items-center gap-8 px-8 py-6 rounded-2xl bg-surface ${floatingShadow} lg:w-[480px]`}

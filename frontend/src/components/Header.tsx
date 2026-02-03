@@ -107,7 +107,7 @@ const Header = () => {
             {/* Login Button */}
             <Button
               onClick={() => window.location.href = "/home"}
-              className="block w-full text-center bg-[#A85236] text-white px-4 py-2 rounded-lg text-sm font-medium"
+              className="flex items-center justify-center w-[72px] h-[30px] bg-[#A85236] text-white rounded-[6px] text-sm font-medium p-0"
             >
               {t("login")}
             </Button>

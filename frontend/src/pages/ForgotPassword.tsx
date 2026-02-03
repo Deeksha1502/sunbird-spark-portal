@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AuthLayout } from '@/components/AuthLayout';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/button';
 import { Input } from '@/components/input';
 import {
@@ -11,6 +12,7 @@ import {
 import { FiEye, FiEyeOff, FiCheck } from 'react-icons/fi';
 
 const ForgotPassword: React.FC = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState<1 | 2 | 3 | 4 | 5>(1);
 
   const [identifier, setIdentifier] = useState('');
@@ -301,7 +303,8 @@ const ForgotPassword: React.FC = () => {
 
               <PrimaryButton
                 onClick={() => {
-                  window.location.href = '/login';
+                  // Redirect to Keycloak login via /home
+                  window.location.href = '/home';
                 }}
               >
                 Proceed to Login

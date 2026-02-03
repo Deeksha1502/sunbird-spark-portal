@@ -204,6 +204,12 @@ const SignUp: React.FC = () => {
                                         </button>
                                     </div>
                                 </div>
+                                {/* Password Requirements */}
+                                {password && !isStrongPassword(password) && (
+                                    <p className="text-[0.75rem] text-red-500 mt-1">
+                                        Password must be 8+ chars with upper, lower, number & special character
+                                    </p>
+                                )}
 
                                 {/* Confirm Password */}
                                 <div className="form-group">
@@ -333,7 +339,7 @@ const SignUp: React.FC = () => {
                 )}
 
             </div>
-        </AuthLayout>
+        </AuthLayout >
     );
 };
 
