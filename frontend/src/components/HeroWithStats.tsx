@@ -107,8 +107,8 @@ const HeroWithStats = () => {
                     }}
                 />
 
-                <div className="w-full px-6 lg:px-16 relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[420px] py-8 lg:py-12">
+                <div className="w-full relative z-10" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
+                    <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[420px] py-8 lg:py-12" style={{ paddingTop: '5px' }}>
                         {/* Content - Left Side (becomes Right in RTL grid) */}
                         <div className="max-w-xl">
                             <h1
@@ -130,7 +130,7 @@ const HeroWithStats = () => {
                             <Link to="/explore">
                                 <Button
                                     size="lg"
-                                    className="text-white font-semibold text-[15px] w-[320px] h-[60px] rounded-[12px] shadow-md hover:shadow-lg transition-all flex items-center justify-center"
+                                    className="text-white font-semibold text-[15px] w-[280px] h-[50px] px-0 rounded-[12px] shadow-md hover:shadow-lg transition-all flex items-center justify-center"
                                     style={{ backgroundColor: '#A85236' }}
                                 >
                                     {t("hero.cta")}
