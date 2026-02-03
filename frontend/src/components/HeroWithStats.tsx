@@ -72,12 +72,12 @@ const HeroWithStats = () => {
             {/* Hero Section */}
             <div className="relative overflow-hidden bg-white pb-24 lg:pb-32">
                 {/* Cream Wave Background - positioned at bottom */}
-                <div className="absolute bottom-12 left-0 right-0 w-full">
+                <div className="absolute bottom-0 left-0 right-0 w-full">
                     <img
                         src={creamWave}
                         alt=""
                         className="w-full h-auto object-cover"
-                        style={{ minHeight: '200px' }}
+                        style={{ minHeight: '380px' }}
                     />
                 </div>
 
@@ -166,7 +166,7 @@ const HeroWithStats = () => {
             </div>
 
             {/* Floating Stats Cards - Positioned to overlap and align with hero content */}
-            <div className="relative z-20 -mt-24 lg:-mt-36">
+            <div className="relative z-20 -mt-24 lg:-mt-24">
                 <div className="w-full px-4 lg:px-0" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                     {/* Cards aligned to match hero content width - no centering */}
                     <div className="flex w-full flex-wrap items-center gap-4 lg:gap-10 lg:flex-nowrap">

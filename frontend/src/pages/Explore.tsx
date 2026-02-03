@@ -40,7 +40,7 @@ const Explore = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#F8F9FB] shadow-[inset_0px_10px_30px_rgba(0,0,0,0.02)]">
+        <div className="min-h-screen bg-[#F8F9FB] shadow-[inset_0px_10px_30px_rgba(0,0,0,0.04)]">
             <Header />
             <main className="w-full px-[30px] py-6 md:py-8">
                 <div className="flex flex-col md:flex-row gap-6 md:gap-8">
@@ -52,7 +52,7 @@ const Explore = () => {
                     {/* Content Grid */}
                     <div className="flex-1">
                         <div>
-                            <div className="bg-white rounded-[12px] px-4 mb-6 flex flex-row justify-between items-center shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[#D7D7D7]" style={{ height: '60px' }}>
+                            <div className="bg-white rounded-[12px] px-4 mb-6 flex flex-row justify-between items-center shadow-sm border border-[#D7D7D7]" style={{ height: '60px' }}>
                                 <h1 className="font-medium text-foreground" style={{ fontFamily: 'Rubik, sans-serif', fontSize: '20px', lineHeight: '26px', letterSpacing: '0%' }}>
                                     {t("startExploring")}
                                 </h1>

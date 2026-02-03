@@ -34,7 +34,6 @@ const ResourceCenter = () => {
                     {t("resource.title")}
                 </h2>
 
-                {/* Masonry Grid - 3 columns matching container width */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                     {/* Column 1 - Left */}
                     <div className="flex flex-col gap-5">
@@ -44,7 +43,7 @@ const ResourceCenter = () => {
                             title="Elm Partners with Udacity to Build a Graduate Development Program"
                             type="Video"
                             image={resourceRobotHand}
-                            aspectClass="aspect-[2/3]"
+                            aspectClass="aspect-[360/459]"
                         />
                         {/* Short card - Bitcoin */}
                         <ResourceCardComponent
@@ -56,8 +55,8 @@ const ResourceCenter = () => {
                         />
                     </div>
 
-                    {/* Column 2 - Middle (offset down) */}
-                    <div className="flex flex-col gap-5 md:mt-16">
+                    {/* Column 2 - Middle */}
+                    <div className="flex flex-col gap-5">
                         {/* Short card - VR */}
                         <ResourceCardComponent
                             id="2"
@@ -72,7 +71,7 @@ const ResourceCenter = () => {
                             title="Generative AI for Cybersecurity Professionals"
                             type="Video"
                             image={resourceHacker}
-                            aspectClass="aspect-[2/3]"
+                            aspectClass="aspect-[360/459]"
                         />
                     </div>
 
@@ -84,7 +83,7 @@ const ResourceCenter = () => {
                             title="Generative AI for Cybersecurity Professionals"
                             type="HTML"
                             image={resourceHardware}
-                            aspectClass="aspect-[3/4]"
+                            aspectClass="aspect-[360/459]"
                         />
                         {/* Short card - Ethereum */}
                         <ResourceCardComponent
@@ -136,28 +135,28 @@ const ResourceCardComponent = ({
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
 
-                    {/* Type Badge */}
-                    <div className={`absolute top-5 ${isRTL ? 'right-5' : 'left-5'}`}>
-                        <span className="inline-block bg-white/95 text-foreground text-[12px] font-medium px-4 py-1.5 rounded-md">
+                    <div className="relative z-10 p-7 flex flex-col h-full items-start">
+                        {/* Type Badge */}
+                        <span className="inline-block bg-white text-foreground text-[14px] px-4 py-1.5 rounded-[4px] shadow-sm mb-auto">
                             {type}
                         </span>
-                    </div>
 
-                    {/* Content */}
-                    <div className="absolute inset-x-0 bottom-0 px-6 pb-6">
-                        <h3
-                            className="text-white font-semibold text-[18px] md:text-[20px] leading-[1.25] max-w-[92%]"
-                            style={{ textShadow: "var(--shadow-on-image)" }}
-                        >
-                            {title}
-                        </h3>
-                        <p
-                            className="mt-2 text-white/90 text-[13px] md:text-[14px] font-medium flex items-center gap-2 hover:opacity-80 transition-opacity"
-                            style={{ textShadow: "var(--shadow-on-image-soft)" }}
-                        >
-                            {getViewLabel(type)}
-                            <FiArrowRight className="w-3.5 h-3.5" />
-                        </p>
+                        {/* Content */}
+                        <div className="w-full mt-auto">
+                            <h3
+                                className="text-white font-semibold text-[18px] md:text-[20px] leading-[1.25] max-w-[92%]"
+                                style={{ textShadow: "var(--shadow-on-image)" }}
+                            >
+                                {title}
+                            </h3>
+                            <p
+                                className="mt-2 text-white/90 text-[13px] md:text-[14px] font-medium flex items-center gap-2 hover:opacity-80 transition-opacity"
+                                style={{ textShadow: "var(--shadow-on-image-soft)" }}
+                            >
+                                {getViewLabel(type)}
+                                <FiArrowRight className="w-3.5 h-3.5" />
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

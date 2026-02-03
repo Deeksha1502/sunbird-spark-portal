@@ -158,7 +158,7 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
         <Link to={`/collection/${item.id}`} className="group h-full block">
             <div className="bg-white rounded-[28px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-[18px] h-[360px] flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-[#E5E7EB]">
                 {/* Image Section - Inner Padded Rounded Rectangle */}
-                <div className="h-[150px] overflow-hidden rounded-[22px] flex-shrink-0 mb-4">
+                <div className="h-[150px] overflow-hidden rounded-[20px] flex-shrink-0 mb-4">
                     <img
                         src={item.image}
                         alt={item.title}
