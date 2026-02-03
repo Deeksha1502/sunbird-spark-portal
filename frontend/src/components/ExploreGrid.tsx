@@ -157,13 +157,15 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
     return (
         <Link to={`/collection/${item.id}`} className="group h-full block">
             <div className="bg-white rounded-[28px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-[18px] h-[360px] flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-[#E5E7EB]">
-                {/* Image Section - Inner Padded Rounded Rectangle */}
-                <div className="h-[150px] overflow-hidden rounded-[20px] flex-shrink-0 mb-4">
-                    <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover object-center"
-                    />
+                {/* Image Container with border-radius */}
+                <div className="h-[150px] flex-shrink-0 mb-4">
+                    <div className="w-full h-full overflow-hidden rounded-[20px]">
+                        <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover object-center"
+                        />
+                    </div>
                 </div>
 
                 {/* Content Section */}
@@ -213,12 +215,14 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
             to={`/collection/${item.id}`}
             className={`relative block w-full h-[360px] rounded-[20px] overflow-hidden ${item.type === 'Epub' ? 'bg-[#E86C00]' : ''}`}
         >
-            {/* Full Card Background Image */}
-            <img
-                src={item.image}
-                alt={item.title}
-                className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none scale-105 transition-none"
-            />
+            {/* Image Container with border-radius */}
+            <div className="absolute inset-0 w-full h-full overflow-hidden rounded-[20px]">
+                <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-center"
+                />
+            </div>
 
             {/* Content Overlay */}
             <div className="relative z-10 p-7 flex flex-col h-full items-start">

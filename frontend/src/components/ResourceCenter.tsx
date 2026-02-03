@@ -19,7 +19,7 @@ const ResourceCenter = () => {
     const { t } = useAppI18n();
 
     return (
-        <section className="py-14 md:py-20" style={{ backgroundColor: '#FDF5E6' }}>
+        <section className="pt-6 md:pt-8 pb-0" style={{ backgroundColor: '#FDF5E6' }}>
             <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                 {/* Header with lines */}
                 <div className="flex items-center justify-center gap-4 mb-4">

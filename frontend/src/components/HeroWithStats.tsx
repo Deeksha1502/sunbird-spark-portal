@@ -72,7 +72,7 @@ const HeroWithStats = () => {
             {/* Hero Section */}
             <div className="relative overflow-hidden bg-white pb-24 lg:pb-32">
                 {/* Cream Wave Background - positioned at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 w-full">
+                <div className="absolute bottom-8 left-0 right-0 w-full">
                     <img
                         src={creamWave}
                         alt=""
@@ -150,7 +150,7 @@ const HeroWithStats = () => {
                                     src={tealShape}
                                     alt=""
                                     className="w-full h-auto"
-                                    style={{ transform: 'rotate(-0.5deg)', transformOrigin: 'center center' }}
+                                    style={{ transform: 'rotate(-0.2deg)', transformOrigin: 'center center', paddingBottom: '28px' }}
                                 />
                             </div>
                             <div className="relative z-10 flex items-end justify-center h-full">
@@ -158,6 +158,7 @@ const HeroWithStats = () => {
                                     src={heroWoman}
                                     alt="Professional learning"
                                     className="w-[360px] h-auto object-contain"
+                                    style={{ paddingBottom: '20px' }}
                                 />
                             </div>
                         </div>
@@ -166,7 +167,7 @@ const HeroWithStats = () => {
             </div>
 
             {/* Floating Stats Cards - Positioned to overlap and align with hero content */}
-            <div className="relative z-20 -mt-24 lg:-mt-24">
+            <div className="relative z-20 -mt-24 lg:-mt-36">
                 <div className="w-full px-4 lg:px-0" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                     {/* Cards aligned to match hero content width - no centering */}
                     <div className="flex w-full flex-wrap items-center gap-4 lg:gap-10 lg:flex-nowrap">
@@ -249,39 +250,44 @@ const HeroWithStats = () => {
                         </div>
 
                         {/* Study at your own pace Card */}
-                        <div className="relative lg:w-[280px]">
+                        <div className="relative lg:w-[267px]">
                             <div
-                                className={`flex h-[186px] flex-col justify-between rounded-2xl bg-surface px-6 py-5 ${floatingShadow} lg:mr-6`}
+                                className="flex h-[186px] flex-col justify-between rounded-[20px] bg-white px-6 py-6"
+                                style={{
+                                    filter: "drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.15))",
+                                    maskImage: "radial-gradient(circle 60px at 100% 100%, transparent 60px, black 61px)",
+                                    WebkitMaskImage: "radial-gradient(circle 60px at 100% 100%, transparent 60px, black 61px)"
+                                }}
                             >
-                                <p className="text-[14px] font-semibold mb-4 leading-snug text-foreground">
+                                <p className="text-[18px] font-bold leading-tight text-foreground max-w-[80%]">
                                     {t("hero.studyPace").split(/(\n)/).map((line, i) =>
                                         line === "\n" ? <br key={i} /> : line
                                     )}
                                 </p>
                                 <div className="flex items-center justify-between">
-                                    <div className="flex -space-x-3">
-                                        {avatars.map((avatar, index) => (
-                                            <Avatar
+                                    <div className="flex -space-x-4">
+                                        {avatars.slice(0, 2).map((avatar, index) => (
+                                            <div
                                                 key={index}
-                                                className="w-10 h-10 border-2 border-surface rounded-full overflow-hidden"
+                                                className="w-12 h-12 rounded-2xl overflow-hidden border-[3px] border-white z-10"
                                             >
-                                                <AvatarImage src={avatar} alt="Learner" className="object-cover" />
-                                                <AvatarFallback>L</AvatarFallback>
-                                            </Avatar>
+                                                <img src={avatar} alt="Learner" className="w-full h-full object-cover" />
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Circular CTA that visually overhangs the card */}
+                            {/* Circular CTA placed in the cutout */}
                             <button
-                                className={`absolute bottom-5 ${isRTL ? "left-0" : "right-0"} w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center`}
+                                className={`absolute bottom-0 ${isRTL ? "left-0" : "right-0"} w-[56px] h-[56px] rounded-full text-white flex items-center justify-center transition-transform hover:scale-105 active:scale-95`}
+                                style={{ backgroundColor: '#A85236' }}
                                 aria-label="Go"
                             >
                                 {isRTL ? (
-                                    <FiArrowRight className="w-4 h-4 rotate-180" />
+                                    <FiArrowRight className="w-6 h-6 rotate-180" />
                                 ) : (
-                                    <FiArrowRight className="w-4 h-4" />
+                                    <FiArrowRight className="w-6 h-6" />
                                 )}
                             </button>
                         </div>

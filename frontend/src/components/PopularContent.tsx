@@ -130,8 +130,8 @@ const PopularContent = () => {
         </Link>
     );
 
-    const CourseGrid = ({ courses, title }: { courses: ContentCourse[]; title: string }) => (
-        <div className="mb-12">
+    const CourseGrid = ({ courses, title, className = "mb-12" }: { courses: ContentCourse[]; title: string; className?: string }) => (
+        <div className={className}>
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">
                 <h2 className="text-lg md:text-xl font-medium text-foreground">
@@ -156,10 +156,10 @@ const PopularContent = () => {
     );
 
     return (
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-4 md:py-6 bg-white">
             <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                 <CourseGrid courses={mostViewedCourses} title={t("trending.mostViewed")} />
-                <CourseGrid courses={trendingCourses} title={t("trending.trending")} />
+                <CourseGrid courses={trendingCourses} title={t("trending.trending")} className="mb-2" />
             </div>
         </section>
     );
