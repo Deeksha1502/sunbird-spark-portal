@@ -68,9 +68,9 @@ const HeroWithStats = () => {
         "shadow-[0_18px_40px_-28px_hsl(var(--foreground)/0.22),0_6px_18px_-12px_hsl(var(--foreground)/0.10)]";
 
     return (
-        <section className="relative">
+        <section className="relative bg-white">
             {/* Hero Section */}
-            <div className="relative overflow-hidden bg-white pb-32 lg:pb-40">
+            <div className="relative overflow-hidden bg-white pb-24 lg:pb-32">
                 {/* Cream Wave Background - positioned at bottom */}
                 <div className="absolute bottom-12 left-0 right-0 w-full">
                     <img
@@ -166,13 +166,13 @@ const HeroWithStats = () => {
             </div>
 
             {/* Floating Stats Cards - Positioned to overlap and align with hero content */}
-            <div className="relative z-20 -mt-24 lg:-mt-28">
-                <div className="container mx-auto px-4">
+            <div className="relative z-20 -mt-24 lg:-mt-36">
+                <div className="w-full px-4 lg:px-0" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                     {/* Cards aligned to match hero content width - no centering */}
-                    <div className="flex w-full flex-wrap items-center gap-4 lg:gap-5 lg:flex-nowrap lg:justify-between">
+                    <div className="flex w-full flex-wrap items-center gap-4 lg:gap-6 lg:flex-nowrap">
                         {/* Stats Card */}
                         <div
-                            className={`flex items-center gap-8 px-8 py-6 rounded-2xl bg-surface ${floatingShadow} lg:w-[480px]`}
+                            className={`flex items-center justify-between px-12 rounded-2xl bg-surface ${floatingShadow} lg:w-[568px] h-[186px]`}
                         >
                             {/* 500+ Courses */}
                             <div className="text-center">
@@ -228,7 +228,7 @@ const HeroWithStats = () => {
 
                         {/* Learning Process Card */}
                         <div
-                            className={`flex flex-col justify-between px-6 py-5 rounded-2xl bg-surface ${floatingShadow} lg:w-[260px] h-[128.48px]`}
+                            className={`flex flex-col justify-between px-6 py-5 rounded-2xl bg-surface ${floatingShadow} lg:w-[260px] h-[186px]`}
                         >
                             <div>
                                 <p
@@ -251,7 +251,7 @@ const HeroWithStats = () => {
                         {/* Study at your own pace Card */}
                         <div className="relative lg:w-[280px]">
                             <div
-                                className={`flex h-[134px] flex-col justify-between rounded-2xl bg-surface px-6 py-5 ${floatingShadow} lg:mr-6`}
+                                className={`flex h-[186px] flex-col justify-between rounded-2xl bg-surface px-6 py-5 ${floatingShadow} lg:mr-6`}
                             >
                                 <p className="text-[14px] font-semibold mb-4 leading-snug text-foreground">
                                     {t("hero.studyPace").split(/(\n)/).map((line, i) =>
@@ -289,10 +289,7 @@ const HeroWithStats = () => {
                 </div>
             </div>
 
-            {/* Cream background extension that passes under the cards */}
-            <div
-                className="h-16 lg:h-20 -mt-12 lg:-mt-16 bg-background"
-            />
+
         </section>
     );
 };

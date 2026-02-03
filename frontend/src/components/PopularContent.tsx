@@ -157,7 +157,7 @@ const PopularContent = () => {
 
     return (
         <section className="py-12 md:py-16 bg-white">
-            <div className="container mx-auto px-4">
+            <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                 <CourseGrid courses={mostViewedCourses} title={t("trending.mostViewed")} />
                 <CourseGrid courses={trendingCourses} title={t("trending.trending")} />
             </div>

@@ -20,7 +20,7 @@ const ResourceCenter = () => {
 
     return (
         <section className="py-14 md:py-20" style={{ backgroundColor: '#FDF5E6' }}>
-            <div className="container mx-auto px-4">
+            <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                 {/* Header with lines */}
                 <div className="flex items-center justify-center gap-4 mb-4">
                     <div className="h-px w-16 bg-gray-300" />

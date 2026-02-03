@@ -66,7 +66,7 @@ const CategorySection = () => {
 
   return (
     <section id="categories" className="py-12 md:py-16 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
         {/* Header with inline arrow */}
         <div className="flex items-center gap-3 mb-8">
           <h2 className="text-xl md:text-2xl font-medium text-foreground">

@@ -18,7 +18,7 @@ const Footer = () => {
 
   return (
     <footer style={{ backgroundColor: '#1A1A1A', fontFamily: 'Rubik, sans-serif' }}>
-      <div className="container mx-auto px-4 py-12 pl-[80px] pr-[100px]">
+      <div className="w-full py-12" style={{ paddingLeft: '108px', paddingRight: '100px' }}>
         <div className="flex flex-col md:flex-row justify-between items-start gap-10">
           {/* Logo */}
           <div>
@@ -76,7 +76,7 @@ const Footer = () => {
 
       {/* Bottom Bar - Darker strip */}
       <div style={{ backgroundColor: '#141414' }}>
-        <div className="container mx-auto px-4 py-4 pr-[100px]">
+        <div className="w-full py-4 pr-[100px]" style={{ paddingLeft: '108px' }}>
           <div className="flex flex-col md:flex-row items-center justify-end gap-6 text-[13px]">
             <a
               href="#"

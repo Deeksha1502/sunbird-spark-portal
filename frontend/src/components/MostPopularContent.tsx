@@ -84,7 +84,7 @@ const MostPopularContent = () => {
 
     return (
         <section className="pt-6 pb-10 md:pt-8 md:pb-12 bg-white">
-            <div className="container mx-auto px-4">
+            <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-6">
                     <h2

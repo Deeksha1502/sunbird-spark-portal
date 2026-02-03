@@ -34,7 +34,7 @@ const FAQSection = () => {
 
     return (
         <section className="py-12 md:py-16 bg-white">
-            <div className="container mx-auto px-4">
+            <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
                     {/* FAQ Accordion */}
                     <div>
