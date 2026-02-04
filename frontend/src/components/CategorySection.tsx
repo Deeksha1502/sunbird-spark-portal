@@ -40,18 +40,15 @@ const CategorySection = () => {
   return (
     <section id="categories" className="py-6 md:py-8 bg-white">
       <div className="w-full pl-[108px] pr-[82px]">
-        {/* Header with Arrow */}
-        <div className="mb-8 flex items-center gap-4">
+        {/* Header */}
+        <div className="mb-8">
           <h2 className="text-xl md:text-2xl font-semibold text-foreground">
             {t("browseCategories")}
           </h2>
-          <Link to="/explore">
-            <FiArrowRight className="w-6 h-6 text-sunbird-brick" />
-          </Link>
         </div>
 
-        {/* Category Cards */}
-        <div className="flex flex-wrap gap-5">
+        {/* Category Cards and Browse All */}
+        <div className="flex items-center gap-5 flex-wrap">
           {categories.map((category) => (
             <Link key={category.id} to="/explore" className="group">
               <div
@@ -71,6 +68,22 @@ const CategorySection = () => {
               </div>
             </Link>
           ))}
+
+          {/* Browse All Button */}
+          <Link
+            to="/explore"
+            className="group flex flex-col items-center justify-center gap-3 ml-4"
+            style={{ paddingLeft: '72px', paddingTop: '17px', paddingBottom: '0px' }}
+          >
+            <div
+              className="rounded-full text-white flex items-center justify-center transition-transform hover:scale-105 w-[59px] h-[59px] bg-sunbird-brick"
+            >
+              <FiArrowRight className="w-6 h-6" />
+            </div>
+            <span className="text-[14px] font-bold text-foreground">
+              {t("viewAll")}
+            </span>
+          </Link>
         </div>
       </div>
     </section>

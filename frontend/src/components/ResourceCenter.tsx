@@ -113,7 +113,7 @@ const ResourceCardComponent = ({
     image: string;
     aspectClass: string;
 }) => {
-    const { t, isRTL } = useAppI18n();
+    const { t } = useAppI18n();
 
     const getViewLabel = (type: string) => {
         switch (type) {
@@ -127,34 +127,33 @@ const ResourceCardComponent = ({
 
     return (
         <Link to={`/course/${id}`} className="block w-full">
-            <div className="group w-full rounded-2xl overflow-hidden cursor-pointer">
+            <div className="group relative w-full rounded-2xl overflow-hidden cursor-pointer">
                 <div className={`relative w-full ${aspectClass}`}>
+
+                    {/* Image */}
                     <img
                         src={image}
                         alt={title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/70 z-[1]"
                     />
 
-                    <div className="relative z-10 p-7 flex flex-col h-full items-start">
-                        {/* Type Badge */}
-                        <span className="inline-block bg-white text-foreground text-[14px] px-4 py-1.5 rounded-[4px] shadow-sm mb-auto">
-                            {type}
-                        </span>
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/70 z-[1]" />
 
-                        {/* Content */}
-                        <div className="w-full mt-auto" style={{ paddingBottom: '90px' }}>
-                            <h3
-                                className="text-white font-semibold text-lg md:text-xl leading-tight max-w-[92%] text-shadow-card"
-                            >
-                                {title}
-                            </h3>
-                            <p
-                                className="text-white/90 text-[0.8125rem] md:text-sm font-medium flex items-center gap-2 hover:opacity-80 transition-opacity text-shadow-card-sm"
-                                style={{ paddingTop: '45px' }}
-                            >
-                                {getViewLabel(type)}
-                                <FiArrowRight className="w-3.5 h-3.5" />
-                            </p>
+                    {/* Type badge */}
+                    <span className="absolute top-5 left-5 z-10 bg-white text-foreground text-sm font-medium px-3 py-1.5 rounded-[4px] shadow-sm">
+                        {type}
+                    </span>
+
+                    {/* Bottom content */}
+                    <div className="absolute bottom-5 left-5 right-5 z-10">
+                        <h3 className="text-white font-semibold text-[18px] md:text-[20px] leading-[1.25]">
+                            {title}
+                        </h3>
+
+                        <div className="mt-2 flex items-center gap-2 text-white/90 text-[13px] font-medium">
+                            {getViewLabel(type)}
+                            <FiArrowRight className="w-3.5 h-3.5" />
                         </div>
                     </div>
                 </div>
@@ -162,5 +161,6 @@ const ResourceCardComponent = ({
         </Link>
     );
 };
+
 
 export default ResourceCenter;
