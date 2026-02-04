@@ -4,7 +4,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/accordion";
-import faqImage from "@/assets/faq-image.png";
+import faqImage from "@/assets/faq-image.svg";
 import { useAppI18n } from "@/hooks/useAppI18n";
 
 const FAQSection = () => {

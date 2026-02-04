@@ -1,4 +1,4 @@
-import sunbirdFooterLogo from "@/assets/sunbird-footer-logo.png";
+import sunbirdFooterLogo from "@/assets/sunbird-footer-logo.svg";
 import { Link } from "react-router-dom";
 import { useAppI18n } from "@/hooks/useAppI18n";
 

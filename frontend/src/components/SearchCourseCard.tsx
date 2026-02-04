@@ -35,17 +35,14 @@ const SearchCourseCard = ({ item }: { item: SearchItem }) => {
 
                     {/* Stats */}
                     <div
-                        className="flex items-center gap-2 text-sm mt-3 text-muted-foreground"
+                        className="flex items-center gap-1.5 text-xs text-muted-foreground"
+                        style={{ paddingTop: '30px' }}
                     >
-                        <span
-                            className="flex items-center gap-1 text-foreground"
-                        >
-                            {item.rating}
-                            <FiStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />
-                        </span>
-                        <span className="text-gray-500">•</span>
+                        <span className="font-medium text-foreground">{item.rating}</span>
+                        <FiStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />
+                        <span className="mx-0.5">•</span>
                         <span>{item.learners} Learners</span>
-                        <span className="text-gray-500">•</span>
+                        <span className="mx-0.5">•</span>
                         <span>{item.lessons} Lessons</span>
                     </div>
                 </div>

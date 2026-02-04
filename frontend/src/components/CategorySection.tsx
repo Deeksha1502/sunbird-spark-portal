@@ -1,11 +1,11 @@
 import { FiArrowRight } from "react-icons/fi";
 import { useAppI18n } from "@/hooks/useAppI18n";
 import { Link } from "react-router-dom";
-import uiuxIcon from "@/assets/icons/uiux-icon.png";
-import devIcon from "@/assets/icons/dev-icon.png";
-import marketingIcon from "@/assets/icons/marketing-icon.png";
-import entrepreneurIcon from "@/assets/icons/entrepreneur-icon.png";
-import browseAllIcon from "@/assets/icons/browse-all-icon.png";
+import uiuxIcon from "@/assets/icons/uiux-icon.svg";
+import devIcon from "@/assets/icons/dev-icon.svg";
+import marketingIcon from "@/assets/icons/marketing-icon.svg";
+import entrepreneurIcon from "@/assets/icons/entrepreneur-icon.svg";
+import browseAllIcon from "@/assets/icons/browse-all-icon.svg";
 
 const CategorySection = () => {
   const { t } = useAppI18n();

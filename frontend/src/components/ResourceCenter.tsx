@@ -1,12 +1,12 @@
 import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useAppI18n } from "@/hooks/useAppI18n";
-import resourceRobotHand from "@/assets/resource-robot-hand.png";
-import resourceVR from "@/assets/resource-vr.png";
-import resourceHardware from "@/assets/resource-hardware.png";
-import resourceBitcoin from "@/assets/resource-bitcoin.png";
-import resourceHacker from "@/assets/resource-hacker.png";
-import resourceEthereum from "@/assets/resource-ethereum.png";
+import resourceRobotHand from "@/assets/resource-robot-hand.svg";
+import resourceVR from "@/assets/resource-vr.svg";
+import resourceHardware from "@/assets/resource-hardware.svg";
+import resourceBitcoin from "@/assets/resource-bitcoin.svg";
+import resourceHacker from "@/assets/resource-hacker.svg";
+import resourceEthereum from "@/assets/resource-ethereum.svg";
 
 interface ResourceCard {
     id: string;
@@ -142,7 +142,7 @@ const ResourceCardComponent = ({
                         </span>
 
                         {/* Content */}
-                        <div className="w-full mt-auto">
+                        <div className="w-full mt-auto" style={{ paddingBottom: '90px' }}>
                             <h3
                                 className="text-white font-semibold text-lg md:text-xl leading-tight max-w-[92%] text-shadow-card"
                             >

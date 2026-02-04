@@ -1,6 +1,6 @@
 // Import video and document icons
-import iconVideo from "@/assets/icon-video.png";
-import iconDocument from "@/assets/icon-document.png";
+import iconVideo from "@/assets/icon-video.svg";
+import iconDocument from "@/assets/icon-document.svg";
 
 // Video/Document icons using imported images
 export const VideoIcon = () => (

@@ -7,9 +7,9 @@ import PageLoader from "@/components/PageLoader";
 import { useAppI18n } from "@/hooks/useAppI18n";
 
 // Import resource images
-import resourceRobotHand from "@/assets/resource-robot-hand.png";
-import resourceVR from "@/assets/resource-vr.png";
-import resourceHacker from "@/assets/resource-hacker.png";
+import resourceRobotHand from "@/assets/resource-robot-hand.svg";
+import resourceVR from "@/assets/resource-vr.svg";
+import resourceHacker from "@/assets/resource-hacker.svg";
 
 // Mock content data
 const contentData = {

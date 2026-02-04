@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiGlobe, FiChevronDown, FiMenu } from "react-icons/fi";
-import sunbirdLogo from "@/assets/sunbird-logo.png";
+import sunbirdLogo from "@/assets/sunbird-logo.svg";
 import { Button } from "@/components/button";
 import { Card, CardContent } from "@/components/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar";

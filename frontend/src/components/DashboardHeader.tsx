@@ -30,7 +30,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/popover";
-import sunbirdLogo from "@/assets/sunbird-logo.png";
+import sunbirdLogo from "@/assets/sunbird-logo.svg";
 import { useAppI18n } from "@/hooks/useAppI18n";
 import { DashboardNotification } from "@/types";
 import { filterOptions } from "@/data/dashboardData";

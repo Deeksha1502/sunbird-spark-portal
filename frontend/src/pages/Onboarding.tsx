@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import sunbirdLogo from "@/assets/sunbird-logo.png";
+import sunbirdLogo from "@/assets/sunbird-logo.svg";
 import { skillsByRole } from "@/data/onboardingData";
 import { OnboardingStep1, OnboardingStep2, OnboardingStep3 } from "@/components/onboarding/OnboardingSteps";
 

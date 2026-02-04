@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FiHome, FiBook, FiBell, FiUser } from "react-icons/fi";
-import sunbirdLogo from "@/assets/sunbird-logo.png";
+import sunbirdLogo from "@/assets/sunbird-logo.svg";
 
 interface HomeSidebarProps {
     activeNav: string;

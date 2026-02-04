@@ -2,9 +2,9 @@ import { FiArrowRight } from "react-icons/fi";
 import { Button } from "@/components/button";
 import { Link } from "react-router-dom";
 import { useAppI18n } from "@/hooks/useAppI18n";
-import heroWoman from "@/assets/hero-woman-new.png";
-import creamWave from "@/assets/cream-wave.png";
-import tealShape from "@/assets/teal-shape.png";
+import heroWoman from "@/assets/hero-woman-new.svg";
+import creamWave from "@/assets/cream-wave.svg";
+import tealShape from "@/assets/teal-shape.svg";
 import HeroStats from "./HeroStats";
 
 const HeroWithStats = () => {
@@ -74,6 +74,7 @@ const HeroWithStats = () => {
                                     src={tealShape}
                                     alt=""
                                     className="w-full h-auto rotate-[-0.2deg] origin-center pb-[1.75rem]"
+                                    style={{ paddingBottom: '70px' }}
                                 />
                             </div>
                             <div className="relative z-10 flex items-end justify-center h-full">
@@ -81,6 +82,7 @@ const HeroWithStats = () => {
                                     src={heroWoman}
                                     alt="Professional learning"
                                     className="w-[22.5rem] h-auto object-contain pb-5"
+                                    style={{ width: '400px', height: '420px', paddingBottom: '43px' }}
                                 />
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 import { FiLoader } from "react-icons/fi";
-import sunbirdLogo from "@/assets/sunbird-logo.png";
+import sunbirdLogo from "@/assets/sunbird-logo.svg";
 
 interface PageLoaderProps {
   message?: string;

@@ -7,8 +7,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/dropdown-menu";
-import sunbirdLogo from "@/assets/sunbird-logo.png";
-import translationIcon from "@/assets/translation_icon.png";
+import sunbirdLogo from "@/assets/sunbird-logo.svg";
+import translationIcon from "@/assets/translation_icon.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppI18n, type LanguageCode } from "@/hooks/useAppI18n";
 
@@ -39,9 +39,26 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 pr-[56px] pl-[13px]">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-[72px] pl-[60px]">
+        <div className="flex items-center justify-between h-16 md:h-[72px] pl-[60px]" style={{
+          paddingLeft: '0px',
+          marginLeft: '0px',
+          paddingRight: '35px',
+        }}>
           {/* Logo */}
           <Link to="/" className="flex items-center md:pl-[30px]">
+            <img
+              src={sunbirdLogo}
+              alt="Sunbird"
+              className="h-8 w-auto"
+              style={{ paddingRight: 0 }}
+            />
+          </Link>
+
+          <img alt="Sunbird" className="h-8 w-auto" src={sunbirdLogo} style={{
+            paddingRight: 0,
+          }} />
+
+          <Link to="/" className="flex items-center md:pl-[1px]">
             <img
               src={sunbirdLogo}
               alt="Sunbird"
@@ -50,7 +67,9 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8" style={{
+            paddingRight: '80px',
+          }}>
             {navLinks.map((link) => (
               <Link
                 key={link.href}

@@ -9,7 +9,7 @@ import { Button } from "@/components/button";
 import { Checkbox } from "@/components/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs";
 import { ScrollArea } from "@/components/scroll-area";
-import sunbirdLogo from "@/assets/sunbird-logo.png";
+import sunbirdLogo from "@/assets/sunbird-logo.svg";
 
 interface TermsDialogProps {
     open: boolean;

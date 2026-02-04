@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiX } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import sunbirdLogo from '@/assets/sunbird-logo.png';
+import sunbirdLogo from '@/assets/sunbird-logo.svg';
 
 interface AuthLayoutProps {
   children: React.ReactNode;
