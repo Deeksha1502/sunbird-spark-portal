@@ -27,7 +27,7 @@ const Footer = () => {
                 src={sunbirdFooterLogo}
                 alt="Sunbird"
                 className="h-8 w-auto"
-                style={{ width: '212px', paddingRight: '117px', height: '39px' }}
+                style={{ width: '212px', paddingRight: '50px', height: '39px' }}
               />
             </Link>
           </div>

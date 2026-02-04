@@ -42,7 +42,7 @@ const HomeSidebar = ({ activeNav, onNavChange }: HomeSidebarProps) => {
     };
 
     return (
-        <aside className="w-[245px] bg-white flex flex-col shrink-0">
+        <aside className="w-[245px] bg-white flex flex-col shrink-0 border-r border-gray-200 min-h-full">
 
             {/* Navigation */}
             <nav className="flex-1 py-4" style={{ paddingTop: '40px' }}>
@@ -56,10 +56,11 @@ const HomeSidebar = ({ activeNav, onNavChange }: HomeSidebarProps) => {
                                 <button
                                     onClick={() => handleNavClick(item)}
                                     className={`
-                    w-full flex items-center gap-3 px-10 py-4 text-sm font-medium transition-colors
+                    w-full flex items-center gap-3 px-10 py-4 text-sm transition-colors
+                    ${item.id === "profile" ? "text-[#A85236]" : "text-[#222222]"}
                     ${isActive
-                                            ? "text-sunbird-brick bg-sunbird-brick/5 border-l-2 border-sunbird-brick"
-                                            : "text-gray-600 hover:text-sunbird-brick hover:bg-gray-50"
+                                            ? "font-bold"
+                                            : "font-normal hover:bg-gray-50"
                                         }
                   `}
                                 >

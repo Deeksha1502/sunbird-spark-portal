@@ -146,10 +146,10 @@ const ProfileLearningList = () => {
                 {filteredCourses.map((course) => (
                     <div
                         key={course.id}
-                        className="flex items-center p-5 bg-white border border-gray-100 rounded-[1.25rem] shadow-sm"
+                        className="flex justify-between items-center p-5 bg-white border border-gray-100 rounded-[1.25rem] shadow-sm"
                     >
                         {/* Thumbnail */}
-                        <div className="flex-shrink-0 mr-4">
+                        <div className="w-[70px] flex-shrink-0">
                             <img
                                 src={course.thumbnail}
                                 alt={course.title}
@@ -158,50 +158,57 @@ const ProfileLearningList = () => {
                         </div>
 
                         {/* Title and Due Date */}
-                        <div className="flex-[2] min-w-0 pr-4">
-                            <h4 className="text-[17px] font-medium text-foreground line-clamp-2 leading-snug mb-1">
+                        <div className="w-[320px] flex-shrink-0 pr-4">
+                            <h4 className="text-[17px] font-medium text-foreground leading-6 mb-1">
                                 {course.title}
                             </h4>
-                            <p className="text-sm text-muted-foreground font-light">
+                            <p className="text-[14px] text-[#666666] font-normal">
                                 Due Date : {course.dueDate}
                             </p>
                         </div>
 
                         {/* Progress Ring + Percentage */}
-                        <div className="flex-1 flex items-center justify-center gap-3">
+                        <div className="w-[100px] flex-shrink-0 flex items-center justify-center gap-2">
                             <ProgressRing progress={course.progress} />
-                            <span className="text-base font-medium text-gray-700 w-10">
+                            <span className="text-[16px] font-medium text-[#222222] w-10">
                                 {course.progress}%
                             </span>
                         </div>
 
                         {/* Status Badge */}
-                        <div className="flex-1 flex justify-center">
+                        <div className="w-[120px] flex-shrink-0 flex items-center justify-center">
                             <div
                                 className={`px-5 py-1.5 rounded-full border ${course.status === "completed"
-                                    ? "bg-[#E6F3EA] border-[#B2DDBF]"
-                                    : "bg-[#FFF8EB] border-[#FCE6BD]"
+                                    ? "bg-[#E6F3EA] border-[#B2DDBF] text-[#2D6A4F]"
+                                    : "bg-[#FFF8EB] border-[#FCE6BD] text-[#826404]"
                                     }`}
                             >
-                                <span className="text-sm font-medium text-gray-800">
+                                <span className="text-sm font-medium">
                                     {course.status === "completed" ? "Completed" : "Ongoing"}
                                 </span>
                             </div>
                         </div>
 
                         {/* Certificate Action */}
-                        <div className="flex-1 flex justify-end">
+                        <div className="w-[200px] flex-shrink-0 flex items-center justify-end">
                             <button
-                                className="flex items-center gap-2 text-[15px] font-medium text-sunbird-brick hover:opacity-80 transition-opacity"
+                                className="flex items-center gap-2 text-[15px] font-medium text-[#A85236] hover:opacity-80 transition-opacity"
                             >
                                 {course.status === "completed" ? (
                                     <>
-                                        <FiDownload className="w-5 h-5" />
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.25 8.75V11.0833C12.25 11.3928 12.1271 11.6895 11.9083 11.9083C11.6895 12.1271 11.3928 12.25 11.0833 12.25H2.91667C2.60725 12.25 2.3105 12.1271 2.09173 11.9083C1.87295 11.6895 1.75 11.3928 1.75 11.0833V8.75" stroke="#CC8545" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M4.0835 5.83334L7.00016 8.75L9.91683 5.83334" stroke="#CC8545" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M7 1.75V8.75" stroke="#CC8545" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
                                         <span>Download Certificate</span>
                                     </>
                                 ) : (
                                     <>
-                                        <FiEye className="w-5 h-5" />
+                                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 5C1 5 3.18182 1 7 1C10.8182 1 13 5 13 5C13 5 10.8182 9 7 9C3.18182 9 1 5 1 5Z" stroke="#CC8545" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M7 6.33333C7.73638 6.33333 8.33333 5.73638 8.33333 5C8.33333 4.26362 7.73638 3.66667 7 3.66667C6.26362 3.66667 5.66667 4.26362 5.66667 5C5.66667 5.73638 6.26362 6.33333 7 6.33333Z" stroke="#CC8545" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
                                         <span>Preview Certificate</span>
                                     </>
                                 )}
@@ -215,7 +222,7 @@ const ProfileLearningList = () => {
             <div className="text-center mt-6">
                 <Link
                     to="/my-learning"
-                    className="text-sm font-medium text-sunbird-brick hover:text-sunbird-brick/80 transition-colors"
+                    className="text-sm font-medium text-[#A85236] hover:opacity-80 transition-opacity"
                 >
                     View More Courses
                 </Link>
