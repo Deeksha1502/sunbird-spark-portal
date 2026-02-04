@@ -8,90 +8,85 @@ import resourceBitcoin from "@/assets/resource-bitcoin.svg";
 import resourceHacker from "@/assets/resource-hacker.svg";
 import resourceEthereum from "@/assets/resource-ethereum.svg";
 
-interface ResourceCard {
+interface ResourceCardProps {
     id: string;
     title: string;
     type: "Video" | "PDF" | "HTML" | "Epub";
     image: string;
+    aspectRatio: string;
 }
 
 const ResourceCenter = () => {
     const { t } = useAppI18n();
 
     return (
-        <section className="pt-6 md:pt-8 pb-0 bg-sunbird-ivory">
-            <div className="w-full pl-[6.75rem] pr-[5.125rem]">
+        <section className="py-12 md:py-16 bg-[#F6F1E9]">
+            <div className="w-full pl-[108px] pr-[82px]">
                 {/* Header with lines */}
                 <div className="flex items-center justify-center gap-4 mb-4">
-                    <div className="h-px w-16 bg-gray-300" />
-                    <div className="text-sm font-medium text-foreground">
+                    <div className="h-px w-14 bg-[#333333]/15" />
+                    <div className="text-[14px] font-medium text-[#333333] tracking-widest uppercase">
                         {t("resource.header")}
                     </div>
-                    <div className="h-px w-16 bg-gray-300" />
+                    <div className="h-px w-14 bg-[#333333]/15" />
                 </div>
 
-                <h2 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-foreground text-center mb-10 md:mb-14">
+                <h2 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-[#333333] text-center mb-10 md:mb-14 leading-tight">
                     {t("resource.title")}
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    {/* Column 1 - Left */}
-                    <div className="flex flex-col gap-5">
-                        {/* Tall card - Robot Hand */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* Column 1 - Left: Tall top (Video), Short bottom (Epub) */}
+                    <div className="flex flex-col gap-6">
                         <ResourceCardComponent
                             id="1"
                             title="Elm Partners with Udacity to Build a Graduate Development Program"
                             type="Video"
                             image={resourceRobotHand}
-                            aspectClass="aspect-[360/459]"
+                            aspectRatio="aspect-[360/459]"
                         />
-                        {/* Short card - Bitcoin */}
                         <ResourceCardComponent
                             id="4"
                             title="Bitcoin Engineering Foundations"
                             type="Epub"
                             image={resourceBitcoin}
-                            aspectClass="aspect-[5/4]"
+                            aspectRatio="aspect-[4/3]"
                         />
                     </div>
 
-                    {/* Column 2 - Middle */}
-                    <div className="flex flex-col gap-5">
-                        {/* Short card - VR */}
+                    {/* Column 2 - Middle: Short top (PDF), Tall bottom (Video) */}
+                    <div className="flex flex-col gap-6">
                         <ResourceCardComponent
                             id="2"
                             title="Data Engineering Foundations"
                             type="PDF"
                             image={resourceVR}
-                            aspectClass="aspect-[4/3]"
+                            aspectRatio="aspect-[4/3]"
                         />
-                        {/* Tall card - Hacker */}
                         <ResourceCardComponent
                             id="5"
                             title="Generative AI for Cybersecurity Professionals"
                             type="Video"
                             image={resourceHacker}
-                            aspectClass="aspect-[360/459]"
+                            aspectRatio="aspect-[360/459]"
                         />
                     </div>
 
-                    {/* Column 3 - Right */}
-                    <div className="flex flex-col gap-5">
-                        {/* Tall card - Hardware */}
+                    {/* Column 3 - Right: Tall top (HTML), Short bottom (Video) */}
+                    <div className="flex flex-col gap-6">
                         <ResourceCardComponent
                             id="3"
                             title="Generative AI for Cybersecurity Professionals"
                             type="HTML"
                             image={resourceHardware}
-                            aspectClass="aspect-[360/459]"
+                            aspectRatio="aspect-[360/459]"
                         />
-                        {/* Short card - Ethereum */}
                         <ResourceCardComponent
                             id="6"
                             title="Data Engineering Foundations"
                             type="Video"
                             image={resourceEthereum}
-                            aspectClass="aspect-[4/3]"
+                            aspectRatio="aspect-[4/3]"
                         />
                     </div>
                 </div>
@@ -105,14 +100,8 @@ const ResourceCardComponent = ({
     title,
     type,
     image,
-    aspectClass,
-}: {
-    id: string;
-    title: string;
-    type: "Video" | "PDF" | "HTML" | "Epub";
-    image: string;
-    aspectClass: string;
-}) => {
+    aspectRatio,
+}: ResourceCardProps) => {
     const { t } = useAppI18n();
 
     const getViewLabel = (type: string) => {
@@ -126,41 +115,40 @@ const ResourceCardComponent = ({
     };
 
     return (
-        <Link to={`/course/${id}`} className="block w-full">
-            <div className="group relative w-full rounded-2xl overflow-hidden cursor-pointer">
-                <div className={`relative w-full ${aspectClass}`}>
-
-                    {/* Image */}
+        <Link to={`/collection/${id}`} className="block group w-full">
+            <div className={`relative w-full ${aspectRatio} rounded-[20px] overflow-hidden`}>
+                {/* Background Image Container */}
+                <div className="absolute inset-0">
                     <img
                         src={image}
                         alt={title}
-                        className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/70 z-[1]"
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
+                </div>
 
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/70 z-[1]" />
+                {/* Bottom Gradient Overlay (Exact 40% height) */}
+                <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/90 to-transparent z-[1]" />
 
-                    {/* Type badge */}
-                    <span className="absolute top-5 left-5 z-10 bg-white text-foreground text-sm font-medium px-3 py-1.5 rounded-[4px] shadow-sm">
+                {/* Top-left Badge - Exact 44x38 dimensions */}
+                <div className="absolute top-[24px] left-[24px] z-10">
+                    <span className="flex items-center justify-center bg-white text-black text-[14px] font-bold w-[44px] h-[38px] rounded-[4px] shadow-sm">
                         {type}
                     </span>
+                </div>
 
-                    {/* Bottom content */}
-                    <div className="absolute bottom-5 left-5 right-5 z-10">
-                        <h3 className="text-white font-semibold text-[18px] md:text-[20px] leading-[1.25]">
-                            {title}
-                        </h3>
-
-                        <div className="mt-2 flex items-center gap-2 text-white/90 text-[13px] font-medium">
-                            {getViewLabel(type)}
-                            <FiArrowRight className="w-3.5 h-3.5" />
-                        </div>
+                {/* Bottom Content - Aligned exactly at bottom-left corner */}
+                <div className="absolute bottom-[32px] left-[24px] right-[24px] z-10 flex flex-col items-start gap-1.5">
+                    <h3 className="text-white font-bold text-[18px] md:text-[20px] leading-[1.25] [text-wrap:balance]">
+                        {title}
+                    </h3>
+                    <div className="flex items-center gap-2 text-white/95 font-semibold text-[15px] group-hover:underline transition-all">
+                        {getViewLabel(type)}
+                        <FiArrowRight className="w-4 h-4" />
                     </div>
                 </div>
             </div>
         </Link>
     );
 };
-
 
 export default ResourceCenter;

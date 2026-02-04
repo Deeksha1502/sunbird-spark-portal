@@ -108,25 +108,36 @@ const ProfileLearningList = () => {
     return (
         <div className="bg-white rounded-[1.25rem] p-6">
             {/* Header with Filter */}
-            <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-5 bg-sunbird-ginger rounded-sm" />
-                    <h2 className="text-2xl font-medium text-foreground">
+            <div className="flex items-center justify-between mb-6 relative">
+                <div className="flex items-center">
+                    <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-[5px] h-5 bg-[#CC8545]" />
+                    <h2 className="text-[22px] font-medium text-foreground ml-2">
                         My Learning
                     </h2>
                 </div>
 
-                <div className="flex items-center gap-2">
-                    <span className="text-base font-medium text-foreground">Filter :</span>
-                    <select
-                        value={filter}
-                        onChange={(e) => setFilter(e.target.value as FilterType)}
-                        className="text-base text-foreground border-none bg-transparent focus:outline-none cursor-pointer"
-                    >
-                        <option value="all">All</option>
-                        <option value="ongoing">Ongoing</option>
-                        <option value="completed">Completed</option>
-                    </select>
+                <div className="flex items-center gap-2 pr-2">
+                    <span className="text-sm font-medium text-foreground">Filter :</span>
+                    <div className="relative flex items-center">
+                        <select
+                            value={filter}
+                            onChange={(e) => setFilter(e.target.value as FilterType)}
+                            className="text-sm text-foreground border-none bg-transparent focus:outline-none cursor-pointer appearance-none pr-5 font-medium"
+                        >
+                            <option value="all">All</option>
+                            <option value="ongoing">Ongoing</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                        <svg
+                            width="10"
+                            height="6"
+                            viewBox="0 0 10 6"
+                            fill="none"
+                            className="absolute right-0 pointer-events-none text-sunbird-brick"
+                        >
+                            <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </div>
                 </div>
             </div>
 
@@ -135,64 +146,67 @@ const ProfileLearningList = () => {
                 {filteredCourses.map((course) => (
                     <div
                         key={course.id}
-                        className="flex items-center gap-5 p-5 bg-white border border-border rounded-[1.25rem]"
+                        className="flex items-center p-5 bg-white border border-gray-100 rounded-[1.25rem] shadow-sm"
                     >
                         {/* Thumbnail */}
-                        <img
-                            src={course.thumbnail}
-                            alt={course.title}
-                            className="w-[4.375rem] h-[4.375rem] rounded-[0.625rem] object-cover flex-shrink-0"
-                        />
+                        <div className="flex-shrink-0 mr-4">
+                            <img
+                                src={course.thumbnail}
+                                alt={course.title}
+                                className="w-[4.375rem] h-[4.375rem] rounded-xl object-cover"
+                            />
+                        </div>
 
                         {/* Title and Due Date */}
-                        <div className="flex-1 min-w-0">
-                            <h4 className="text-lg font-medium text-foreground line-clamp-2 mb-1">
+                        <div className="flex-[2] min-w-0 pr-4">
+                            <h4 className="text-[17px] font-medium text-foreground line-clamp-2 leading-snug mb-1">
                                 {course.title}
                             </h4>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-sm text-muted-foreground font-light">
                                 Due Date : {course.dueDate}
                             </p>
                         </div>
 
                         {/* Progress Ring + Percentage */}
-                        <div className="flex items-center gap-2 flex-shrink-0">
+                        <div className="flex-1 flex items-center justify-center gap-3">
                             <ProgressRing progress={course.progress} />
-                            <span className="text-base text-foreground">
+                            <span className="text-base font-medium text-gray-700 w-10">
                                 {course.progress}%
                             </span>
                         </div>
 
                         {/* Status Badge */}
-                        <div
-                            className={`px-4 py-1.5 rounded-full flex-shrink-0 ${course.status === "completed"
-                                ? "bg-sunbird-moss border border-sunbird-forest"
-                                : "bg-sunbird-ivory border border-sunbird-ginger"
-                                }`}
-                        >
-                            <span className="text-sm font-medium text-black capitalize">
-                                {course.status === "completed" ? "Completed" : "Ongoing"}
-                            </span>
+                        <div className="flex-1 flex justify-center">
+                            <div
+                                className={`px-5 py-1.5 rounded-full border ${course.status === "completed"
+                                    ? "bg-[#E6F3EA] border-[#B2DDBF]"
+                                    : "bg-[#FFF8EB] border-[#FCE6BD]"
+                                    }`}
+                            >
+                                <span className="text-sm font-medium text-gray-800">
+                                    {course.status === "completed" ? "Completed" : "Ongoing"}
+                                </span>
+                            </div>
                         </div>
 
                         {/* Certificate Action */}
-                        <button
-                            className={`flex items-center gap-1.5 text-sm font-medium flex-shrink-0 ${course.status === "completed"
-                                ? "text-sunbird-brick"
-                                : "text-sunbird-brick"
-                                }`}
-                        >
-                            {course.status === "completed" ? (
-                                <>
-                                    <FiDownload className="w-4 h-4" />
-                                    Download Certificate
-                                </>
-                            ) : (
-                                <>
-                                    <FiEye className="w-4 h-4" />
-                                    Preview Certificate
-                                </>
-                            )}
-                        </button>
+                        <div className="flex-1 flex justify-end">
+                            <button
+                                className="flex items-center gap-2 text-[15px] font-medium text-sunbird-brick hover:opacity-80 transition-opacity"
+                            >
+                                {course.status === "completed" ? (
+                                    <>
+                                        <FiDownload className="w-5 h-5" />
+                                        <span>Download Certificate</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <FiEye className="w-5 h-5" />
+                                        <span>Preview Certificate</span>
+                                    </>
+                                )}
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -203,7 +217,7 @@ const ProfileLearningList = () => {
                     to="/my-learning"
                     className="text-sm font-medium text-sunbird-brick hover:text-sunbird-brick/80 transition-colors"
                 >
-                    View More
+                    View More Courses
                 </Link>
             </div>
         </div>

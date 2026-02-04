@@ -27,7 +27,7 @@ const Footer = () => {
                 src={sunbirdFooterLogo}
                 alt="Sunbird"
                 className="h-8 w-auto"
-                style={{ width: '195px' }}
+                style={{ width: '195px', paddingLeft: '117px' }}
               />
             </Link>
           </div>
@@ -78,7 +78,7 @@ const Footer = () => {
       {/* Bottom Bar - Darker strip */}
       <div className="bg-gray-950">
         <div className="w-full py-4 pr-[82px] pl-[108px]">
-          <div className="flex flex-col md:flex-row items-center justify-end gap-6 text-[13px]">
+          <div className="flex flex-col md:flex-row items-center justify-end gap-6 text-[13px]" style={{ paddingRight: '104px' }}>
             <a
               href="#"
               className="hover:opacity-80 transition-opacity text-sunbird-brick"

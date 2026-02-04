@@ -51,7 +51,12 @@ const Search = () => {
                         <div className="flex items-center gap-4">
                             {/* Search Input */}
                             <div className="flex-1 relative">
-                                <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                                <span className="absolute left-4 top-1/2 -translate-y-1/2">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.53333 14.0667C11.1416 14.0667 14.0667 11.1416 14.0667 7.53333C14.0667 3.92507 11.1416 1 7.53333 1C3.92507 1 1 3.92507 1 7.53333C1 11.1416 3.92507 14.0667 7.53333 14.0667Z" stroke="#A85236" strokeWidth="2" />
+                                        <path d="M15.0012 15.0002L12.2012 12.2002" stroke="#A85236" strokeWidth="2" strokeLinecap="round" />
+                                    </svg>
+                                </span>
                                 <Input
                                     type="text"
                                     placeholder="Search for courses, textbooks, resources..."

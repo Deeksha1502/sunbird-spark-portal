@@ -18,13 +18,8 @@ import PersonalInformation from "@/components/PersonalInformation"
 import ProfileLearningList from "@/components/ProfileLearningList"
 import ProfileStatsCards from "@/components/ProfileStatsCards";
 
-// Custom language icon matching design
-const LanguageIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="2" y="16" fontSize="11" fontWeight="600" fill="currentColor">A</text>
-        <text x="12" y="16" fontSize="9" fontWeight="500" fill="currentColor">あ</text>
-    </svg>
-);
+import sunbirdLogo from "@/assets/sunbird-logo.svg";
+import translationIcon from "@/assets/translation_icon.svg";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -46,75 +41,77 @@ const Profile = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100 flex">
-            {/* Sidebar */}
-            <HomeSidebar activeNav={activeNav} onNavChange={setActiveNav} />
+        <div className="min-h-screen bg-gray-100 flex flex-col">
+            {/* Top Header */}
+            <header className="bg-white border-b border-gray-100 px-6 py-4 shadow-[0_14px_14px_rgba(0,0,0,0.05)] z-10 sticky top-0" style={{ paddingRight: '100px' }}>
+                <div className="flex items-center justify-between">
+                    {/* Left: Sunbird Logo + Align with Sidebar */}
+                    <div className="flex items-center" style={{ width: '156px' }}>
+                        <img src={sunbirdLogo} alt="Sunbird" className="h-7 w-auto" />
+                    </div>
 
-            {/* Main Content Area */}
-            <div className="flex-1 flex flex-col">
-                {/* Top Header */}
-                <header className="bg-white border-b border-gray-100 px-6 py-4 shadow-[0_14px_14px_rgba(0,0,0,0.05)]">
-                    <div className="flex items-center justify-between">
-                        {/* Left: Back Arrow + Menu Toggle + Title */}
-                        <div className="flex items-center gap-3">
-                            {/* Back Arrow */}
-                            <button
-                                onClick={() => window.history.back()}
-                                className="text-sunbird-brick hover:text-sunbird-brick/90 transition-colors p-1"
-                            >
-                                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 1L1 7L7 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    {/* Right: Search + Language */}
+                    <div className="flex items-center gap-4">
+                        {/* Search Bar */}
+                        <div
+                            className="relative w-80 cursor-pointer"
+                            onClick={() => navigate('/search')}
+                        >
+                            <Input
+                                placeholder="Search for content"
+                                readOnly
+                                className="pl-4 pr-10 bg-white border-border focus:border-sunbird-ginger focus:ring-sunbird-ginger/20 rounded-[0.5625rem] h-[2.875rem] text-base cursor-pointer"
+                            />
+                            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-sunbird-ginger hover:text-sunbird-brick">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.53333 14.0667C11.1416 14.0667 14.0667 11.1416 14.0667 7.53333C14.0667 3.92507 11.1416 1 7.53333 1C3.92507 1 1 3.92507 1 7.53333C1 11.1416 3.92507 14.0667 7.53333 14.0667Z" stroke="#A85236" strokeWidth="2" />
+                                    <path d="M15.0012 15.0002L12.2012 12.2002" stroke="#A85236" strokeWidth="2" strokeLinecap="round" />
                                 </svg>
                             </button>
-                            <h1 className="text-xl font-medium text-foreground">Profile</h1>
                         </div>
 
-                        {/* Right: Search + Language */}
-                        <div className="flex items-center gap-4">
-                            {/* Search Bar */}
-                            <div
-                                className="relative w-80 cursor-pointer"
-                                onClick={() => navigate('/search')}
-                            >
-                                <Input
-                                    placeholder="Search for content"
-                                    readOnly
-                                    className="pl-4 pr-10 bg-white border-border focus:border-sunbird-ginger focus:ring-sunbird-ginger/20 rounded-[0.5625rem] h-[2.875rem] text-base cursor-pointer"
-                                />
-                                <button className="absolute right-3 top-1/2 -translate-y-1/2 text-sunbird-ginger hover:text-sunbird-brick">
-                                    <FiSearch className="w-4 h-4" />
-                                </button>
-                            </div>
-
-                            {/* Language Dropdown */}
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" size="sm" className="gap-1 text-gray-600 hover:text-sunbird-ginger">
-                                        <LanguageIcon />
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end" className="bg-white border-gray-200">
-                                    {languages.map((lang) => (
-                                        <DropdownMenuItem
-                                            key={lang.code}
-                                            onClick={() => handleLanguageChange(lang)}
-                                            className={currentCode === lang.code ? "bg-sunbird-ivory" : ""}
-                                        >
-                                            <span className="mr-2">{lang.label}</span>
-                                        </DropdownMenuItem>
-                                    ))}
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </div>
+                        {/* Language Dropdown */}
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" size="sm" className="gap-1 text-sunbird-brick hover:bg-gray-50">
+                                    <img src={translationIcon} alt="Language" className="w-5 h-5" />
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                        <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end" className="bg-white border-gray-200">
+                                {languages.map((lang) => (
+                                    <DropdownMenuItem
+                                        key={lang.code}
+                                        onClick={() => handleLanguageChange(lang)}
+                                        className={currentCode === lang.code ? "bg-sunbird-ivory" : ""}
+                                    >
+                                        <span className="mr-2">{lang.label}</span>
+                                    </DropdownMenuItem>
+                                ))}
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                     </div>
-                </header>
+                </div>
+            </header>
 
-                {/* Scrollable Content */}
-                <main className="flex-1 overflow-y-auto bg-gray-100">
-                    <div className="p-6 md:p-8">
+            <div className="flex flex-1 overflow-hidden">
+                {/* Sidebar */}
+                <div className="relative shrink-0">
+                    <HomeSidebar activeNav={activeNav} onNavChange={setActiveNav} />
+                    <div className="absolute -right-3 top-2 z-20">
+                        <button className="w-6 h-6 bg-[#EFEFEF] rounded-full flex items-center justify-center shadow-sm text-[#A85236] hover:opacity-80 transition-opacity">
+                            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 1L1 5L5 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Main Content Area */}
+                <main className="flex-1 overflow-y-auto bg-gray-100 relative">
+                    <div className="p-6 md:p-8" style={{ paddingRight: '100px', paddingLeft: '26px' }}>
                         {/* Top Section: Profile Card + Personal Information */}
                         <div className="grid grid-cols-1 lg:grid-cols-[23.3125rem_1fr] gap-5 mb-8">
                             {/* Left: Profile Card */}
@@ -130,11 +127,11 @@ const Profile = () => {
                         {/* My Learning Section */}
                         <ProfileLearningList />
                     </div>
-
-                    {/* Footer */}
-                    <Footer />
                 </main>
             </div>
+
+            {/* Footer */}
+            <Footer />
         </div>
     );
 };

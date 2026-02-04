@@ -200,12 +200,12 @@
   "resource": {
     "title": "Stay ahead. What's next starts here.",
     "header": "Resource Center",
-    "viewVideo": "Watch The Video",
+    "viewVideo": "View The Video",
     "viewPdf": "View The PDF",
     "viewHtml": "View The HTML",
-    "viewEpub": "View the Epub",
-    "readEpub": "View the Epub",
-    "readTextbook": "View the Textbook",
+    "viewEpub": "View The Epub",
+    "readEpub": "View The Epub",
+    "readTextbook": "View The Textbook",
     "seeCaseStudy": "See the Case Study"
   },
   "trending": {

@@ -15,12 +15,20 @@ const ExploreIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
+// Custom Profile icon matching the design
+const ProfileNavIcon = ({ className }: { className?: string }) => (
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M0.0996094 6.5001C0.0996094 3.4841 0.099607 1.97213 1.03721 1.03613C1.97401 0.100133 3.48281 0.100098 6.49961 0.100098H9.69961C12.7164 0.100098 14.2252 0.100133 15.162 1.03613C16.0996 1.97213 16.0996 3.4841 16.0996 6.5001V9.7001C16.0996 12.7161 16.0996 14.2281 15.162 15.1641C14.2252 16.1001 12.7164 16.1001 9.69961 16.1001H6.49961C3.48281 16.1001 1.97401 16.1001 1.03721 15.1641C0.099607 14.2281 0.0996094 12.7161 0.0996094 9.7001V6.5001ZM4.69082 11.6601C5.66842 10.9081 6.86681 10.5001 8.09961 10.5001C9.33241 10.5001 10.5308 10.9081 11.5084 11.6601C12.4868 12.4041 13.19 13.4601 13.5084 14.6521C13.6228 15.0761 13.37 15.5161 12.9428 15.6281C12.5164 15.7481 12.078 15.4921 11.9636 15.0681C11.7356 14.2121 11.2332 13.4601 10.5348 12.9241C9.83641 12.3881 8.98041 12.1001 8.09961 12.1001C7.21881 12.1001 6.3628 12.3881 5.6644 12.9241C4.966 13.4601 4.4636 14.2121 4.2356 15.0681C4.1212 15.4921 3.6828 15.7481 3.2564 15.6281C2.8292 15.5161 2.57642 15.0761 2.69082 14.6521C3.00922 13.4601 3.71242 12.4041 4.69082 11.6601ZM6.49961 5.7001C6.49961 4.8201 7.21561 4.1001 8.09961 4.1001C8.98361 4.1001 9.69961 4.8201 9.69961 5.7001C9.69961 6.5801 8.98361 7.3001 8.09961 7.3001C7.21561 7.3001 6.49961 6.5801 6.49961 5.7001ZM8.09961 2.5001C6.33241 2.5001 4.89961 3.9321 4.89961 5.7001C4.89961 7.4681 6.33241 8.9001 8.09961 8.9001C9.86681 8.9001 11.2996 7.4681 11.2996 5.7001C11.2996 3.9321 9.86681 2.5001 8.09961 2.5001Z" fill="currentColor" />
+        <path d="M12.9 0.5H3.3C1.7536 0.5 0.5 1.7536 0.5 3.3V12.9C0.5 14.4464 1.7536 15.7 3.3 15.7H12.9C14.4464 15.7 15.7 14.4464 15.7 12.9V3.3C15.7 1.7536 14.4464 0.5 12.9 0.5Z" stroke="currentColor" />
+    </svg>
+);
+
 const navItems = [
     { id: "home", label: "Home", icon: FiHome, path: "/home" },
     { id: "learning", label: "My Learning", icon: FiBook, path: "/my-learning" },
     { id: "explore", label: "Explore", icon: ExploreIcon, path: "/explore", isCustomIcon: true },
     { id: "notifications", label: "Notifications", icon: FiBell, path: "/home" },
-    { id: "profile", label: "Profile", icon: FiUser, path: "/profile" },
+    { id: "profile", label: "Profile", icon: ProfileNavIcon, path: "/profile" },
 ];
 
 const HomeSidebar = ({ activeNav, onNavChange }: HomeSidebarProps) => {
@@ -34,14 +42,10 @@ const HomeSidebar = ({ activeNav, onNavChange }: HomeSidebarProps) => {
     };
 
     return (
-        <aside className="w-[180px] bg-white border-r border-gray-100 flex flex-col shrink-0">
-            {/* Logo */}
-            <div className="p-5 border-b border-gray-100">
-                <img src={sunbirdLogo} alt="Sunbird" className="h-7 w-auto" />
-            </div>
+        <aside className="w-[180px] bg-white flex flex-col shrink-0">
 
             {/* Navigation */}
-            <nav className="flex-1 py-4">
+            <nav className="flex-1 py-4" style={{ paddingTop: '40px' }}>
                 <ul className="space-y-1">
                     {navItems.map((item) => {
                         const Icon = item.icon;
@@ -54,12 +58,15 @@ const HomeSidebar = ({ activeNav, onNavChange }: HomeSidebarProps) => {
                                     className={`
                     w-full flex items-center gap-3 px-5 py-3 text-sm font-medium transition-colors
                     ${isActive
-                                            ? "text-home-ginger bg-home-ginger/5 border-l-3 border-home-ginger"
-                                            : "text-gray-600 hover:text-home-ginger hover:bg-gray-50"
+                                            ? "text-sunbird-brick bg-sunbird-brick/5 border-l-2 border-sunbird-brick"
+                                            : "text-gray-600 hover:text-sunbird-brick hover:bg-gray-50"
                                         }
                   `}
                                 >
-                                    <Icon className="w-5 h-5" />
+                                    <Icon className={`w-5 h-5 ${item.id === "profile"
+                                        ? (isActive ? "text-sunbird-brick" : "text-sunbird-brick")
+                                        : "text-[#CC8545]"
+                                        }`} />
                                     <span>{item.label}</span>
                                 </button>
                             </li>
