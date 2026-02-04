@@ -46,8 +46,8 @@ const Profile = () => {
             <header className="bg-white border-b border-gray-100 px-6 py-4 shadow-[0_14px_14px_rgba(0,0,0,0.05)] z-10 sticky top-0" style={{ paddingRight: '100px' }}>
                 <div className="flex items-center justify-between">
                     {/* Left: Sunbird Logo + Align with Sidebar */}
-                    <div className="flex items-center" style={{ width: '156px' }}>
-                        <img src={sunbirdLogo} alt="Sunbird" className="h-7 w-auto" />
+                    <div className="flex items-center" style={{ width: '212px' }}>
+                        <img src={sunbirdLogo} alt="Sunbird" className="w-auto" style={{ height: '39px' }} />
                     </div>
 
                     {/* Right: Search + Language */}
@@ -60,7 +60,7 @@ const Profile = () => {
                             <Input
                                 placeholder="Search for content"
                                 readOnly
-                                className="pl-4 pr-10 bg-white border-border focus:border-sunbird-ginger focus:ring-sunbird-ginger/20 rounded-[0.5625rem] h-[2.875rem] text-base cursor-pointer"
+                                className="pl-4 pr-10 bg-white border-border focus:border-sunbird-ginger focus:ring-sunbird-ginger/20 rounded-[0.5625rem] h-[2.875rem] text-base cursor-pointer placeholder:text-[#222222]"
                             />
                             <button className="absolute right-3 top-1/2 -translate-y-1/2 text-sunbird-ginger hover:text-sunbird-brick">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

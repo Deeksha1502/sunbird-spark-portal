@@ -17,7 +17,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 font-rubik">
+    <footer className="bg-[#1C1C1C] font-rubik">
       <div className="w-full py-12 pl-[108px] pr-[82px]">
         <div className="flex flex-col md:flex-row justify-between items-start gap-10">
           {/* Logo */}
@@ -27,7 +27,7 @@ const Footer = () => {
                 src={sunbirdFooterLogo}
                 alt="Sunbird"
                 className="h-8 w-auto"
-                style={{ width: '195px', paddingLeft: '117px' }}
+                style={{ width: '212px', paddingRight: '117px', height: '39px' }}
               />
             </Link>
           </div>
@@ -76,7 +76,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar - Darker strip */}
-      <div className="bg-gray-950">
+      <div className="bg-[#000000]">
         <div className="w-full py-4 pr-[82px] pl-[108px]">
           <div className="flex flex-col md:flex-row items-center justify-end gap-6 text-[13px]" style={{ paddingRight: '104px' }}>
             <a
