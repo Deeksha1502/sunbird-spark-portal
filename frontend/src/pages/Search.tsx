@@ -42,23 +42,23 @@ const Search = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#F5F5F5] pt-8 pb-8">
+        <div className="min-h-screen bg-gray-100 pt-8 pb-8">
             <div className="container mx-auto px-4">
                 {/* Search Popover Container */}
-                <div className="bg-white rounded-[32px] shadow-lg overflow-hidden">
+                <div className="bg-white rounded-[2rem] shadow-lg overflow-hidden">
                     {/* Search Header */}
                     <div className="px-6 py-6 md:px-8 md:py-8">
                         <div className="flex items-center gap-4">
                             {/* Search Input */}
                             <div className="flex-1 relative">
-                                <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#757575]" />
+                                <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                                 <Input
                                     type="text"
                                     placeholder="Search for courses, textbooks, resources..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     onKeyDown={handleKeyDown}
-                                    className="w-full h-14 pl-12 pr-4 text-[16px] font-['Rubik'] border-gray-200 rounded-full focus:border-[#A85236] focus:ring-[#A85236]/20 bg-[#F9F9F9]"
+                                    className="w-full h-14 pl-12 pr-4 text-base border-gray-200 rounded-full focus:border-sunbird-brick focus:ring-sunbird-brick/20 bg-gray-50"
                                     autoFocus
                                 />
                             </div>
@@ -66,7 +66,7 @@ const Search = () => {
                             {/* Cancel Button */}
                             <button
                                 onClick={handleCancel}
-                                className="text-[#A85236] text-[16px] font-medium font-['Rubik'] hover:text-[#8a4329] transition-colors whitespace-nowrap"
+                                className="text-sunbird-brick text-base font-medium hover:text-sunbird-brick/90 transition-colors whitespace-nowrap"
                             >
                                 Cancel
                             </button>

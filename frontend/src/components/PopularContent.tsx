@@ -75,18 +75,13 @@ const PopularContent = () => {
     ];
 
     const getBadgeStyles = () => {
-        return {
-            backgroundColor: "#FFF1C7",
-            color: "#1A1A1A",
-            border: "1.5px solid #CC8545"
-        };
+        return "bg-sunbird-ivory text-foreground border-[1.5px] border-sunbird-ginger";
     };
 
     const CourseCard = ({ course }: { course: ContentCourse }) => (
         <Link to={`/collection/${course.id}`}>
             <div
-                className="group bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg"
-                style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
+                className="group bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
             >
                 {/* Image with padding */}
                 <div className="p-3 pb-0">
@@ -104,22 +99,21 @@ const PopularContent = () => {
                     {/* Badge below image */}
                     <div className="mb-2">
                         <span
-                            className="inline-block text-[11px] font-medium px-3 py-1 rounded-full"
-                            style={getBadgeStyles()}
+                            className={`inline-block text-[0.6875rem] font-medium px-3 py-1 rounded-full ${getBadgeStyles()}`}
                         >
                             {t(`contentTypes.${course.type.toLowerCase()}`) || course.type}
                         </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-semibold text-[14px] leading-snug mb-2 text-foreground line-clamp-2">
+                    <h3 className="font-semibold text-sm leading-snug mb-2 text-foreground line-clamp-2">
                         {course.title}
                     </h3>
 
                     {/* Stats */}
-                    <div className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
+                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                         <span className="font-medium text-foreground">{course.rating.toFixed(1)}</span>
-                        <FiStar className="w-3.5 h-3.5 fill-[#B94A2C] text-[#B94A2C]" />
+                        <FiStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />
                         <span className="mx-0.5">•</span>
                         <span>{course.learners} {t("contentStats.learners")}</span>
                         <span className="mx-0.5">•</span>
@@ -157,7 +151,7 @@ const PopularContent = () => {
 
     return (
         <section className="py-4 md:py-6 bg-white">
-            <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
+            <div className="w-full pl-[6.75rem] pr-[5.125rem]">
                 <CourseGrid courses={mostViewedCourses} title={t("trending.mostViewed")} />
                 <CourseGrid courses={trendingCourses} title={t("trending.trending")} className="mb-2" />
             </div>

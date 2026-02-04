@@ -41,7 +41,7 @@ const HomeRecommendedSection = () => {
         <section className="mb-8">
             <div className="flex items-center gap-2 mb-4">
                 <h3 className="text-lg font-medium text-gray-900">Recommended Contents</h3>
-                <Link to="/explore" className="text-[#A85236] hover:text-[#8a4329] transition-colors">
+                <Link to="/explore" className="text-sunbird-brick hover:text-sunbird-brick/90 transition-colors">
                     <FiArrowRight className="w-5 h-5" />
                 </Link>
             </div>
@@ -102,7 +102,7 @@ const HomeRecommendedSection = () => {
                             {/* Content */}
                             <div className="p-4 pt-3 flex-1 flex flex-col">
                                 {/* Type Badge */}
-                                <span className="inline-block w-fit mb-3 text-sm font-medium px-4 py-1.5 rounded-full bg-[#FFF8E7] border border-[#CC8545] text-[#000000]">
+                                <span className="inline-block w-fit mb-3 text-sm font-medium px-4 py-1.5 rounded-full bg-sunbird-ivory border border-sunbird-ginger text-black">
                                     {item.type}
                                 </span>
 
@@ -115,7 +115,7 @@ const HomeRecommendedSection = () => {
                                     {item.rating && (
                                         <div className="flex items-center gap-1">
                                             <span className="font-medium text-gray-700">{item.rating}</span>
-                                            <FiStar className="w-4 h-4 fill-[#A85236] text-[#A85236]" />
+                                            <FiStar className="w-4 h-4 fill-sunbird-brick text-sunbird-brick" />
                                         </div>
                                     )}
                                     {item.learners && (

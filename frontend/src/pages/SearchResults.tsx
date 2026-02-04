@@ -40,8 +40,7 @@ const SearchResults = () => {
       <Header />
       <main className="container mx-auto px-4 py-8 md:py-12">
         <h1
-          className="text-[20px] md:text-[22px] font-medium mb-8"
-          style={{ color: '#222222', fontFamily: 'Rubik, sans-serif' }}
+          className="text-xl md:text-[1.375rem] font-medium mb-8 text-foreground"
         >
           Search Results for "{query}"
         </h1>

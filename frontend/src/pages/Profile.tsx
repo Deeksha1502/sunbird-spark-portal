@@ -46,7 +46,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#F4F4F4] flex">
+        <div className="min-h-screen bg-gray-100 flex">
             {/* Sidebar */}
             <HomeSidebar activeNav={activeNav} onNavChange={setActiveNav} />
 
@@ -60,13 +60,13 @@ const Profile = () => {
                             {/* Back Arrow */}
                             <button
                                 onClick={() => window.history.back()}
-                                className="text-[#A14F34] hover:text-[#8a4329] transition-colors p-1"
+                                className="text-sunbird-brick hover:text-sunbird-brick/90 transition-colors p-1"
                             >
                                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7 1L1 7L7 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </button>
-                            <h1 className="text-[20px] font-medium text-[#222222] font-['Rubik']">Profile</h1>
+                            <h1 className="text-xl font-medium text-foreground">Profile</h1>
                         </div>
 
                         {/* Right: Search + Language */}
@@ -79,9 +79,9 @@ const Profile = () => {
                                 <Input
                                     placeholder="Search for content"
                                     readOnly
-                                    className="pl-4 pr-10 bg-white border-[#E1E1E1] focus:border-home-ginger focus:ring-home-ginger/20 rounded-[9px] h-[46px] font-['Rubik'] text-[16px] cursor-pointer"
+                                    className="pl-4 pr-10 bg-white border-border focus:border-sunbird-ginger focus:ring-sunbird-ginger/20 rounded-[0.5625rem] h-[2.875rem] text-base cursor-pointer"
                                 />
-                                <button className="absolute right-3 top-1/2 -translate-y-1/2 text-home-ginger hover:text-home-brick">
+                                <button className="absolute right-3 top-1/2 -translate-y-1/2 text-sunbird-ginger hover:text-sunbird-brick">
                                     <FiSearch className="w-4 h-4" />
                                 </button>
                             </div>
@@ -89,7 +89,7 @@ const Profile = () => {
                             {/* Language Dropdown */}
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" size="sm" className="gap-1 text-gray-600 hover:text-home-ginger">
+                                    <Button variant="ghost" size="sm" className="gap-1 text-gray-600 hover:text-sunbird-ginger">
                                         <LanguageIcon />
                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                                             <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -101,7 +101,7 @@ const Profile = () => {
                                         <DropdownMenuItem
                                             key={lang.code}
                                             onClick={() => handleLanguageChange(lang)}
-                                            className={currentCode === lang.code ? "bg-home-ivory" : ""}
+                                            className={currentCode === lang.code ? "bg-sunbird-ivory" : ""}
                                         >
                                             <span className="mr-2">{lang.label}</span>
                                         </DropdownMenuItem>
@@ -113,10 +113,10 @@ const Profile = () => {
                 </header>
 
                 {/* Scrollable Content */}
-                <main className="flex-1 overflow-y-auto bg-[#F4F4F4]">
+                <main className="flex-1 overflow-y-auto bg-gray-100">
                     <div className="p-6 md:p-8">
                         {/* Top Section: Profile Card + Personal Information */}
-                        <div className="grid grid-cols-1 lg:grid-cols-[373px_1fr] gap-5 mb-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-[23.3125rem_1fr] gap-5 mb-8">
                             {/* Left: Profile Card */}
                             <ProfileCard />
 

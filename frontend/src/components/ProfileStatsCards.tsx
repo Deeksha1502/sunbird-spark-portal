@@ -36,28 +36,28 @@ const statsData = [
         id: "time-spent",
         value: "30",
         label: "Time Spent on\nthe platform",
-        bgColor: "bg-[#70ADBF]",
+        bgColor: "bg-sunbird-wave",
         icon: TimeSpentIcon,
     },
     {
         id: "badges",
         value: "05",
         label: "Badges",
-        bgColor: "bg-[#CC8545]",
+        bgColor: "bg-sunbird-ginger",
         icon: BadgesIcon,
     },
     {
         id: "completed",
         value: "13",
         label: "Contents Completed",
-        bgColor: "bg-[#66A682]",
+        bgColor: "bg-sunbird-moss",
         icon: ContentsCompletedIcon,
     },
     {
         id: "certs",
         value: "06",
         label: "Certifications Earned",
-        bgColor: "bg-[#99708A]",
+        bgColor: "bg-sunbird-lavender",
         icon: CertificationsIcon,
     },
 ];
@@ -70,7 +70,7 @@ const ProfileStatsCards = () => {
                 return (
                     <div
                         key={stat.id}
-                        className={`${stat.bgColor} rounded-[20px] p-5 text-white relative min-h-[140px] flex flex-col justify-end`}
+                        className={`${stat.bgColor} rounded-[1.25rem] p-5 text-white relative min-h-[8.75rem] flex flex-col justify-end`}
                     >
                         {/* Icon in top-right */}
                         <div className="absolute top-4 right-4 bg-white/20 p-2.5 rounded-lg">
@@ -78,12 +78,12 @@ const ProfileStatsCards = () => {
                         </div>
 
                         {/* Value */}
-                        <div className="text-[40px] font-bold mb-1 font-['Rubik'] leading-none">
+                        <div className="text-[2.5rem] font-bold mb-1 leading-none">
                             {stat.value}
                         </div>
 
                         {/* Label */}
-                        <div className="text-[14px] text-white/90 font-['Rubik'] whitespace-pre-line leading-tight">
+                        <div className="text-sm text-white/90 whitespace-pre-line leading-tight">
                             {stat.label}
                         </div>
                     </div>

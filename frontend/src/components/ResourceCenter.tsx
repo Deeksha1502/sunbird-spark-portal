@@ -19,18 +19,18 @@ const ResourceCenter = () => {
     const { t } = useAppI18n();
 
     return (
-        <section className="pt-6 md:pt-8 pb-0" style={{ backgroundColor: '#FDF5E6' }}>
-            <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
+        <section className="pt-6 md:pt-8 pb-0 bg-sunbird-ivory">
+            <div className="w-full pl-[6.75rem] pr-[5.125rem]">
                 {/* Header with lines */}
                 <div className="flex items-center justify-center gap-4 mb-4">
                     <div className="h-px w-16 bg-gray-300" />
-                    <p className="text-[14px] font-medium text-foreground">
+                    <div className="text-sm font-medium text-foreground">
                         {t("resource.header")}
-                    </p>
+                    </div>
                     <div className="h-px w-16 bg-gray-300" />
                 </div>
 
-                <h2 className="text-2xl md:text-3xl lg:text-[40px] font-bold text-foreground text-center mb-10 md:mb-14">
+                <h2 className="text-2xl md:text-3xl lg:text-[2.5rem] font-bold text-foreground text-center mb-10 md:mb-14">
                     {t("resource.title")}
                 </h2>
 
@@ -144,14 +144,12 @@ const ResourceCardComponent = ({
                         {/* Content */}
                         <div className="w-full mt-auto">
                             <h3
-                                className="text-white font-semibold text-[18px] md:text-[20px] leading-[1.25] max-w-[92%]"
-                                style={{ textShadow: "var(--shadow-on-image)" }}
+                                className="text-white font-semibold text-lg md:text-xl leading-tight max-w-[92%] text-shadow-card"
                             >
                                 {title}
                             </h3>
                             <p
-                                className="mt-2 text-white/90 text-[13px] md:text-[14px] font-medium flex items-center gap-2 hover:opacity-80 transition-opacity"
-                                style={{ textShadow: "var(--shadow-on-image-soft)" }}
+                                className="mt-2 text-white/90 text-[0.8125rem] md:text-sm font-medium flex items-center gap-2 hover:opacity-80 transition-opacity text-shadow-card-sm"
                             >
                                 {getViewLabel(type)}
                                 <FiArrowRight className="w-3.5 h-3.5" />

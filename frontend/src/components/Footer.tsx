@@ -17,8 +17,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer style={{ backgroundColor: '#1A1A1A', fontFamily: 'Rubik, sans-serif' }}>
-      <div className="w-full py-12" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
+    <footer className="bg-gray-900 font-rubik">
+      <div className="w-full py-12 pl-[108px] pr-[82px]">
         <div className="flex flex-col md:flex-row justify-between items-start gap-10">
           {/* Logo */}
           <div>
@@ -75,20 +75,18 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar - Darker strip */}
-      <div style={{ backgroundColor: '#141414' }}>
-        <div className="w-full py-4 pr-[82px]" style={{ paddingLeft: '108px' }}>
+      <div className="bg-gray-950">
+        <div className="w-full py-4 pr-[82px] pl-[108px]">
           <div className="flex flex-col md:flex-row items-center justify-end gap-6 text-[13px]">
             <a
               href="#"
-              className="hover:opacity-80 transition-opacity"
-              style={{ color: '#B94A2C' }}
+              className="hover:opacity-80 transition-opacity text-sunbird-brick"
             >
               {t("footer.terms")}
             </a>
             <a
               href="#"
-              className="hover:opacity-80 transition-opacity"
-              style={{ color: '#B94A2C' }}
+              className="hover:opacity-80 transition-opacity text-sunbird-brick"
             >
               {t("footer.privacy")}
             </a>

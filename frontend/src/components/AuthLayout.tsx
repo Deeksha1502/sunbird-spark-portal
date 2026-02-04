@@ -21,12 +21,11 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
 
   return (
     <div
-      className="login-wrapper font-rubik min-h-screen w-full flex items-center justify-center relative bg-[#4A8C8C] auth-bg-wave overflow-x-hidden"
+      className="login-wrapper font-rubik min-h-screen w-full flex items-center justify-center relative bg-sunbird-wave auth-bg-wave overflow-x-hidden"
     >
       {/* Unified White Container */}
       <div
-        className="login-split-container flex flex-col md:flex-row m-[0.625rem] md:m-auto bg-white rounded-[4rem] p-[0.375rem] relative z-10 shadow-2xl overflow-hidden"
-        style={{ width: '1024px', height: '650px', minHeight: '650px' }}
+        className="login-split-container flex flex-col md:flex-row m-[0.625rem] md:m-auto bg-white rounded-[4rem] p-[0.375rem] relative z-10 shadow-2xl overflow-hidden w-[1024px] h-[650px] min-h-[650px]"
       >
 
         {/* Inset Left Panel */}
@@ -48,7 +47,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, onClose }) => {
           {/* Close Button */}
           <button
             onClick={handleClose}
-            className="close-button absolute top-5 right-5 p-2 text-[#333333] hover:opacity-70 transition-opacity z-20"
+            className="close-button absolute top-5 right-5 p-2 text-sunbird-ink hover:opacity-70 transition-opacity z-20"
           >
             <FiX className="w-6 h-6" />
           </button>

@@ -50,7 +50,7 @@ const HomeInProgressGrid = () => {
 
     return (
         <section className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">In Progress Contents</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">In Progress Contents</h3>
 
             <div className="bg-white rounded-2xl p-5 shadow-sm">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -63,12 +63,12 @@ const HomeInProgressGrid = () => {
                             {/* Content */}
                             <div className="flex-1 min-w-0">
                                 {/* Type Badge */}
-                                <span className="inline-block mb-2 text-xs font-medium px-3 py-1 rounded-full bg-[#FFF8E7] border border-[#CC8545] text-[#000000]">
+                                <span className="inline-block mb-2 text-xs font-medium px-3 py-1 rounded-full bg-sunbird-ivory border border-sunbird-ginger text-foreground">
                                     {item.type}
                                 </span>
 
                                 {/* Title */}
-                                <h4 className="font-medium text-gray-900 text-sm line-clamp-2 mb-2">
+                                <h4 className="font-medium text-foreground text-sm line-clamp-2 mb-2">
                                     {item.title}
                                 </h4>
 
@@ -76,7 +76,7 @@ const HomeInProgressGrid = () => {
                                 <div className="flex items-center gap-2">
                                     <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
                                         <div
-                                            className="h-full bg-[#A85236] rounded-full"
+                                            className="h-full bg-sunbird-brick rounded-full"
                                             style={{ width: `${item.progress}%` }}
                                         />
                                     </div>

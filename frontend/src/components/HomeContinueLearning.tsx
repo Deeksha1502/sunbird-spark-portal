@@ -25,7 +25,7 @@ const CircularProgress = ({ progress }: { progress: number }) => {
                 cy={size / 2}
                 r={radius}
                 fill="none"
-                stroke="#F0CE94"
+                className="stroke-sunbird-ginger/40"
                 strokeWidth={strokeWidth}
             />
             {/* Progress circle (completed) */}
@@ -34,7 +34,7 @@ const CircularProgress = ({ progress }: { progress: number }) => {
                 cy={size / 2}
                 r={radius}
                 fill="none"
-                stroke="#A85236"
+                className="stroke-sunbird-brick"
                 strokeWidth={strokeWidth}
                 strokeDasharray={circumference}
                 strokeDashoffset={offset}
@@ -49,7 +49,7 @@ const HomeContinueLearning = () => {
 
     return (
         <div className="bg-white rounded-2xl p-6 shadow-sm h-full">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <h3 className="text-lg font-semibold text-foreground mb-4">
                 Continue from where you left
             </h3>
 
@@ -66,14 +66,14 @@ const HomeContinueLearning = () => {
                 {/* Content */}
                 <div className="flex-1 flex flex-col justify-between">
                     <div>
-                        <h4 className="font-semibold text-gray-900 mb-2 line-clamp-2">
+                        <h4 className="font-semibold text-foreground mb-2 line-clamp-2">
                             {continueCourse.title}
                         </h4>
 
                         {/* Progress */}
                         <div className="flex items-center gap-2">
                             <CircularProgress progress={continueCourse.progress} />
-                            <span className="text-sm text-gray-500">
+                            <span className="text-sm text-muted-foreground">
                                 Completed : {continueCourse.progress}%
                             </span>
                         </div>
@@ -82,7 +82,7 @@ const HomeContinueLearning = () => {
                     {/* CTA Button */}
                     <Button
                         onClick={() => navigate(`/course/${continueCourse.id}`)}
-                        className="w-fit mt-3 bg-[#A85236] hover:bg-[#8a4329] text-white rounded-full px-6 h-10"
+                        className="w-fit mt-3 bg-sunbird-brick hover:bg-sunbird-brick/90 text-white rounded-full px-6 h-10"
                     >
                         Continue Learning
                         <FiArrowRight className="w-4 h-4 ml-2" />

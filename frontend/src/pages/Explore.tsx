@@ -40,7 +40,7 @@ const Explore = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#F8F9FB] shadow-[inset_0px_10px_30px_rgba(0,0,0,0.04)]">
+        <div className="min-h-screen bg-sunbird-ivory shadow-[inset_0px_10px_30px_rgba(0,0,0,0.04)]">
             <Header />
             <main className="w-full px-[30px] py-6 md:py-8">
                 <div className="flex flex-col md:flex-row gap-6 md:gap-8">
@@ -52,8 +52,8 @@ const Explore = () => {
                     {/* Content Grid */}
                     <div className="flex-1">
                         <div>
-                            <div className="bg-white rounded-[12px] px-4 mb-6 flex flex-row justify-between items-center shadow-sm border border-[#D7D7D7]" style={{ height: '60px' }}>
-                                <h1 className="font-medium text-foreground" style={{ fontFamily: 'Rubik, sans-serif', fontSize: '20px', lineHeight: '26px', letterSpacing: '0%' }}>
+                            <div className="bg-white rounded-[12px] px-4 mb-6 flex flex-row justify-between items-center shadow-sm border border-border h-[60px]">
+                                <h1 className="font-medium text-foreground font-rubik text-[20px] leading-[26px] tracking-normal">
                                     {t("startExploring")}
                                 </h1>
 
@@ -73,7 +73,7 @@ const Explore = () => {
                                         <DropdownMenuTrigger asChild>
                                             <button className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-md text-sm font-normal text-foreground hover:bg-gray-50 transition-colors min-w-[120px] justify-between">
                                                 Popular
-                                                <FiChevronDown className="w-4 h-4 text-[#A85236]" />
+                                                <FiChevronDown className="w-4 h-4 text-sunbird-brick" />
                                             </button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end" className="w-[140px] bg-white z-50">

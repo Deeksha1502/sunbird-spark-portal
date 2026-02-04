@@ -50,7 +50,7 @@ const MyLearningCourses = () => {
         <div className="bg-white rounded-2xl p-5 h-full">
             {/* Header */}
             <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-lg font-semibold text-gray-900 font-['Rubik']">Courses</h3>
+                <h3 className="text-lg font-semibold text-foreground">Courses</h3>
                 <ChevronDownIcon />
             </div>
 
@@ -60,9 +60,9 @@ const MyLearningCourses = () => {
                     <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
-                        className={`px-4 py-1.5 rounded-full text-sm font-medium font-['Rubik'] transition-colors ${activeTab === tab.id
-                                ? "bg-[#A85236] text-white"
-                                : "bg-transparent border border-[#A85236] text-[#A85236] hover:bg-[#A85236]/10"
+                        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${activeTab === tab.id
+                            ? "bg-sunbird-brick text-white"
+                            : "bg-transparent border border-sunbird-brick text-sunbird-brick hover:bg-sunbird-brick/10"
                             }`}
                     >
                         {tab.label}
@@ -81,21 +81,21 @@ const MyLearningCourses = () => {
                         <img
                             src={course.thumbnail}
                             alt={course.title}
-                            className="w-[126px] h-[125px] rounded-[15px] object-cover flex-shrink-0"
+                            className="w-[7.875rem] h-[7.8125rem] rounded-[15px] object-cover flex-shrink-0"
                         />
 
                         {/* Content */}
                         <div className="flex-1 min-w-0 py-2">
-                            <h4 className="font-medium text-[20px] leading-[28px] text-[#222222] line-clamp-2 mb-3 font-['Rubik']">
+                            <h4 className="font-medium text-xl leading-[28px] text-foreground line-clamp-2 mb-3">
                                 {course.title}
                             </h4>
-                            <p className="text-[16px] leading-[19px] font-normal text-[#222222] mb-2 font-['Rubik']">
+                            <p className="text-base leading-[19px] font-normal text-foreground mb-2">
                                 Completed : {course.progress}%
                             </p>
                             {/* Progress Bar */}
-                            <div className="h-1.5 bg-[#F4F4F4] rounded-[10px] max-w-[313px]">
+                            <div className="h-1.5 bg-gray-100 rounded-[10px] max-w-[19.5625rem]">
                                 <div
-                                    className="h-full bg-[#A85236] rounded-[10px] transition-all"
+                                    className="h-full bg-sunbird-brick rounded-[10px] transition-all"
                                     style={{ width: `${course.progress}%` }}
                                 />
                             </div>
@@ -107,7 +107,7 @@ const MyLearningCourses = () => {
             {/* View More Link */}
             <Link
                 to="/courses"
-                className="block mt-5 text-sm font-medium font-['Rubik'] text-[#A85236] hover:text-[#8a4329] transition-colors"
+                className="block mt-5 text-sm font-medium text-sunbird-brick hover:text-sunbird-brick/80 transition-colors"
             >
                 View More Courses →
             </Link>

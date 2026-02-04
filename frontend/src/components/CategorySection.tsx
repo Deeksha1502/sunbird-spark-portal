@@ -15,31 +15,31 @@ const CategorySection = () => {
       id: "ui-ux-design",
       name: "ui-ux-design",
       icon: uiuxIcon,
-      gradient: "linear-gradient(315deg, #45C0ED 0%, #8E46C5 100%)",
+      gradientClass: "bg-gradient-to-tl from-sunbird-wave to-sunbird-lavender",
     },
     {
       id: "it-development",
       name: "it-development",
       icon: devIcon,
-      gradient: "linear-gradient(315deg, #F6C35C 0%, #D55E1D 100%)",
+      gradientClass: "bg-gradient-to-tl from-sunbird-sunflower to-sunbird-ginger",
     },
     {
       id: "digital-marketing",
       name: "digital-marketing",
       icon: marketingIcon,
-      gradient: "linear-gradient(315deg, #6ED97B 0%, #1D79D5 100%)",
+      gradientClass: "bg-gradient-to-tl from-sunbird-leaf to-sunbird-ink",
     },
     {
       id: "entrepreneurship",
       name: "entrepreneurship",
       icon: entrepreneurIcon,
-      gradient: "linear-gradient(315deg, #F59C84 0%, #D655E7 100%)",
+      gradientClass: "bg-gradient-to-tl from-sunbird-ginger to-sunbird-jamun",
     },
   ];
 
   return (
     <section id="categories" className="py-6 md:py-8 bg-white">
-      <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
+      <div className="w-full pl-[108px] pr-[82px]">
         {/* Header */}
         <div className="mb-8">
           <h2 className="text-xl md:text-2xl font-medium text-foreground">
@@ -54,13 +54,7 @@ const CategorySection = () => {
             {categories.map((category) => (
               <Link key={category.id} to="/explore" className="group">
                 <div
-                  className="flex flex-col justify-between transition-transform hover:scale-[1.02] p-5"
-                  style={{
-                    background: category.gradient,
-                    width: '210px',
-                    height: '166px',
-                    borderRadius: '20px'
-                  }}
+                  className={`flex flex-col justify-between transition-transform hover:scale-[1.02] p-5 w-[210px] h-[166px] rounded-[20px] ${category.gradientClass}`}
                 >
                   {/* Top-left white horizontal line */}
                   <div className="w-6 h-[2px] bg-white/80 rounded-full" />
@@ -80,16 +74,10 @@ const CategorySection = () => {
           {/* Browse All Button - Aligned to the right */}
           <Link
             to="/explore"
-            className="group flex flex-col items-center justify-center gap-3 self-center"
-            style={{ paddingLeft: '70px', paddingTop: '24px' }}
+            className="group flex flex-col items-center justify-center gap-3 self-center pl-[70px] pt-[24px]"
           >
             <div
-              className="rounded-full text-white flex items-center justify-center transition-transform hover:scale-105"
-              style={{
-                width: '59px',
-                height: '59px',
-                backgroundColor: '#A85236'
-              }}
+              className="rounded-full text-white flex items-center justify-center transition-transform hover:scale-105 w-[59px] h-[59px] bg-sunbird-brick"
             >
               <FiArrowRight className="w-6 h-6" />
             </div>

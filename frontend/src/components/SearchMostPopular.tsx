@@ -73,11 +73,7 @@ const SearchMostPopular = () => {
   ];
 
   const getBadgeStyle = () => {
-    return {
-      backgroundColor: "#FFF1C7",
-      color: "#1A1A1A",
-      border: "1.5px solid #CC8545"
-    };
+    return "bg-sunbird-ivory text-foreground border-[1.5px] border-sunbird-ginger";
   };
 
   return (
@@ -85,16 +81,14 @@ const SearchMostPopular = () => {
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <h2
-          className="text-[20px] font-semibold"
-          style={{ color: '#222222', fontFamily: 'Rubik, sans-serif' }}
+          className="text-xl font-semibold text-foreground"
         >
           Most Popular Content
         </h2>
         <Link to="/explore">
           <Button
             variant="ghost"
-            className="p-0 h-auto hover:bg-transparent"
-            style={{ color: '#A85236' }}
+            className="p-0 h-auto hover:bg-transparent text-sunbird-brick"
           >
             <FiArrowRight className="w-5 h-5" />
           </Button>
@@ -106,8 +100,7 @@ const SearchMostPopular = () => {
         {courses.map((course) => (
           <Link key={course.id} to={`/collection/${course.id}`}>
             <div
-              className="group bg-white rounded-[24px] overflow-hidden transition-all duration-300 hover:shadow-lg"
-              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
+              className="group bg-white rounded-[24px] overflow-hidden transition-all duration-300 hover:shadow-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
             >
               {/* Image with padding */}
               <div className="p-3 pb-0">
@@ -123,32 +116,28 @@ const SearchMostPopular = () => {
               <div className="p-4 pt-3">
                 {/* Badge below image */}
                 <span
-                  className="inline-block text-[11px] font-medium px-3 py-1 rounded-full mb-2.5"
-                  style={getBadgeStyle()}
+                  className={`inline-block text-[0.6875rem] font-medium px-3 py-1 rounded-full mb-2.5 ${getBadgeStyle()}`}
                 >
                   {course.type}
                 </span>
 
                 {/* Title */}
                 <h3
-                  className="font-semibold text-[14px] leading-snug mb-2.5 line-clamp-2"
-                  style={{ color: '#222222', fontFamily: 'Rubik, sans-serif' }}
+                  className="font-semibold text-sm leading-snug mb-2.5 line-clamp-2 text-foreground"
                 >
                   {course.title}
                 </h3>
 
                 {/* Stats */}
                 <div
-                  className="flex items-center gap-1.5 text-[12px]"
-                  style={{ color: '#757575', fontFamily: 'Rubik, sans-serif' }}
+                  className="flex items-center gap-1.5 text-xs text-muted-foreground"
                 >
                   <span
-                    className="font-medium"
-                    style={{ color: '#222222' }}
+                    className="font-medium text-foreground"
                   >
                     {course.rating.toFixed(1)}
                   </span>
-                  <FiStar className="w-3.5 h-3.5 fill-[#B94A2C] text-[#B94A2C]" />
+                  <FiStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />
                   <span className="mx-0.5">•</span>
                   <span>{course.learners} Learners</span>
                   <span className="mx-0.5">•</span>

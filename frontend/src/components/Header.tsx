@@ -56,13 +56,13 @@ const Header = () => {
                 key={link.href}
                 to={link.href}
                 className={`text-[15px] transition-colors ${isActive(link.href)
-                  ? 'text-[#A85236] font-medium'
-                  : 'text-[#1A1A1A] font-normal hover:text-[#A85236]'
+                  ? 'text-sunbird-brick font-medium'
+                  : 'text-gray-900 font-normal hover:text-sunbird-brick'
                   }`}
               >
                 <span className="flex items-center gap-1">
                   {link.label}
-                  {link.href === "/explore" && <FiChevronDown className={`w-4 h-4 pl-[5px] mt-[3px] ${isActive(link.href) ? 'text-[#A85236]' : 'text-gray-400'}`} />}
+                  {link.href === "/explore" && <FiChevronDown className={`w-4 h-4 pl-[5px] mt-[3px] ${isActive(link.href) ? 'text-sunbird-brick' : 'text-gray-400'}`} />}
                 </span>
               </Link>
             ))}
@@ -72,19 +72,19 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-4">
             <div className="flex items-center gap-1">
               {/* Search */}
-              <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors" onClick={() => { navigate("/search") }}>
-                <FiSearch className="w-[18px] h-[18px]" style={{ strokeWidth: 2 }} />
+              <button className="p-2.5 text-sunbird-brick hover:bg-gray-50 rounded-lg transition-colors" onClick={() => { navigate("/search") }}>
+                <FiSearch className="w-[18px] h-[18px] stroke-[2]" />
               </button>
 
               {/* Notifications - Filled Bell */}
-              <button className="p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
-                <FiBell className="w-[21px] h-[21px]" fill="#A85236" />
+              <button className="p-2.5 text-sunbird-brick hover:bg-gray-50 rounded-lg transition-colors">
+                <FiBell className="w-[21px] h-[21px] fill-sunbird-brick" />
               </button>
 
               {/* Language Selector */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-1 p-2.5 text-[#A85236] hover:bg-gray-50 rounded-lg transition-colors">
+                  <button className="flex items-center gap-1 p-2.5 text-sunbird-brick hover:bg-gray-50 rounded-lg transition-colors">
                     <img src={translationIcon} alt="Language" width={21} height={21} />
                     <FiChevronDown className="w-3.5 h-3.5" />
                   </button>
@@ -93,7 +93,7 @@ const Header = () => {
                   {languages.map((lang) => (
                     <DropdownMenuItem
                       key={lang.code}
-                      className={`cursor-pointer hover:bg-gray-50 ${currentCode === lang.code ? 'font-medium text-[#A85236]' : ''
+                      className={`cursor-pointer hover:bg-gray-50 ${currentCode === lang.code ? 'font-medium text-sunbird-brick' : ''
                         }`}
                       onClick={() => changeLanguage(lang.code)}
                     >
@@ -107,7 +107,7 @@ const Header = () => {
             {/* Login Button */}
             <Button
               onClick={() => window.location.href = "/home"}
-              className="flex items-center justify-center w-[72px] h-[30px] bg-[#A85236] text-white rounded-[6px] text-sm font-medium p-0"
+              className="flex items-center justify-center w-[72px] h-[30px] bg-sunbird-brick text-white rounded-[6px] text-sm font-medium p-0"
             >
               {t("login")}
             </Button>
@@ -115,7 +115,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-[#A85236]"
+            className="md:hidden p-2 text-sunbird-brick"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -131,7 +131,7 @@ const Header = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`block text-sm font-medium ${isActive(link.href) ? 'text-[#A85236]' : 'text-gray-600'
+                className={`block text-sm font-medium ${isActive(link.href) ? 'text-sunbird-brick' : 'text-gray-600'
                   }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -141,7 +141,7 @@ const Header = () => {
             <hr />
             <Button
               onClick={() => window.location.href = "/home"}
-              className="block w-full text-center bg-[#A85236] text-white px-4 py-2 rounded-lg text-sm font-medium"
+              className="block w-full text-center bg-sunbird-brick text-white px-4 py-2 rounded-lg text-sm font-medium"
             >
               {t("login")}
             </Button>

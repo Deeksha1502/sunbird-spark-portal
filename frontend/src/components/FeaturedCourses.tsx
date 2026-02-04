@@ -65,7 +65,6 @@ const FeaturedCourses = () => {
           <div
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {featuredCourses.map((course) => (
               <Link

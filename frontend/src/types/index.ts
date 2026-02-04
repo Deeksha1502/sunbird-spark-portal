@@ -49,3 +49,42 @@ export interface Notification {
   duration?: number;
   timestamp: Date;
 }
+export type ContentType = "Course" | "Textbook" | "Video" | "PDF" | "Epub";
+
+export interface SearchItem {
+    id: string;
+    title: string;
+    type: ContentType;
+    image: string;
+    isResource?: boolean;
+    rating?: number;
+    learners?: string;
+    lessons?: number;
+}
+
+export interface Lesson {
+    id: string;
+    title: string;
+    duration: string;
+    isCompleted: boolean;
+    isLocked: boolean;
+    videoUrl?: string;
+}
+
+export interface DashboardNotification {
+    id: string;
+    message: string;
+    date: string;
+}
+
+export interface DashboardCourse {
+    id: string;
+    title: string;
+    author: string;
+    thumbnail: string;
+    badges: string[];
+    category: string;
+    language: string;
+    rating: number;
+    duration: string;
+}

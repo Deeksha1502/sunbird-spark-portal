@@ -12,7 +12,7 @@ const MyLearningHoursSpent = () => {
     return (
         <div className="bg-white rounded-2xl p-5">
             {/* Header */}
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Rubik']">Total Hrs Spent</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">Total Hrs Spent</h3>
 
             <div className="flex items-center gap-6">
                 {/* Donut Chart */}
@@ -24,7 +24,7 @@ const MyLearningHoursSpent = () => {
                             cy="55"
                             r={radius}
                             fill="none"
-                            stroke="#F0CE94"
+                            className="stroke-sunbird-ginger/40"
                             strokeWidth="12"
                         />
                         {/* Progress circle - lessons */}
@@ -33,7 +33,7 @@ const MyLearningHoursSpent = () => {
                             cy="55"
                             r={radius}
                             fill="none"
-                            stroke="#A85236"
+                            className="stroke-sunbird-brick"
                             strokeWidth="12"
                             strokeDasharray={`${lessonsProgress} ${circumference}`}
                             strokeLinecap="round"
@@ -45,7 +45,7 @@ const MyLearningHoursSpent = () => {
                             cy="55"
                             r={radius}
                             fill="none"
-                            stroke="#CC8545"
+                            className="stroke-sunbird-ginger"
                             strokeWidth="12"
                             strokeDasharray={`${contentsProgress} ${circumference}`}
                             strokeLinecap="round"
@@ -54,7 +54,7 @@ const MyLearningHoursSpent = () => {
                     </svg>
                     {/* Center text */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-2xl font-bold text-gray-900 font-['Rubik']">{totalHours}</span>
+                        <span className="text-2xl font-bold text-foreground">{totalHours}</span>
                     </div>
                 </div>
 
@@ -63,13 +63,13 @@ const MyLearningHoursSpent = () => {
                     {/* Lessons Visited */}
                     <div>
                         <div className="flex items-center justify-between mb-1">
-                            <span className="text-sm text-gray-600 font-['Rubik']">
+                            <span className="text-sm text-gray-600">
                                 {lessonsVisited.current}/{lessonsVisited.total} Lesson visited
                             </span>
                         </div>
                         <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                             <div
-                                className="h-full bg-[#A85236] rounded-full"
+                                className="h-full bg-sunbird-brick rounded-full"
                                 style={{ width: `${(lessonsVisited.current / lessonsVisited.total) * 100}%` }}
                             />
                         </div>
@@ -78,13 +78,13 @@ const MyLearningHoursSpent = () => {
                     {/* Contents Completed */}
                     <div>
                         <div className="flex items-center justify-between mb-1">
-                            <span className="text-sm text-gray-600 font-['Rubik']">
+                            <span className="text-sm text-gray-600">
                                 {contentsCompleted.current}/{contentsCompleted.total} Contents completed
                             </span>
                         </div>
                         <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                             <div
-                                className="h-full bg-[#CC8545] rounded-full"
+                                className="h-full bg-sunbird-ginger rounded-full"
                                 style={{ width: `${(contentsCompleted.current / contentsCompleted.total) * 100}%` }}
                             />
                         </div>

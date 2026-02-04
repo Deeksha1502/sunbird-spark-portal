@@ -40,13 +40,13 @@ const FAQSection = () => {
 
     return (
         <section className="bg-white pt-2 pb-8">
-            <div className="w-full" style={{ paddingLeft: '108px', paddingRight: '82px' }}>
+            <div className="w-full pl-[6.75rem] pr-[5.125rem]">
                 <h2 className="text-xl md:text-2xl font-bold mb-6 text-foreground">
                     {t("faq.title")}
                 </h2>
 
                 {/* ✅ FAQ + IMAGE INSIDE SAME CONTAINER */}
-                <div className="grid lg:grid-cols-[1fr_420px] gap-10 items-start">
+                <div className="grid lg:grid-cols-[1fr_26.25rem] gap-10 items-start">
 
                     {/* FAQ */}
                     <Accordion
@@ -61,10 +61,10 @@ const FAQSection = () => {
                                 value={`item-${index}`}
                                 className="rounded-xl px-5 border border-border/50 bg-white shadow-sm"
                             >
-                                <AccordionTrigger className="py-4 text-left text-[14px] md:text-[15px] font-medium text-foreground hover:no-underline">
+                                <AccordionTrigger className="py-4 text-left text-sm md:text-[0.9375rem] font-medium text-foreground hover:no-underline">
                                     {faq.question}
                                 </AccordionTrigger>
-                                <AccordionContent className="pb-4 text-[13px] leading-relaxed text-muted-foreground">
+                                <AccordionContent className="pb-4 text-[0.8125rem] leading-relaxed text-muted-foreground">
                                     {faq.answer}
                                 </AccordionContent>
                             </AccordionItem>
@@ -72,7 +72,7 @@ const FAQSection = () => {
                     </Accordion>
 
                     <div className="hidden lg:flex items-start">
-                        <div className="w-[420px] h-[380px] overflow-hidden rounded-[18px]">
+                        <div className="w-[26.25rem] h-[23.75rem] overflow-hidden rounded-[18px]">
                             <img
                                 src={faqImage}
                                 alt="Student learning online"

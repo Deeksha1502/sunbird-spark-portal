@@ -70,14 +70,14 @@ const ContentRead = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#F5F5F5]">
+        <div className="min-h-screen bg-sunbird-ivory">
             <Header />
 
             <main className="container mx-auto px-4 py-6">
                 {/* Go Back Link */}
                 <button
                     onClick={() => navigate(-1)}
-                    className="flex items-center gap-2 text-[#B94A2C] text-sm font-medium mb-6 hover:opacity-80 transition-opacity font-['Rubik']"
+                    className="flex items-center gap-2 text-sunbird-brick text-sm font-medium mb-6 hover:opacity-80 transition-opacity"
                 >
                     <FiArrowLeft className="w-4 h-4" />
                     Go Back
@@ -85,20 +85,20 @@ const ContentRead = () => {
 
                 {/* Title Row */}
                 <div className="flex items-start justify-between mb-2">
-                    <h1 className="text-xl md:text-2xl font-semibold text-foreground max-w-[75%] font-['Rubik']">
+                    <h1 className="text-xl md:text-2xl font-semibold text-foreground max-w-[75%]">
                         {contentData.title}
                     </h1>
-                    <button className="flex items-center gap-2 text-[#B94A2C] text-sm font-medium hover:opacity-80 transition-opacity font-['Rubik']">
+                    <button className="flex items-center gap-2 text-sunbird-brick text-sm font-medium hover:opacity-80 transition-opacity">
                         <FiShare2 className="w-4 h-4" />
                         Share
                     </button>
                 </div>
 
                 {/* Stats Row */}
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8 font-['Rubik']">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
                     <span className="flex items-center gap-1">
                         {contentData.rating}
-                        <FiStar className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                        <FiStar className="w-3.5 h-3.5 text-sunbird-yellow fill-sunbird-yellow" />
                     </span>
                     <span className="text-gray-300">•</span>
                     <span>{contentData.learners} Learners</span>
@@ -112,7 +112,7 @@ const ContentRead = () => {
                         <div className="relative">
                             {/* Week Label */}
                             <div className="absolute top-4 left-4 z-10">
-                                <span className="bg-[#B94A2C] text-white text-sm font-medium px-4 py-2 rounded-md font-['Rubik']">
+                                <span className="bg-sunbird-brick text-white text-sm font-medium px-4 py-2 rounded-md">
                                     {contentData.currentWeek}
                                 </span>
                             </div>
@@ -123,7 +123,7 @@ const ContentRead = () => {
 
                                 {/* Play Button */}
                                 <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg">
-                                    <FiPlay className="w-6 h-6 text-[#B94A2C] ml-1" fill="#B94A2C" />
+                                    <FiPlay className="w-6 h-6 text-sunbird-brick ml-1" fill="currentColor" />
                                 </button>
                             </div>
                         </div>
@@ -133,8 +133,8 @@ const ContentRead = () => {
                 {/* Related Content Section */}
                 <section>
                     <div className="flex items-center gap-3 mb-6">
-                        <h2 className="text-xl font-semibold text-foreground font-['Rubik']">Related Content</h2>
-                        <FiArrowRight className="w-5 h-5 text-[#B94A2C]" />
+                        <h2 className="text-xl font-semibold text-foreground">Related Content</h2>
+                        <FiArrowRight className="w-5 h-5 text-sunbird-brick" />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-fr">
@@ -156,7 +156,7 @@ const ContentRead = () => {
                             <div className="w-6 h-1 bg-gray-800 rounded-full" />
                             <div className="w-6 h-1 bg-gray-300 rounded-full" />
                         </div>
-                        <button className="w-8 h-8 rounded-full bg-[#B94A2C] flex items-center justify-center hover:bg-[#A04030] transition-colors">
+                        <button className="w-8 h-8 rounded-full bg-sunbird-brick flex items-center justify-center hover:bg-sunbird-brick/90 transition-colors">
                             <FiArrowRight className="w-4 h-4 text-white" />
                         </button>
                     </div>
@@ -191,16 +191,16 @@ const RelatedCourseCard = ({ item }: { item: RelatedItem }) => (
                 />
             </div>
             <div className="p-4 flex-1 flex flex-col">
-                <span className="inline-block text-xs font-medium text-foreground bg-[#FFF1C7] border border-[#CC8545] rounded-full px-3 py-1 mb-2 w-fit font-['Rubik']">
+                <span className="inline-block text-xs font-medium text-foreground bg-sunbird-ivory border border-sunbird-ginger rounded-full px-3 py-1 mb-2 w-fit">
                     {item.type}
                 </span>
-                <h3 className="text-sm font-semibold text-foreground leading-snug mb-3 line-clamp-2 flex-1 font-['Rubik']">
+                <h3 className="text-sm font-semibold text-foreground leading-snug mb-3 line-clamp-2 flex-1">
                     {item.title}
                 </h3>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground font-['Rubik']">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
                         {item.rating}
-                        <FiStar className="w-3 h-3 text-amber-400 fill-amber-400" />
+                        <FiStar className="w-3 h-3 text-sunbird-yellow fill-sunbird-yellow" />
                     </span>
                     <span className="text-gray-300">•</span>
                     <span>{item.learners} Learners</span>
@@ -214,7 +214,7 @@ const RelatedCourseCard = ({ item }: { item: RelatedItem }) => (
 
 const RelatedResourceCard = ({ item }: { item: RelatedItem }) => (
     <Link to={`/content/${item.id}`} className="group h-full">
-        <div className="rounded-xl overflow-hidden relative h-full min-h-[240px]">
+        <div className="rounded-xl overflow-hidden relative h-full min-h-[15rem]">
             <img
                 src={item.image}
                 alt={item.title}
@@ -223,7 +223,7 @@ const RelatedResourceCard = ({ item }: { item: RelatedItem }) => (
 
             {/* Type Badge */}
             <div className="absolute top-4 left-4">
-                <span className="inline-block bg-white text-foreground text-xs font-medium px-3 py-1.5 rounded-md font-['Rubik']">
+                <span className="inline-block bg-white text-foreground text-xs font-medium px-3 py-1.5 rounded-[0.375rem]">
                     {item.type}
                 </span>
             </div>
@@ -231,14 +231,12 @@ const RelatedResourceCard = ({ item }: { item: RelatedItem }) => (
             {/* Content */}
             <div className="absolute inset-x-0 bottom-0 p-4">
                 <h3
-                    className="text-white font-semibold text-base leading-snug mb-2 font-['Rubik']"
-                    style={{ textShadow: "0 2px 10px rgba(0,0,0,0.55)" }}
+                    className="text-white font-semibold text-base leading-snug mb-2 text-shadow-card"
                 >
                     {item.title}
                 </h3>
                 <p
-                    className="text-white/90 text-sm font-medium flex items-center gap-2 font-['Rubik']"
-                    style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+                    className="text-white/90 text-sm font-medium flex items-center gap-2 text-shadow-card-sm"
                 >
                     See the Case Study
                     <FiArrowRight className="w-3.5 h-3.5" />

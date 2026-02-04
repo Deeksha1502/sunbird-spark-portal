@@ -156,10 +156,10 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
     const { t } = useAppI18n();
     return (
         <Link to={`/collection/${item.id}`} className="group h-full block">
-            <div className="bg-white rounded-[28px] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 p-[18px] h-[360px] flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-[#E5E7EB]">
+            <div className="bg-white rounded-[1.75rem] overflow-hidden hover:shadow-xl transition-all duration-300 p-[1.125rem] h-[22.5rem] flex flex-col shadow-md border border-border">
                 {/* Image Container with border-radius */}
-                <div className="h-[150px] flex-shrink-0 mb-4">
-                    <div className="w-full h-full overflow-hidden rounded-[20px]">
+                <div className="h-[9.375rem] flex-shrink-0 mb-4">
+                    <div className="w-full h-full overflow-hidden rounded-[1.25rem]">
                         <img
                             src={item.image}
                             alt={item.title}
@@ -171,20 +171,20 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
                 {/* Content Section */}
                 <div className="flex flex-col flex-1 px-1">
                     {/* Pill-shaped Type Badge */}
-                    <span className="inline-block text-[13px] font-bold text-black bg-[#FFF1C7] border border-[#CC8545] rounded-full px-4 py-1 mb-3 self-start whitespace-nowrap">
+                    <span className="inline-block text-xs font-bold text-black bg-sunbird-ivory border border-sunbird-ginger rounded-full px-4 py-1 mb-3 self-start whitespace-nowrap">
                         {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-[19px] font-bold text-foreground leading-[1.25] mb-3">
+                    <h3 className="text-xl font-bold text-foreground leading-[1.25] mb-3">
                         {item.title}
                     </h3>
 
                     {/* Metadata Section - Pinned to bottom */}
-                    <div className="mt-auto flex items-center gap-2 text-[14px] text-[#6B7280] font-medium pb-1">
+                    <div className="mt-auto flex items-center gap-2 text-sm text-muted-foreground font-medium pb-1">
                         <span className="flex items-center gap-1.5">
                             {item.rating || "4.5"}
-                            <FaStar className="w-4 h-4 text-[#A85236]" />
+                            <FaStar className="w-4 h-4 text-sunbird-brick" />
                         </span>
                         <span className="text-gray-300">•</span>
                         <span>{item.learners || "9k"} {t("contentStats.learners")}</span>
@@ -213,10 +213,10 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
     return (
         <Link
             to={`/collection/${item.id}`}
-            className={`relative block w-full h-[360px] rounded-[20px] overflow-hidden ${item.type === 'Epub' ? 'bg-[#E86C00]' : ''}`}
+            className={`relative block w-full h-[22.5rem] rounded-[1.25rem] overflow-hidden ${item.type === 'Epub' ? 'bg-sunbird-ginger' : ''}`}
         >
             {/* Image Container with border-radius */}
-            <div className="absolute inset-0 w-full h-full overflow-hidden rounded-[20px]">
+            <div className="absolute inset-0 w-full h-full overflow-hidden rounded-[1.25rem]">
                 <img
                     src={item.image}
                     alt={item.title}
@@ -227,21 +227,19 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
             {/* Content Overlay */}
             <div className="relative z-10 p-7 flex flex-col h-full items-start">
                 {/* Rectangular White Tag (Top-left) */}
-                <span className="inline-block bg-white text-foreground text-[14px] px-4 py-1.5 rounded-[4px] shadow-sm mb-auto">
+                <span className="inline-block bg-white text-foreground text-sm px-4 py-1.5 rounded-[0.25rem] shadow-sm mb-auto">
                     {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                 </span>
 
                 {/* Bottom Content Overlay (Bottom-left) */}
                 <div className="w-full mt-auto">
                     <h3
-                        className="text-white text-[20px] leading-[1.3] mb-3 font-normal"
-                        style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+                        className="text-white text-xl leading-[1.3] mb-3 font-normal text-shadow-card"
                     >
                         {item.title}
                     </h3>
                     <p
-                        className="text-white text-[14px] flex items-center gap-2 font-normal"
-                        style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+                        className="text-white text-sm flex items-center gap-2 font-normal text-shadow-card-sm"
                     >
                         {getCTAText(item.type)}
                         <FiArrowRight className="w-4 h-4" />

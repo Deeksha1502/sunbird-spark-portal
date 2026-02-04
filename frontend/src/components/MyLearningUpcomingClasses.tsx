@@ -34,14 +34,14 @@ const MyLearningUpcomingClasses = () => {
     return (
         <div className="bg-white rounded-2xl p-5">
             {/* Header */}
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Rubik']">Upcoming Classes</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">Upcoming Classes</h3>
 
             {/* Classes by Date */}
             <div className="space-y-4">
                 {upcomingClassesData.map((dateGroup) => (
                     <div key={dateGroup.date}>
                         {/* Date Header */}
-                        <div className="text-xs font-medium text-gray-500 mb-2 font-['Rubik']">
+                        <div className="text-xs font-medium text-muted-foreground mb-2">
                             {dateGroup.date}
                         </div>
 
@@ -50,21 +50,21 @@ const MyLearningUpcomingClasses = () => {
                             {dateGroup.classes.map((classItem) => (
                                 <div
                                     key={classItem.id}
-                                    className="flex items-start gap-3 p-3 bg-[#FFFEF4] rounded-lg"
+                                    className="flex items-start gap-3 p-3 bg-sunbird-ivory rounded-lg"
                                 >
                                     {/* Time */}
                                     <div className="flex-shrink-0">
-                                        <span className="text-sm font-semibold text-[#A85236] font-['Rubik']">
+                                        <span className="text-sm font-semibold text-sunbird-brick">
                                             {classItem.time}
                                         </span>
                                     </div>
 
                                     {/* Content */}
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="text-sm font-medium text-gray-900 line-clamp-1 mb-1 font-['Rubik']">
+                                        <h4 className="text-sm font-medium text-foreground line-clamp-1 mb-1">
                                             {classItem.title}
                                         </h4>
-                                        <div className="flex items-center gap-3 text-xs text-gray-500 font-['Rubik']">
+                                        <div className="flex items-center gap-3 text-xs text-muted-foreground">
                                             <div className="flex items-center gap-1">
                                                 <ClockIcon />
                                                 <span>{classItem.duration}</span>

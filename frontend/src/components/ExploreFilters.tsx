@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent } from "react";
+import React, { BaseSyntheticEvent } from "react";
 import { Checkbox } from "./checkbox";
 import { useAppI18n } from "@/hooks/useAppI18n";
 import type { FilterState } from "@/pages/Explore";
@@ -61,14 +61,14 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
     }
 
     return (
-        <div className="bg-[#F5F5F5] rounded-[22px] p-5">
+        <div className="bg-sunbird-ivory rounded-[1.375rem] p-5">
             {/* Filters Title */}
             <h2 className="text-lg font-bold text-foreground mb-4 px-1">{t("filters")}</h2>
 
             <Accordion type="multiple" defaultValue={["collections", "contentTypes", "categories"]} className="w-full space-y-3">
                 {/* Collections Section */}
-                <AccordionItem value="collections" className="bg-white rounded-[12px] border-none px-4 shadow-sm">
-                    <AccordionTrigger className="hover:no-underline py-4 [&>svg]:text-[#A85236]">
+                <AccordionItem value="collections" className="bg-white rounded-xl border-none px-4 shadow-sm">
+                    <AccordionTrigger className="hover:no-underline py-4 [&>svg]:text-sunbird-brick">
                         <span className="text-sm font-semibold text-foreground">{t("collections")}</span>
                     </AccordionTrigger>
                     <AccordionContent>
@@ -84,7 +84,7 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
                                         onCheckedChange={(checked) =>
                                             handleCheckboxChange("collections", item.id, checked as boolean)
                                         }
-                                        className="h-5 w-5 rounded border-[#CC8545] data-[state=checked]:bg-[#CC8545] data-[state=checked]:border-[#CC8545]"
+                                        className="h-5 w-5 rounded border-sunbird-ginger data-[state=checked]:bg-sunbird-ginger data-[state=checked]:border-sunbird-ginger"
                                     />
                                     <span className="text-sm text-foreground group-hover:text-primary transition-colors">
                                         {t(`filterOptions.${item.id}`)}
@@ -96,8 +96,8 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
                 </AccordionItem>
 
                 {/* Content Type Section */}
-                <AccordionItem value="contentTypes" className="bg-white rounded-[12px] border-none px-4 shadow-sm">
-                    <AccordionTrigger className="hover:no-underline py-4 [&>svg]:text-[#A85236]">
+                <AccordionItem value="contentTypes" className="bg-white rounded-xl border-none px-4 shadow-sm">
+                    <AccordionTrigger className="hover:no-underline py-4 [&>svg]:text-sunbird-brick">
                         <span className="text-sm font-semibold text-foreground">{t("contentType")}</span>
                     </AccordionTrigger>
                     <AccordionContent>
@@ -114,7 +114,7 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
                                         onCheckedChange={(checked) =>
                                             handleCheckboxChange("contentTypes", item.id, checked as boolean)
                                         }
-                                        className="h-5 w-5 rounded border-[#CC8545] data-[state=checked]:bg-[#CC8545] data-[state=checked]:border-[#CC8545]"
+                                        className="h-5 w-5 rounded border-sunbird-ginger data-[state=checked]:bg-sunbird-ginger data-[state=checked]:border-sunbird-ginger"
                                     />
                                     <span className="text-sm text-foreground group-hover:text-primary transition-colors">
                                         {t(`contentTypes.${item.id}`)}
@@ -126,8 +126,8 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
                 </AccordionItem>
 
                 {/* Categories Section */}
-                <AccordionItem value="categories" className="bg-white rounded-[12px] border-none px-4 shadow-sm">
-                    <AccordionTrigger className="hover:no-underline py-4 [&>svg]:text-[#A85236]">
+                <AccordionItem value="categories" className="bg-white rounded-xl border-none px-4 shadow-sm">
+                    <AccordionTrigger className="hover:no-underline py-4 [&>svg]:text-sunbird-brick">
                         <span className="text-sm font-semibold text-foreground">{t("categories")}</span>
                     </AccordionTrigger>
                     <AccordionContent>
@@ -143,7 +143,7 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
                                         onCheckedChange={(checked) =>
                                             handleCheckboxChange("categories", item.id, checked as boolean)
                                         }
-                                        className="h-5 w-5 rounded border-[#CC8545] data-[state=checked]:bg-[#CC8545] data-[state=checked]:border-[#CC8545]"
+                                        className="h-5 w-5 rounded border-sunbird-ginger data-[state=checked]:bg-sunbird-ginger data-[state=checked]:border-sunbird-ginger"
                                     />
                                     <span className="text-sm text-foreground group-hover:text-primary transition-colors">
                                         {t(`categoriesList.${item.id}`)}
