@@ -106,12 +106,12 @@ const PopularContent = () => {
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-semibold text-sm leading-snug mb-2 text-foreground line-clamp-2">
+                    <h3 className="font-semibold text-sm leading-snug text-foreground line-clamp-2">
                         {course.title}
                     </h3>
 
                     {/* Stats */}
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground" style={{ paddingTop: '45px' }}>
                         <span className="font-medium text-foreground">{course.rating.toFixed(1)}</span>
                         <FiStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />
                         <span className="mx-0.5">•</span>

@@ -35,15 +35,14 @@ const DashboardCourseCard = ({ course, onClick }: DashboardCourseCardProps) => {
                 <p className="text-xs font-medium text-primary mb-2">{course.badges[1]}</p>
 
                 {/* Title */}
-                <h3 className="font-semibold text-foreground line-clamp-2 mb-2 group-hover:text-primary transition-colors">
+                <h3 className="font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
                     {course.title}
                 </h3>
 
                 {/* Author */}
-                <p className="text-sm text-muted-foreground mb-3">by {course.author}</p>
-
+                <p className="text-sm text-muted-foreground">by {course.author}</p>
                 {/* Stats */}
-                <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground" style={{ paddingTop: '45px' }}>
                     <div className="flex items-center gap-1">
                         <FiStar className="w-4 h-4 fill-secondary text-secondary" />
                         <span className="font-medium text-foreground">{course.rating.toFixed(1)}</span>

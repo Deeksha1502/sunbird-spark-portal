@@ -13,78 +13,64 @@ const CategorySection = () => {
   const categories = [
     {
       id: "ui-ux-design",
-      name: "ui-ux-design",
+      name: "UI/UX Design",
       icon: uiuxIcon,
-      gradientClass: "bg-gradient-to-tl from-sunbird-wave to-sunbird-lavender",
+      background: "linear-gradient(to right, #45C0ED, #8E46C5)",
     },
     {
       id: "it-development",
-      name: "it-development",
+      name: "IT Development",
       icon: devIcon,
-      gradientClass: "bg-gradient-to-tl from-sunbird-sunflower to-sunbird-ginger",
+      background: "linear-gradient(to right, #D55E1D, #F6C35C)",
     },
     {
       id: "digital-marketing",
-      name: "digital-marketing",
+      name: "Digital Marketing",
       icon: marketingIcon,
-      gradientClass: "bg-gradient-to-tl from-sunbird-leaf to-sunbird-ink",
+      background: "linear-gradient(to right, #1D79D5, #6ED97B)",
     },
     {
       id: "entrepreneurship",
-      name: "entrepreneurship",
+      name: "Entrepreneurship",
       icon: entrepreneurIcon,
-      gradientClass: "bg-gradient-to-tl from-sunbird-ginger to-sunbird-jamun",
+      background: "linear-gradient(to right, #F59C84, #D655E7)",
     },
   ];
 
   return (
     <section id="categories" className="py-6 md:py-8 bg-white">
       <div className="w-full pl-[108px] pr-[82px]">
-        {/* Header */}
-        <div className="mb-8">
-          <h2 className="text-xl md:text-2xl font-medium text-foreground">
+        {/* Header with Arrow */}
+        <div className="mb-8 flex items-center gap-4">
+          <h2 className="text-xl md:text-2xl font-semibold text-foreground">
             {t("browseCategories")}
           </h2>
+          <Link to="/explore">
+            <FiArrowRight className="w-6 h-6 text-sunbird-brick" />
+          </Link>
         </div>
 
-        {/* Category Cards and Browse All */}
-        <div className="flex items-start gap-5">
-          {/* Category Cards */}
-          <div className="flex gap-5">
-            {categories.map((category) => (
-              <Link key={category.id} to="/explore" className="group">
-                <div
-                  className={`flex flex-col justify-between transition-transform hover:scale-[1.02] p-5 w-[210px] h-[166px] rounded-[20px] ${category.gradientClass}`}
-                >
-                  {/* Top-left white horizontal line */}
-                  <div className="w-6 h-[2px] bg-white/80 rounded-full" />
+        {/* Category Cards */}
+        <div className="flex flex-wrap gap-5">
+          {categories.map((category) => (
+            <Link key={category.id} to="/explore" className="group">
+              <div
+                className="flex flex-col justify-between transition-transform hover:scale-[1.02] p-7 w-[224px] h-[194px] rounded-[20px]"
+                style={{ background: category.background }}
+              >
+                {/* Top-left white horizontal line */}
+                <div className="w-9 h-[3px] bg-white/90 rounded-full" />
 
-                  {/* Bottom content: Icon + Label */}
-                  <div className="flex flex-col gap-2">
-                    <img src={category.icon} alt={category.name} className="w-6 h-6" />
-                    <p className="text-[14px] font-medium text-white whitespace-pre-line leading-tight">
-                      {t(`categoriesList.${category.id}`)}
-                    </p>
-                  </div>
+                {/* Bottom content: Icon + Label */}
+                <div className="flex flex-col gap-3">
+                  <img src={category.icon} alt={category.name} className="w-8 h-8" />
+                  <p className="text-[17px] font-bold text-white leading-tight">
+                    {category.name}
+                  </p>
                 </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Browse All Button - Aligned to the right */}
-          <Link
-            to="/explore"
-            className="group flex flex-col items-center justify-center gap-3 self-center pl-[70px] pt-[24px]"
-          >
-            <div
-              className="rounded-full text-white flex items-center justify-center transition-transform hover:scale-105 w-[59px] h-[59px] bg-sunbird-brick"
-            >
-              <FiArrowRight className="w-6 h-6" />
-            </div>
-            <span className="text-[14px] font-bold text-foreground">
-              {t("viewAll")}
-            </span>
-          </Link>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

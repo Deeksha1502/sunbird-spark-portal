@@ -26,13 +26,14 @@ const Footer = () => {
               <img
                 src={sunbirdFooterLogo}
                 alt="Sunbird"
-                className="h-6 w-auto"
+                className="h-8 w-auto"
+                style={{ width: '195px' }}
               />
             </Link>
           </div>
 
           {/* Links - Right aligned */}
-          <div className="flex gap-20 md:gap-28">
+          <div className="flex gap-20 md:gap-28" style={{ paddingRight: '100px' }}>
             {/* Products */}
             <div>
               <h4 className="font-semibold text-[14px] mb-4 text-white">

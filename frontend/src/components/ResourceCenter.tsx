@@ -149,7 +149,8 @@ const ResourceCardComponent = ({
                                 {title}
                             </h3>
                             <p
-                                className="mt-2 text-white/90 text-[0.8125rem] md:text-sm font-medium flex items-center gap-2 hover:opacity-80 transition-opacity text-shadow-card-sm"
+                                className="text-white/90 text-[0.8125rem] md:text-sm font-medium flex items-center gap-2 hover:opacity-80 transition-opacity text-shadow-card-sm"
+                                style={{ paddingTop: '45px' }}
                             >
                                 {getViewLabel(type)}
                                 <FiArrowRight className="w-3.5 h-3.5" />

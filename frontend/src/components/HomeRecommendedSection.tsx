@@ -106,27 +106,30 @@ const HomeRecommendedSection = () => {
                                     {item.type}
                                 </span>
 
-                                <h4 className="font-semibold text-gray-900 text-base leading-snug mb-3 line-clamp-2 flex-1">
+                                <h4 className="font-semibold text-gray-900 text-base leading-snug line-clamp-2">
                                     {item.title}
                                 </h4>
 
                                 {/* Stats */}
-                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                <div
+                                    className="flex items-center gap-1.5 text-xs text-muted-foreground"
+                                    style={{ paddingTop: '45px' }}
+                                >
                                     {item.rating && (
-                                        <div className="flex items-center gap-1">
+                                        <>
                                             <span className="font-medium text-gray-700">{item.rating}</span>
-                                            <FiStar className="w-4 h-4 fill-sunbird-brick text-sunbird-brick" />
-                                        </div>
+                                            <FiStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />
+                                        </>
                                     )}
                                     {item.learners && (
                                         <>
-                                            <span className="text-gray-400">•</span>
+                                            <span className="mx-0.5">•</span>
                                             <span>{item.learners} Learners</span>
                                         </>
                                     )}
                                     {item.lessons && (
                                         <>
-                                            <span className="text-gray-400">•</span>
+                                            <span className="mx-0.5">•</span>
                                             <span>{item.lessons} Lessons</span>
                                         </>
                                     )}

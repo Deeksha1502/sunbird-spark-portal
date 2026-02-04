@@ -48,7 +48,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
           </span>
 
           {/* Title */}
-          <h3 className="text-[18px] font-bold text-foreground leading-[1.3] mb-2 line-clamp-2">
+          <h3 className="text-[18px] font-bold text-foreground leading-[1.3] line-clamp-2">
             {course.title}
           </h3>
 
@@ -56,15 +56,14 @@ const CourseCard = ({ course }: CourseCardProps) => {
           <p className="text-[13px] text-muted-foreground mb-4">{t("by")} {course.instructor}</p>
 
           {/* Metadata Section - Pinned to bottom */}
-          <div className="mt-auto flex flex-col gap-2 pt-2">
-            <div className="flex items-center gap-2 text-[13px] text-muted-foreground font-medium">
-              <span className="flex items-center gap-1">
-                {course.rating.toFixed(1)}
-                <FiStar className="w-3.5 h-3.5 text-[#A85236] fill-[#A85236]" />
-              </span>
-              <span className="text-gray-300">•</span>
-              <span>{course.enrolledCount.toLocaleString()} {t("students")}</span>
-            </div>
+          <div
+            className="flex items-center gap-1.5 text-xs text-muted-foreground"
+            style={{ paddingTop: '45px' }}
+          >
+            <span className="font-medium text-foreground">{course.rating.toFixed(1)}</span>
+            <FiStar className="w-3.5 h-3.5 text-sunbird-brick fill-sunbird-brick" />
+            <span className="mx-0.5">•</span>
+            <span>{course.enrolledCount.toLocaleString()} {t("students")}</span>
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ const SearchCourseCard = ({ item }: { item: SearchItem }) => {
 
                     {/* Title */}
                     <h3
-                        className="font-medium text-xl leading-snug mb-auto line-clamp-3 text-foreground"
+                        className="font-medium text-xl leading-snug line-clamp-3 text-foreground"
                     >
                         {item.title}
                     </h3>
@@ -36,7 +36,7 @@ const SearchCourseCard = ({ item }: { item: SearchItem }) => {
                     {/* Stats */}
                     <div
                         className="flex items-center gap-1.5 text-xs text-muted-foreground"
-                        style={{ paddingTop: '30px' }}
+                        style={{ paddingTop: '45px' }}
                     >
                         <span className="font-medium text-foreground">{item.rating}</span>
                         <FiStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />

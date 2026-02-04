@@ -176,12 +176,15 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
                     </span>
 
                     {/* Title */}
-                    <h3 className="font-semibold text-sm leading-snug mb-2.5 line-clamp-2 text-foreground">
+                    <h3 className="font-semibold text-sm leading-snug line-clamp-2 text-foreground">
                         {item.title}
                     </h3>
 
                     {/* Metadata Section - Pinned to bottom */}
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground pb-0">
+                    <div
+                        className="flex items-center gap-1.5 text-xs text-muted-foreground"
+                        style={{ paddingTop: '45px' }}
+                    >
                         <span className="font-medium text-foreground">
                             {item.rating || "4.5"}
                         </span>
@@ -240,6 +243,7 @@ const ResourceCard = ({ item }: { item: ExploreItem }) => {
                     </h3>
                     <p
                         className="text-white text-sm flex items-center gap-2 font-normal text-shadow-card-sm"
+                        style={{ paddingTop: '45px' }}
                     >
                         {getCTAText(item.type)}
                         <FiArrowRight className="w-4 h-4" />

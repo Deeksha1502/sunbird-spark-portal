@@ -95,7 +95,7 @@ const ContentRead = () => {
                 </div>
 
                 {/* Stats Row */}
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8" style={{ paddingTop: '45px' }}>
                     <span className="flex items-center gap-1">
                         {contentData.rating}
                         <FiStar className="w-3.5 h-3.5 text-sunbird-yellow fill-sunbird-yellow" />
@@ -194,10 +194,10 @@ const RelatedCourseCard = ({ item }: { item: RelatedItem }) => (
                 <span className="inline-block text-xs font-medium text-foreground bg-sunbird-ivory border border-sunbird-ginger rounded-full px-3 py-1 mb-2 w-fit">
                     {item.type}
                 </span>
-                <h3 className="text-sm font-semibold text-foreground leading-snug mb-3 line-clamp-2 flex-1">
+                <h3 className="text-sm font-semibold text-foreground leading-snug line-clamp-2 flex-1">
                     {item.title}
                 </h3>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground" style={{ paddingTop: '45px' }}>
                     <span className="flex items-center gap-1">
                         {item.rating}
                         <FiStar className="w-3 h-3 text-sunbird-yellow fill-sunbird-yellow" />

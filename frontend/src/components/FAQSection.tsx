@@ -72,7 +72,7 @@ const FAQSection = () => {
                     </Accordion>
 
                     <div className="hidden lg:flex items-start">
-                        <div className="w-[26.25rem] h-[23.75rem] overflow-hidden rounded-[18px]">
+                        <div className="w-[28.125em] h-[25rem] overflow-hidden rounded-[18px]">
                             <img
                                 src={faqImage}
                                 alt="Student learning online"

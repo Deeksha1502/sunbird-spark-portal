@@ -35,7 +35,7 @@ const HeroWithStats = () => {
                 />
 
                 <div className="w-full relative z-10 pl-[6.75rem] pr-[5.125rem]">
-                    <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[26.25rem] py-8 lg:py-12 pt-[0.3125rem]">
+                    <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[26.25rem] py-8 lg:py-12" style={{ paddingTop: '0px' }}>
                         {/* Content - Left Side (becomes Right in RTL grid) */}
                         <div className="max-w-xl">
                             <h1
@@ -81,8 +81,8 @@ const HeroWithStats = () => {
                                 <img
                                     src={heroWoman}
                                     alt="Professional learning"
-                                    className="w-[22.5rem] h-auto object-contain pb-5"
-                                    style={{ width: '400px', height: '420px', paddingBottom: '43px' }}
+                                    className="w-[22.5rem] h-auto object-contain"
+                                    style={{ width: '400px', height: '450px', paddingBottom: '12px' }}
                                 />
                             </div>
                         </div>

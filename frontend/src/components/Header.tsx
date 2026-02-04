@@ -50,19 +50,7 @@ const Header = () => {
               src={sunbirdLogo}
               alt="Sunbird"
               className="h-8 w-auto"
-              style={{ paddingRight: 0 }}
-            />
-          </Link>
-
-          <img alt="Sunbird" className="h-8 w-auto" src={sunbirdLogo} style={{
-            paddingRight: 0,
-          }} />
-
-          <Link to="/" className="flex items-center md:pl-[1px]">
-            <img
-              src={sunbirdLogo}
-              alt="Sunbird"
-              className="h-8 w-auto"
+              style={{ paddingRight: 0, width: '195px' }}
             />
           </Link>
 
