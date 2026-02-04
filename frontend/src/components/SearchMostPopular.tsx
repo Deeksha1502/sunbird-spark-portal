@@ -98,9 +98,9 @@ const SearchMostPopular = () => {
       {/* Course Cards - 3 column grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {courses.map((course) => (
-          <Link key={course.id} to={`/collection/${course.id}`}>
+          <Link key={course.id} to={`/collection/${course.id}`} className="flex justify-center">
             <div
-              className="group bg-white rounded-[24px] overflow-hidden transition-all duration-300 hover:shadow-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
+              className="group bg-white rounded-[20px] overflow-hidden transition-all duration-300 hover:shadow-lg shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)] w-[370px] h-[392px] flex flex-col"
             >
               {/* Image with padding */}
               <div className="p-3 pb-0">

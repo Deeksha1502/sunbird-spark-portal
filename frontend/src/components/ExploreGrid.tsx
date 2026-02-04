@@ -155,11 +155,11 @@ const ExploreGrid = ({ filters }: ExploreGridProps) => {
 const CourseCard = ({ item }: { item: ExploreItem }) => {
     const { t } = useAppI18n();
     return (
-        <Link to={`/collection/${item.id}`} className="group h-full block">
-            <div className="bg-white rounded-[1.75rem] overflow-hidden hover:shadow-xl transition-all duration-300 p-[1.125rem] h-[22.5rem] flex flex-col shadow-md border border-border">
+        <Link to={`/collection/${item.id}`} className="group block flex justify-center">
+            <div className="bg-white rounded-[20px] overflow-hidden hover:shadow-lg transition-all duration-300 p-0 w-[370px] h-[392px] flex flex-col shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)] border-none">
                 {/* Image Container with border-radius */}
-                <div className="h-[9.375rem] flex-shrink-0 mb-4">
-                    <div className="w-full h-full overflow-hidden rounded-[1.25rem]">
+                <div className="p-3 pb-0">
+                    <div className="w-full aspect-[16/10] overflow-hidden rounded-[16px]">
                         <img
                             src={item.image}
                             alt={item.title}
@@ -169,26 +169,26 @@ const CourseCard = ({ item }: { item: ExploreItem }) => {
                 </div>
 
                 {/* Content Section */}
-                <div className="flex flex-col flex-1 px-1">
+                <div className="flex flex-col flex-1 p-4 pt-3">
                     {/* Pill-shaped Type Badge */}
-                    <span className="inline-block text-xs font-bold text-black bg-sunbird-ivory border border-sunbird-ginger rounded-full px-4 py-1 mb-3 self-start whitespace-nowrap">
+                    <span className="inline-block text-[0.6875rem] font-medium px-3 py-1 rounded-full mb-2.5 bg-sunbird-ivory text-foreground border-[1.5px] border-sunbird-ginger self-start whitespace-nowrap">
                         {t(`contentTypes.${item.type.toLowerCase()}`) || item.type}
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-foreground leading-[1.25] mb-3">
+                    <h3 className="font-semibold text-sm leading-snug mb-2.5 line-clamp-2 text-foreground">
                         {item.title}
                     </h3>
 
                     {/* Metadata Section - Pinned to bottom */}
-                    <div className="mt-auto flex items-center gap-2 text-sm text-muted-foreground font-medium pb-1">
-                        <span className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground pb-0">
+                        <span className="font-medium text-foreground">
                             {item.rating || "4.5"}
-                            <FaStar className="w-4 h-4 text-sunbird-brick" />
                         </span>
-                        <span className="text-gray-300">•</span>
+                        <FaStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />
+                        <span className="mx-0.5">•</span>
                         <span>{item.learners || "9k"} {t("contentStats.learners")}</span>
-                        <span className="text-gray-300">•</span>
+                        <span className="mx-0.5">•</span>
                         <span>{item.lessons || "25"} {t("contentStats.lessons")}</span>
                     </div>
                 </div>

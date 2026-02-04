@@ -79,9 +79,9 @@ const PopularContent = () => {
     };
 
     const CourseCard = ({ course }: { course: ContentCourse }) => (
-        <Link to={`/collection/${course.id}`}>
+        <Link to={`/collection/${course.id}`} className="flex justify-center">
             <div
-                className="group bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
+                className="group bg-white rounded-[20px] overflow-hidden transition-all duration-300 hover:shadow-lg shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)] w-[370px] h-[392px] flex flex-col"
             >
                 {/* Image with padding */}
                 <div className="p-3 pb-0">

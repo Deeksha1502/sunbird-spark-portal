@@ -86,7 +86,7 @@ const HomeRecommendedSection = () => {
                         <div
                             key={item.id}
                             onClick={() => navigate(`/course/${item.id}`)}
-                            className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer h-full flex flex-col"
+                            className="bg-white rounded-[20px] overflow-hidden shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)] hover:shadow-lg transition-shadow cursor-pointer w-[370px] h-[392px] flex flex-col mx-auto"
                         >
                             {/* Thumbnail */}
                             <div className="p-3 pb-0">
