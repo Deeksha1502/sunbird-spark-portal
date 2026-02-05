@@ -63,7 +63,7 @@ const HomeInProgressGrid = () => {
                         <div className="flex-1 min-w-0 flex flex-col justify-between h-full py-1">
                             <div>
                                 {/* Type Badge */}
-                                <span className="inline-block mb-3 text-[10px] font-bold px-3 py-1 rounded-full bg-[#FFF1C7] border border-[#CC8545] text-[#222222]">
+                                <span className="inline-block mb-3 text-[10px] px-3 py-1 rounded-full bg-[#FFF1C7] border border-[#CC8545] text-[#222222]">
                                     {item.type}
                                 </span>
 

@@ -64,7 +64,7 @@ const HomeRecommendedSection = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 flex flex-col justify-between p-6">
                                 {/* Badge */}
                                 <div>
-                                    <span className="inline-block text-sm font-bold px-4 py-1.5 rounded-[4px] bg-white text-[#222222]">
+                                    <span className="inline-block text-[10px] font-bold px-3 py-1 rounded-full bg-white border border-gray-200 text-[#222222]">
                                         {item.type}
                                     </span>
                                 </div>
@@ -105,8 +105,8 @@ const HomeRecommendedSection = () => {
                                 {/* Type Badge */}
                                 <div className="mb-3">
                                     <span className={`inline-block text-[10px] uppercase tracking-wider font-bold px-3 py-1 rounded-[4px] border ${item.type === 'Course' || item.type === 'Textbook'
-                                            ? 'bg-[#FFF9F3] border-[#FFE7CC] text-[#A85236]'
-                                            : 'bg-gray-100 border-gray-200 text-gray-700'
+                                        ? 'bg-[#FFF9F3] border-[#FFE7CC] text-[#A85236]'
+                                        : 'bg-gray-100 border-gray-200 text-gray-700'
                                         }`}>
                                         {item.type}
                                     </span>
