@@ -64,7 +64,7 @@ const HomeRecommendedSection = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 flex flex-col justify-between p-6">
                                 {/* Badge */}
                                 <div>
-                                    <span className="inline-block text-[10px] font-bold px-3 py-1 rounded-full bg-white border border-gray-200 text-[#222222]">
+                                    <span className="inline-block text-[10px] font-bold px-3 py-1 rounded-[4px] bg-white border border-gray-200 text-[#222222]">
                                         {item.type}
                                     </span>
                                 </div>
@@ -118,12 +118,12 @@ const HomeRecommendedSection = () => {
 
                                 {/* Stats */}
                                 <div
-                                    className="flex items-center gap-2 text-sm text-[#777777] mt-4"
+                                    className="flex items-center gap-2 text-sm text-[#777777] mt-4 pb-5"
                                 >
                                     {item.rating && (
                                         <div className="flex items-center gap-1 font-bold text-[#222222]">
                                             <span>{item.rating}</span>
-                                            <FiStar className="w-4 h-4 fill-[#D97706] text-[#D97706]" />
+                                            <FiStar className="w-4 h-4 fill-[#A85236] text-[#A85236]" />
                                         </div>
                                     )}
 
