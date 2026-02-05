@@ -1,0 +1,122 @@
+@layer components {
+
+    /* Main Container Layout */
+    .login-wrapper {
+        @apply min-h-screen w-full flex items-center justify-center relative overflow-x-hidden font-rubik;
+        background-image: url('../../assets/auth-wave-bg.svg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .login-split-container {
+        @apply flex flex-col md:flex-row m-[0.625rem] md:m-auto rounded-[4rem] relative z-10 shadow-2xl overflow-hidden w-[72.875rem] h-[44.625rem] min-h-[44.625rem];
+    }
+
+    /* Left Panel */
+    .login-left-panel {
+        @apply hidden md:flex flex-1 relative items-center justify-center overflow-hidden;
+    }
+
+    .login-left-panel-border {
+        @apply absolute inset-0 z-[3] border-0 rounded-[3.5rem];
+        box-shadow: 0 0 0 2rem rgba(255, 255, 255, 0.05);
+    }
+
+    .login-left-panel-content {
+        @apply absolute z-[2] left-10 bottom-10 max-w-[calc(100%-5rem)];
+    }
+
+    .login-left-panel-title {
+        @apply font-rubik text-[1.875rem] font-semibold text-white leading-[2.625rem];
+    }
+
+    /* Right Content Area */
+    .login-content-area {
+        @apply flex-[0.85] p-6 md:p-10 relative flex flex-col justify-center md:pt-8 pt-8 bg-white;
+    }
+
+    /* Close Button */
+    .login-close-button {
+        @apply absolute top-5 right-5 p-2 text-sunbird-ink hover:opacity-70 transition-opacity z-20;
+    }
+
+    /* Common Auth Header */
+    .auth-header {
+        @apply text-center mb-8;
+    }
+
+    .auth-title {
+        @apply text-[1.875rem] font-semibold text-foreground leading-[1.875rem] mb-2;
+    }
+
+    .auth-subtitle {
+        @apply text-[0.875rem] font-normal text-muted-foreground leading-relaxed mx-auto max-w-[20rem];
+    }
+
+    /* Form Elements */
+    .auth-form-group {
+        @apply space-y-3;
+    }
+
+    .auth-input-label {
+        @apply block text-[0.875rem] font-medium text-foreground mb-2;
+    }
+
+    .auth-input {
+        @apply h-10 !bg-white rounded-[0.5rem] border-[#828282] focus:border-[#A85236] focus:ring-0 px-3 text-[0.875rem] placeholder:text-[#B2B2B2] w-full;
+    }
+
+    .auth-input:focus {
+        box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #A85236;
+    }
+
+    .auth-password-toggle {
+        @apply absolute right-3 top-1/2 -translate-y-1/2 text-[#718096] hover:text-[#333] p-1;
+    }
+
+    .auth-primary-btn {
+        @apply w-full h-[3.25rem] bg-sunbird-brick hover:bg-sunbird-brick/90 text-white text-[1rem] font-medium rounded-[0.625rem] shadow-none border-none transition-all disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .auth-google-btn {
+        @apply w-full h-[2.5rem] bg-white border border-[#D0D5DD] text-[#344054] font-medium rounded-[0.5rem] flex items-center justify-center gap-2 hover:bg-gray-50 mb-0 text-[0.875rem];
+    }
+
+    .auth-divider {
+        @apply flex items-center gap-4 my-1;
+    }
+
+    .auth-divider-line {
+        @apply h-[1px] flex-1 bg-[#E0E0E0];
+    }
+
+    .auth-divider-text {
+        @apply text-[#666666] text-[0.75rem] font-medium;
+    }
+
+    /* OTP Specific Styles */
+    .otp-validity-text {
+        @apply text-center text-[0.85rem] text-[#4A5568];
+    }
+
+    .otp-inputs-container {
+        @apply flex justify-between gap-2 max-w-[25rem] mx-auto;
+    }
+
+    .otp-input-field {
+        @apply w-[3.25rem] h-[3.25rem] border-2 border-[#A85236] !bg-white rounded-[0.25rem] text-center text-[1.25rem] focus:outline-none;
+    }
+
+    .otp-input-field:focus {
+        box-shadow: 0 0 0 0.125rem rgba(167, 58, 36, 0.2);
+    }
+
+    .otp-resend-container {
+        @apply text-center text-[0.875rem] font-medium text-[#4A5568] mt-6;
+    }
+
+    .otp-resend-btn {
+        @apply text-[#A85236] hover:underline font-semibold ml-1;
+    }
+}

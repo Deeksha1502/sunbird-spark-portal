@@ -7,7 +7,6 @@ import { FcGoogle } from "react-icons/fc";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { IDENTIFIER_REGEX, PASSWORD_REGEX } from "@/lib/auth-utils";
 
-
 interface Step1Props {
     emailOrMobile: string;
     setEmailOrMobile: (val: string) => void;
@@ -42,11 +41,11 @@ export const SignUpStep1 = ({
             className="mb-4"
         />
 
-        <div className="space-y-3">
+        <div className="auth-form-group">
             {/* Google Sign In */}
             <Button
                 variant="outline"
-                className="w-full h-[2.5rem] bg-white border border-[#D0D5DD] text-[#344054] font-medium rounded-[0.5rem] flex items-center justify-center gap-2 hover:bg-gray-50 mb-0 text-[0.875rem]"
+                className="auth-google-btn"
                 onClick={() => console.log('Google Sign In')}
             >
                 <FcGoogle className="w-5 h-5" />
@@ -54,14 +53,14 @@ export const SignUpStep1 = ({
             </Button>
 
             {/* Divider */}
-            <div className="flex items-center gap-4 my-1">
-                <div className="h-[1px] flex-1 bg-[#E0E0E0]"></div>
-                <span className="text-[#666666] text-[0.75rem] font-medium">OR</span>
-                <div className="h-[1px] flex-1 bg-[#E0E0E0]"></div>
+            <div className="auth-divider">
+                <div className="auth-divider-line"></div>
+                <span className="auth-divider-text">OR</span>
+                <div className="auth-divider-line"></div>
             </div>
 
             {/* Form Fields */}
-            <div className="space-y-3">
+            <div className="auth-form-group">
                 {/* Email / Mobile */}
                 <div className="form-group">
                     <InputLabel required className="mb-1">Email ID / Mobile Number</InputLabel>
@@ -69,7 +68,7 @@ export const SignUpStep1 = ({
                         value={emailOrMobile}
                         onChange={(e) => setEmailOrMobile(e.target.value)}
                         placeholder="Enter Email ID / Mobile Number"
-                        className="h-10 !bg-white rounded-[0.5rem] border-[#828282] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_0.125rem_#fff,0_0_0_0.25rem_#A85236] px-3 text-[0.875rem] placeholder:text-[#B2B2B2]"
+                        className="auth-input"
                     />
                     {/* Inline Error (Optional/Complementary) */}
                     {emailOrMobile && !IDENTIFIER_REGEX.test(emailOrMobile) && (
@@ -88,12 +87,12 @@ export const SignUpStep1 = ({
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter Password"
-                            className="h-10 !bg-white rounded-[0.5rem] border-[#828282] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_0.125rem_#fff,0_0_0_0.25rem_#A85236] pr-10 px-3 text-[0.875rem] placeholder:text-[#B2B2B2]"
+                            className="auth-input pr-10"
                         />
                         <button
                             type="button"
                             onClick={() => setShowPassword((v) => !v)}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#718096] hover:text-[#333] p-1"
+                            className="auth-password-toggle"
                         >
                             {showPassword ? <FiEyeOff className="w-4 h-4" /> : <FiEye className="w-4 h-4" />}
                         </button>
@@ -115,12 +114,12 @@ export const SignUpStep1 = ({
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             placeholder="Re-enter Password"
-                            className="h-10 !bg-white rounded-[0.5rem] border-[#828282] focus:border-[#A85236] focus:ring-0 focus:shadow-[0_0_0_0.125rem_#fff,0_0_0_0.25rem_#A85236] pr-10 px-3 text-[0.875rem] placeholder:text-[#B2B2B2]"
+                            className="auth-input pr-10"
                         />
                         <button
                             type="button"
                             onClick={() => setShowConfirmPassword((v) => !v)}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#718096] hover:text-[#333] p-1"
+                            className="auth-password-toggle"
                         >
                             {showConfirmPassword ? <FiEyeOff className="w-4 h-4" /> : <FiEye className="w-4 h-4" />}
                         </button>
@@ -175,23 +174,23 @@ export const SignUpStep2 = ({ otp, setOtp, isOtpValid, handleVerifyOtp }: Step2P
     <>
         <Header
             title="Enter the code"
-            subtitle="Enter the 6 digit code sent to your phone number and complete the verification"
+            subtitle="Enter the 6 digit code sent to your Email ID and complete the verification"
         />
 
         <div className="space-y-5">
             <div className="space-y-6">
-                <p className="otp-validity-text text-center text-[0.85rem] text-[#4A5568]">
+                <p className="otp-validity-text">
                     OTP is valid for 30 minutes
                 </p>
 
-                <div className="otp-container flex justify-between gap-2 max-w-[25rem] mx-auto">
+                <div className="otp-inputs-container">
                     {otp.map((digit, index) => (
                         <input
                             key={index}
                             id={`otp-${index}`}
                             type="text"
                             maxLength={1}
-                            className="otp-input w-[3.25rem] h-[3.25rem] border-2 border-[#A85236] !bg-white rounded-[0.25rem] text-center text-[1.25rem] focus:outline-none focus:shadow-[0_0_0_0.125rem_rgba(167,58,36,0.2)]"
+                            className="otp-input-field"
                             value={digit}
                             onChange={(e) => {
                                 const val = e.target.value.replace(/\D/g, '');
@@ -221,9 +220,9 @@ export const SignUpStep2 = ({ otp, setOtp, isOtpValid, handleVerifyOtp }: Step2P
                     ))}
                 </div>
 
-                <div className="resend-otp-container text-center text-[0.875rem] font-medium text-[#4A5568] mt-6">
+                <div className="otp-resend-container">
                     <span>04:00 </span>
-                    <button className="text-[#A85236] hover:underline font-semibold ml-1">
+                    <button className="otp-resend-btn">
                         Resend OTP
                     </button>
                 </div>
@@ -233,7 +232,7 @@ export const SignUpStep2 = ({ otp, setOtp, isOtpValid, handleVerifyOtp }: Step2P
                 disabled={!isOtpValid}
                 onClick={handleVerifyOtp}
             >
-                Confirm and Proceed
+                Submit
             </PrimaryButton>
         </div>
     </>
