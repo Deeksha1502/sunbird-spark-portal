@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiDownload, FiEye } from "react-icons/fi";
+
 
 type FilterType = "all" | "ongoing" | "completed";
 
@@ -16,7 +16,7 @@ interface CourseItem {
 const coursesData: CourseItem[] = [
     {
         id: "1",
-        title: "The AI Engineer Course 2026: Complete AI Engineer Bootcamp",
+        title: "The AI Engineer Course 2026: \n Complete AI Engineer Bootcamp",
         dueDate: "20th Feb",
         progress: 30,
         status: "ongoing",
@@ -40,7 +40,7 @@ const coursesData: CourseItem[] = [
     },
     {
         id: "4",
-        title: "The AI Engineer Course 2026: Complete AI Engineer Bootcamp",
+        title: "The AI Engineer Course 2026: \n Complete AI Engineer Bootcamp",
         dueDate: "20th Feb",
         progress: 30,
         status: "ongoing",
@@ -159,7 +159,7 @@ const ProfileLearningList = () => {
 
                         {/* Title and Due Date */}
                         <div className="w-[320px] flex-shrink-0 pr-4">
-                            <h4 className="text-[17px] font-medium text-foreground leading-6 mb-1">
+                            <h4 className="text-[17px] font-medium text-foreground leading-6 mb-1 whitespace-pre-wrap">
                                 {course.title}
                             </h4>
                             <p className="text-[14px] text-[#666666] font-normal">
@@ -192,7 +192,7 @@ const ProfileLearningList = () => {
                         {/* Certificate Action */}
                         <div className="w-[200px] flex-shrink-0 flex items-center justify-end">
                             <button
-                                className="flex items-center gap-2 text-[15px] font-medium text-[#A85236] hover:opacity-80 transition-opacity"
+                                className="flex items-center gap-2 text-[13px] font-medium text-[#A85236] hover:opacity-80 transition-opacity"
                             >
                                 {course.status === "completed" ? (
                                     <>

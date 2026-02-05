@@ -43,9 +43,9 @@ const Home = () => {
     }
 
     return (
-        <div className="min-h-screen bg-home-ivory flex flex-col">
+        <div className="min-h-screen bg-[#FFFFFF] flex flex-col">
             {/* Top Header */}
-            <header className="bg-white border-b border-gray-100 px-6 py-4 shadow-[0_14px_14px_rgba(0,0,0,0.05)] z-10 sticky top-0" style={{ paddingRight: '100px' }}>
+            <header className="bg-white border-b border-gray-100 px-6 py-4 shadow-[0_4px_14px_rgba(0,0,0,0.05)] z-30 sticky top-0" style={{ paddingRight: '100px' }}>
                 <div className="flex items-center justify-between">
                     {/* Left: Sunbird Logo + Align with Sidebar */}
                     <div className="flex items-center" style={{ width: isSidebarOpen ? '212px' : 'auto' }}>
@@ -75,7 +75,7 @@ const Home = () => {
                             <Input
                                 placeholder="Search for content"
                                 readOnly
-                                className="pl-4 pr-10 bg-white border-gray-200 focus:border-home-ginger focus:ring-home-ginger/20 rounded-lg h-10 cursor-pointer placeholder:text-[#222222]"
+                                className="pl-4 pr-10 bg-white border-border focus:border-sunbird-ginger focus:ring-sunbird-ginger/20 rounded-[0.5625rem] h-[2.875rem] text-base cursor-pointer placeholder:text-[#222222]"
                             />
                             <button className="absolute right-3 top-1/2 -translate-y-1/2 text-sunbird-ginger hover:text-sunbird-brick">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,12 +141,15 @@ const Home = () => {
                         <HomeStatsCards />
 
                         {/* Continue Learning + Performance */}
-                        <div className="flex gap-6 mb-8">
-                            <div className="w-[65%]">
-                                <HomeContinueLearning />
-                            </div>
-                            <div className="w-[35%]">
-                                <HomePerformanceChart />
+                        <div className="mb-8">
+                            <h3 className="text-lg font-semibold text-[#222222] mb-4">Continue from where you left</h3>
+                            <div className="flex gap-6">
+                                <div className="w-[65%]">
+                                    <HomeContinueLearning />
+                                </div>
+                                <div className="w-[35%]">
+                                    <HomePerformanceChart />
+                                </div>
                             </div>
                         </div>
 

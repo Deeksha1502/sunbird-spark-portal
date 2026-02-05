@@ -40,98 +40,107 @@ const HomeRecommendedSection = () => {
     return (
         <section className="mb-8">
             <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-lg font-medium text-gray-900">Recommended Contents</h3>
-                <Link to="/explore" className="text-sunbird-brick hover:text-sunbird-brick/90 transition-colors">
-                    <FiArrowRight className="w-5 h-5" />
+                <h3 className="text-xl font-bold text-[#222222]">Recommended Contents</h3>
+                <Link to="/explore" className="text-[#A85236] hover:text-[#A85236]/90 transition-colors">
+                    <FiArrowRight className="w-5 h-5 stroke-[3px]" />
                 </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {recommendedItems.map((item) => (
                     item.isVideo ? (
-                        // Video Card - Full dark background
+                        // Video Card
                         <div
                             key={item.id}
                             onClick={() => navigate(`/course/${item.id}`)}
-                            className="relative rounded-2xl overflow-hidden cursor-pointer h-full"
+                            className="relative rounded-[20px] overflow-hidden cursor-pointer h-[392px] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] group"
                         >
                             <img
                                 src={item.thumbnail}
                                 alt={item.title}
-                                className="w-full h-full object-cover absolute inset-0"
+                                className="w-full h-full object-cover absolute inset-0 transition-transform duration-500 group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-black/70 flex flex-col justify-between p-5">
-                                {/* Badge at top center */}
-                                <div className="flex justify-center">
-                                    <span className="inline-block text-sm font-medium px-4 py-1.5 rounded-full bg-white border border-gray-200 text-black">
+                            {/* Dark Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 flex flex-col justify-between p-6">
+                                {/* Badge */}
+                                <div>
+                                    <span className="inline-block text-sm font-bold px-4 py-1.5 rounded-[4px] bg-white text-[#222222]">
                                         {item.type}
                                     </span>
                                 </div>
 
-                                {/* Content at bottom */}
+                                {/* Content */}
                                 <div>
-                                    <h4 className="font-semibold text-white text-xl leading-tight mb-3">
+                                    <h4 className="font-bold text-white text-[1.75rem] leading-tight mb-4 tracking-tight">
                                         {item.title}
                                     </h4>
 
-                                    <button className="flex items-center gap-2 text-white text-sm font-medium hover:underline">
+                                    <button className="flex items-center gap-2 text-white text-base font-bold hover:gap-3 transition-all">
                                         View The Video
-                                        <FiArrowRight className="w-4 h-4" />
+                                        <FiArrowRight className="w-5 h-5" />
                                     </button>
                                 </div>
                             </div>
                         </div>
                     ) : (
-                        // Course/Textbook Card - White background
+                        // Course/Textbook Card
                         <div
                             key={item.id}
                             onClick={() => navigate(`/course/${item.id}`)}
-                            className="bg-white rounded-[20px] overflow-hidden shadow-[2px_2px_20px_0px_rgba(0,0,0,0.09)] hover:shadow-lg transition-shadow cursor-pointer w-[370px] h-[392px] flex flex-col mx-auto"
+                            className="bg-white rounded-[20px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] border border-gray-100 hover:shadow-lg transition-all cursor-pointer h-[392px] flex flex-col"
                         >
                             {/* Thumbnail */}
-                            <div className="p-3 pb-0">
-                                <div className="rounded-xl overflow-hidden aspect-[4/3]">
+                            <div className="p-4 pb-0">
+                                <div className="rounded-2xl overflow-hidden h-[190px] w-full">
                                     <img
                                         src={item.thumbnail}
                                         alt={item.title}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                                     />
                                 </div>
                             </div>
 
                             {/* Content */}
-                            <div className="p-4 pt-3 flex-1 flex flex-col">
+                            <div className="p-4 flex-1 flex flex-col relative">
                                 {/* Type Badge */}
-                                <span className="inline-block w-fit mb-3 text-sm font-medium px-4 py-1.5 rounded-full bg-sunbird-ivory border border-sunbird-ginger text-black">
-                                    {item.type}
-                                </span>
+                                <div className="mb-3">
+                                    <span className={`inline-block text-[10px] uppercase tracking-wider font-bold px-3 py-1 rounded-[4px] border ${item.type === 'Course' || item.type === 'Textbook'
+                                            ? 'bg-[#FFF9F3] border-[#FFE7CC] text-[#A85236]'
+                                            : 'bg-gray-100 border-gray-200 text-gray-700'
+                                        }`}>
+                                        {item.type}
+                                    </span>
+                                </div>
 
-                                <h4 className="font-semibold text-gray-900 text-base leading-snug line-clamp-2">
+                                <h4 className="font-bold text-[#222222] text-xl leading-tight line-clamp-3 mb-auto">
                                     {item.title}
                                 </h4>
 
                                 {/* Stats */}
                                 <div
-                                    className="flex items-center gap-1.5 text-xs text-muted-foreground"
-                                    style={{ paddingTop: '45px' }}
+                                    className="flex items-center gap-2 text-sm text-[#777777] mt-4"
                                 >
                                     {item.rating && (
-                                        <>
-                                            <span className="font-medium text-gray-700">{item.rating}</span>
-                                            <FiStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />
-                                        </>
+                                        <div className="flex items-center gap-1 font-bold text-[#222222]">
+                                            <span>{item.rating}</span>
+                                            <FiStar className="w-4 h-4 fill-[#D97706] text-[#D97706]" />
+                                        </div>
                                     )}
+
+                                    {(item.rating && (item.learners || item.lessons)) && (
+                                        <span className="text-[#D9D9D9]">•</span>
+                                    )}
+
                                     {item.learners && (
-                                        <>
-                                            <span className="mx-0.5">•</span>
-                                            <span>{item.learners} Learners</span>
-                                        </>
+                                        <span>{item.learners} Learners</span>
                                     )}
+
+                                    {(item.learners && item.lessons) && (
+                                        <span className="text-[#D9D9D9]">•</span>
+                                    )}
+
                                     {item.lessons && (
-                                        <>
-                                            <span className="mx-0.5">•</span>
-                                            <span>{item.lessons} Lessons</span>
-                                        </>
+                                        <span>{item.lessons} Lessons</span>
                                     )}
                                 </div>
                             </div>

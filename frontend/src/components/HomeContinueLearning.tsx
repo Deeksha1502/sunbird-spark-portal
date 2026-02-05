@@ -4,7 +4,7 @@ import { Button } from "@/components/button";
 
 const continueCourse = {
     id: "1",
-    title: "The AI Engineer Course 2026: Complete AI Engineer Bootcamp",
+    title: "The AI Engineer Course 2026: \n Complete AI Engineer Bootcamp",
     thumbnail: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop",
     progress: 30,
 };
@@ -48,14 +48,11 @@ const HomeContinueLearning = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-white rounded-2xl p-6 shadow-sm h-full">
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-                Continue from where you left
-            </h3>
+        <div className="bg-white rounded-2xl p-6 shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] border border-gray-100 h-[230px]" style={{ paddingBottom: '32px' }}>
 
             <div className="flex gap-5">
                 {/* Thumbnail */}
-                <div className="w-36 h-24 rounded-xl overflow-hidden shrink-0">
+                <div className="w-[11.25rem] h-[11.25rem] rounded-2xl overflow-hidden shrink-0">
                     <img
                         src={continueCourse.thumbnail}
                         alt={continueCourse.title}
@@ -66,12 +63,13 @@ const HomeContinueLearning = () => {
                 {/* Content */}
                 <div className="flex-1 flex flex-col justify-between">
                     <div>
-                        <h4 className="font-semibold text-foreground mb-2 line-clamp-2">
+
+                        <h4 className="font-semibold text-foreground mb-2 line-clamp-2 whitespace-pre-wrap">
                             {continueCourse.title}
                         </h4>
 
                         {/* Progress */}
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2" style={{ paddingTop: '20px' }}>
                             <CircularProgress progress={continueCourse.progress} />
                             <span className="text-sm text-muted-foreground">
                                 Completed : {continueCourse.progress}%
@@ -82,10 +80,10 @@ const HomeContinueLearning = () => {
                     {/* CTA Button */}
                     <Button
                         onClick={() => navigate(`/course/${continueCourse.id}`)}
-                        className="w-fit mt-3 bg-sunbird-brick hover:bg-sunbird-brick/90 text-white rounded-full px-6 h-10"
+                        className="w-[290px] mt-4 bg-sunbird-brick hover:bg-sunbird-brick/90 text-white rounded-[10px] py-6 h-10 text-sm font-semibold transition-all group shadow-[0_4px_14px_rgba(168,82,54,0.25)]"
                     >
                         Continue Learning
-                        <FiArrowRight className="w-4 h-4 ml-2" />
+                        <FiArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
                     </Button>
                 </div>
             </div>

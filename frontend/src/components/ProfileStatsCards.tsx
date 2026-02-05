@@ -44,7 +44,7 @@ const statsData = [
     {
         id: "time-spent",
         value: "30",
-        label: "Time Spent\non the platform",
+        label: "Time Spent",
         bgColor: "bg-sunbird-wave",
         iconBg: "#3D8FA7",
         icon: TimeSpentIcon,
@@ -83,7 +83,7 @@ const ProfileStatsCards = () => {
                 return (
                     <div
                         key={stat.id}
-                        className={`${stat.bgColor} rounded-[1.25rem] p-5 text-white relative min-h-[8.75rem] flex flex-col justify-end`}
+                        className={`${stat.bgColor} rounded-[1.25rem] p-5 text-white relative h-[145px] flex flex-col justify-end shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)]`}
                     >
                         {/* Icon in top-right */}
                         <div
