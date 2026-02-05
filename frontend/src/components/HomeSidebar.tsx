@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { FiHome, FiBook, FiBell, FiUser } from "react-icons/fi";
+import { FiHome, FiBook, FiUser, FiHelpCircle } from "react-icons/fi";
 import { GoHomeFill } from "react-icons/go";
-import sunbirdLogo from "@/assets/sunbird-logo.svg";
 
 interface HomeSidebarProps {
     activeNav: string;
@@ -33,55 +32,74 @@ const ProfileNavIconOutline = ({ className }: { className?: string }) => (
     </svg>
 );
 
-const navItems = [
+const mainNavItems = [
     { id: "home", label: "Home", icon: FiHome, path: "/home" },
     { id: "learning", label: "My Learning", icon: FiBook, path: "/my-learning" },
     { id: "explore", label: "Explore", icon: ExploreIcon, path: "/explore", isCustomIcon: true },
-    { id: "notifications", label: "Notifications", icon: FiBell, path: "/home" },
+];
+
+const bottomNavItems = [
+    { id: "help", label: "Help and Support", icon: FiHelpCircle, path: "/help" },
     { id: "profile", label: "Profile", icon: ProfileNavIconOutline, path: "/profile" },
 ];
 
 const HomeSidebar = ({ activeNav, onNavChange }: HomeSidebarProps) => {
     const navigate = useNavigate();
 
-    const handleNavClick = (item: typeof navItems[0]) => {
+    const handleNavClick = (item: typeof mainNavItems[0]) => {
         onNavChange(item.id);
         if (item.path !== "/home") {
             navigate(item.path);
         }
     };
 
+    const renderNavList = (items: typeof mainNavItems) => (
+        <ul className="space-y-1">
+            {items.map((item) => {
+                const isActive = activeNav === item.id;
+                let Icon = item.icon;
+
+                // Conditional Icon Logic
+                if (item.id === "home" && isActive) {
+                    Icon = GoHomeFill;
+                } else if (item.id === "profile" && isActive) {
+                    Icon = ProfileNavIconFilled;
+                }
+
+                return (
+                    <li key={item.id}>
+                        <button
+                            onClick={() => handleNavClick(item)}
+                            className={`
+                                w-full flex items-center gap-3 px-10 py-4 text-sm transition-colors
+                                ${isActive
+                                    ? "text-[#A85236] font-bold"
+                                    : "text-[#222222] font-normal hover:bg-gray-50"
+                                }
+                            `}
+                        >
+                            <Icon className={`w-5 h-5 ${isActive ? "text-[#A85236]" : "text-[#CC8545]"}`} />
+                            <span>{item.label}</span>
+                        </button>
+                    </li>
+                );
+            })}
+        </ul>
+    );
+
     return (
-        <aside className="w-[245px] bg-white flex flex-col shrink-0 min-h-full z-20 relative" style={{
-            boxShadow: '2px 2px 20px 0px rgba(0, 0, 0, 0.09)'
-        }}>
+        <aside
+            className="w-[242px] bg-white flex flex-col shrink-0 z-20 relative h-[704px]"
+            style={{
+                boxShadow: '2px 2px 20px 0px rgba(0, 0, 0, 0.09)'
+            }}
+        >
+            <nav className="flex flex-col justify-between h-full pt-[40px] pb-4">
+                {/* Main Nav (Top) */}
+                {renderNavList(mainNavItems)}
 
-            {/* Navigation */}
-            <nav className="flex-1 py-4" style={{ paddingTop: '40px' }}>
-                <ul className="space-y-1">
-                    {navItems.map((item) => {
-                        const isActive = activeNav === item.id;
-                        const Icon = (item.id === "home" && isActive) ? GoHomeFill : (item.id === "profile" && isActive) ? ProfileNavIconFilled : item.icon;
-
-                        return (
-                            <li key={item.id}>
-                                <button
-                                    onClick={() => handleNavClick(item)}
-                                    className={`
-                    w-full flex items-center gap-3 px-10 py-4 text-sm transition-colors
-                    ${isActive
-                                            ? "text-[#A85236] font-bold"
-                                            : "text-[#222222] font-normal hover:bg-gray-50"
-                                        }
-                  `}
-                                >
-                                    <Icon className={`w-5 h-5 ${isActive ? "text-[#A85236]" : "text-[#CC8545]"}`} />
-                                    <span>{item.label}</span>
-                                </button>
-                            </li>
-                        );
-                    })}
-                </ul>
+                {/* Bottom Nav (Bottom) */}
+                {renderNavList(bottomNavItems)}
             </nav>
         </aside>
     );
