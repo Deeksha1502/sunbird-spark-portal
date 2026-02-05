@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiBell } from "react-icons/fi";
 import { Input } from "@/components/input";
 import { Button } from "@/components/button";
 import {
@@ -84,6 +84,11 @@ const Home = () => {
                                 </svg>
                             </button>
                         </div>
+
+                        {/* Bell Icon */}
+                        <button className="text-[#A85236] hover:text-sunbird-brick transition-colors">
+                            <FiBell className="w-5 h-5" />
+                        </button>
 
                         {/* Language Dropdown */}
                         <DropdownMenu>
