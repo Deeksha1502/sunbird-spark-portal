@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/input";
 import { Button } from "@/components/button";
 import {
