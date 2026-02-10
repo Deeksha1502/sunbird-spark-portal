@@ -63,14 +63,13 @@ const CollectionSidebar = ({ modules, expandedModules, toggleModule, collectionI
                                                     : `/course/${collectionId}/lesson/${lesson.id}`
                                             }
                                             onClick={() => setActiveLessonId(lesson.id)}
-                                            className={`flex items-center gap-3 rounded-[10px] px-4 py-3 hover:bg-gray-200 transition-colors w-[310px] h-[70px] ${
-                                                isActive
-                                                    ? 'border border-[#A85236] bg-[#FFFFFF] shadow-[0_1px_14px_#0000001A] opacity-100'
-                                                    : 'border border-transparent bg-[#FFFFFF] shadow-[0_1px_14px_#0000001A] opacity-90'
-                                            }`}
+                                            className={`flex items-center gap-3 rounded-[10px] px-4 py-3 hover:bg-gray-200 transition-colors w-full h-[70px] ${isActive
+                                                ? 'border border-[#A85236] bg-[#FFFFFF] shadow-[0_1px_14px_#0000001A] opacity-100'
+                                                : 'border border-transparent bg-[#FFFFFF] shadow-[0_1px_14px_#0000001A] opacity-90'
+                                                }`}
                                         >
                                             {lesson.type === "video" ? <VideoIcon /> : <DocumentIcon />}
-                                            <span className="flex-1 text-sm font-medium text-foreground leading-snug">
+                                            <span className="flex-1 text-sm leading-snug">
                                                 {lesson.title}
                                             </span>
                                             <span className="text-sm text-muted-foreground flex-shrink-0">

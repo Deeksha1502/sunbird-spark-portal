@@ -80,7 +80,7 @@ const CollectionDetail = () => {
                     <CollectionOverview collectionData={collectionData} />
 
                     {/* Right Sidebar - Lessons Accordion */}
-                    <div className="lg:sticky lg:top-6 lg:h-[calc(100vh-120px)] overflow-y-auto pr-2 custom-scrollbar">
+                    <div className="lg:sticky lg:top-6 max-h-[calc(100vh-120px)] overflow-y-auto pr-2 custom-scrollbar">
                         <CollectionSidebar
                             modules={collectionData.modules}
                             expandedModules={expandedModules}
@@ -97,7 +97,7 @@ const CollectionDetail = () => {
                         <FiArrowRight className="w-5 h-5 text-sunbird-brick" />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-fr">
                         {collectionData.relatedContent.map((item) =>
                             item.isResource ? (
                                 <RelatedResourceCard key={item.id} item={item} />
@@ -109,19 +109,18 @@ const CollectionDetail = () => {
 
                     {/* Carousel Navigation */}
                     <div className="flex items-center justify-center gap-3 mt-8">
-                        <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors">
-                            <FiArrowLeft className="w-4 h-4 text-gray-500" />
+                        <button className="w-8 h-8 rounded-full border flex items-center justify-center hover:border-gray-400 transition-colors">
+                            <FiArrowLeft className="w-4 h-4 text-sunbird-brick" />
                         </button>
-                        <div className="flex items-center gap-2">
-                            <div className="w-6 h-1 bg-gray-800 rounded-full" />
-                            <div className="w-6 h-1 bg-gray-300 rounded-full" />
+                        <div className="w-24 overflow-x-scroll custom-scrollbar">
+                            <div className="w-[200%] h-1"></div>
                         </div>
                         <button className="w-8 h-8 rounded-full bg-sunbird-brick flex items-center justify-center hover:bg-sunbird-brick/90 transition-colors">
                             <FiArrowRight className="w-4 h-4 text-white" />
                         </button>
                     </div>
                 </section>
-                <FAQSection className="bg-gray-100" />
+                <FAQSection className="bg-gray-100" noPadding />
 
 
             </main>

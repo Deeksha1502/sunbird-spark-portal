@@ -14,33 +14,31 @@ const CollectionOverview = ({ collectionData }: CollectionOverviewProps) => {
         <div className="space-y-6">
             {/* Video Player Card */}
             <div className="bg-white rounded-xl overflow-hidden border border-gray-100">
-                <div className="relative">
-                    {/* Week Label */}
-                    <div className="absolute top-4 left-4 z-10">
-                        <span className="bg-sunbird-brick text-white text-sm font-medium px-4 py-2 rounded-md">
-                            Week 1: Foundation & Basics
-                        </span>
-                    </div>
+                <div>
+                    {/* Video Thumbnail Container */}
+                    <div className="relative aspect-video bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl overflow-hidden">
+                        <img
+                            src={collectionData.image}
+                            alt={collectionData.title}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-145"
+                        />
 
-                    {/* Video Thumbnail */}
-                    <div
-                        className="w-[776px] h-[536px] max-w-full mx-auto mt-6 rotate-0 opacity-100 relative overflow-hidden rounded-[10px] border border-gray-200 bg-cover bg-center"
-                        style={{
-                            backgroundImage: `url("${collectionData.image}")`,
-                            backgroundRepeat: "no-repeat"
-                        }}
-                        role="img"
-                        aria-label={collectionData.title}
-                    >
+                        {/* Week Label */}
+                        <div className="absolute top-4 left-4 z-20">
+                            <span className="text-white text-base font-medium px-4 py-2 rounded-md">
+                                Week 1: Foundation & Basics
+                            </span>
+                        </div>
+
                         {/* Play Button */}
-                        <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg">
+                        <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg z-20">
                             <FiPlay className="w-6 h-6 text-sunbird-brick ml-1" fill="currentColor" />
                         </button>
                     </div>
                 </div>
 
                 {/* Course Overview Section */}
-                <div className="p-6">
+                <div className="px-6 pb-6 pt-0">
                     <h2 className="text-lg font-semibold text-foreground mb-3">{t("courseDetails.overview")}</h2>
 
                     {/* Duration Stats */}
@@ -62,7 +60,7 @@ const CollectionOverview = ({ collectionData }: CollectionOverviewProps) => {
                         </span>
                     </div>
 
-                    <p className="text-sm  text-black leading-relaxed mb-6">
+                    <p className="text-sm  text-[#222222] leading-relaxed mb-6">
                         {collectionData.description}
                     </p>
 

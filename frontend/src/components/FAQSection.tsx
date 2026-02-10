@@ -9,9 +9,10 @@ import { useAppI18n } from "@/hooks/useAppI18n";
 
 type FAQSectionProps = {
     className?: string;
+    noPadding?: boolean;
 };
 
-const FAQSection = ({ className }: FAQSectionProps) => {
+const FAQSection = ({ className, noPadding }: FAQSectionProps) => {
     const { t } = useAppI18n();
 
     const faqs = [
@@ -44,8 +45,8 @@ const FAQSection = ({ className }: FAQSectionProps) => {
 
     return (
         <section className={`${className ? className : 'bg-white'} pt-2 pb-8`}>
-            <div className="w-full pl-[6.75rem] pr-[5.125rem]">
-                <h2 className={`${className ?? 'text-left'} text-xl md:text-2xl font-bold mb-6 text-foreground`} >
+            <div className={`w-full ${noPadding ? '' : 'pl-[6.75rem] pr-[5.125rem]'}`}>
+                <h2 className={`${className ?? 'text-left'} text-md md:text-2xl font-bold mb-6 text-foreground`} >
                     {t("faq.title")}
                 </h2>
 

@@ -170,7 +170,8 @@
 
 @layer components {
   .login-wrapper {
-    @apply font-rubik min-h-screen w-full flex items-center justify-center relative bg-sunbird-theme-teal auth-bg-wave overflow-x-hidden;
+    @apply font-rubik min-h-screen w-full flex items-center justify-center relative bg-sunbird-theme-teal overflow-x-hidden;
+    background-image: url('./assets/auth-wave-bg.svg');
   }
 
   .login-split-container {
@@ -185,7 +186,8 @@
   }
 
   .login-left-panel {
-    @apply hidden md:flex flex-1 relative items-center justify-center overflow-hidden rounded-[3.5rem] auth-bg-wave;
+    @apply hidden md:flex flex-1 relative items-center justify-center overflow-hidden rounded-[3.5rem];
+    background-image: url('./assets/auth-wave-bg.svg');
   }
 
   .login-left-panel-container {
@@ -405,20 +407,24 @@
 
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
+    height: 4px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
     background: #D9D9D9;
-    border-radius: 0;
+    border-radius: 10px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #A85236;
-    border-radius: 0;
-    min-height: 136px;
+    background-color: #A85236;
+    border-top: 15px solid #D9D9D9;
+    border-bottom: 15px solid #D9D9D9;
+    background-clip: padding-box;
+    border-radius: 10px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #90412b;
+    background-color: #90412b;
   }
+
 }
