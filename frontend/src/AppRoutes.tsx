@@ -12,9 +12,9 @@ import ReportsPage from './pages/reports/ReportsPage';
 import CreateContentPage from './pages/content/CreateContentPage';
 import Index from './pages/Index';
 
-import ForgotPassword from './pages/ForgotPassword';
-import PasswordResetSuccess from './pages/PasswordResetSuccess';
-import SignUp from './pages/SignUp';
+import ForgotPassword from './pages/forgotPassword/ForgotPassword';
+import PasswordResetSuccess from './pages/forgotPassword/PasswordResetSuccess';
+import SignUp from './pages/signup/SignUp';
 import CollectionDetail from './pages/CollectionDetail';
 
 const AdminProtected = withRoles(['admin'])(AdminPage);

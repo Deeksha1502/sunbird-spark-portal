@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { FiArrowLeft, FiArrowRight, FiStar, FiShare2 } from "react-icons/fi";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import PageLoader from "@/components/PageLoader";
+import PageLoader from "@/components/common/PageLoader";
 import FAQSection from "@/components/FAQSection";
 import { useAppI18n } from "@/hooks/useAppI18n";
 import { collectionData } from "@/data/collectionData";
