@@ -47,10 +47,10 @@ class userAuthInfoService {
      */
     async getAuthInfo(deviceId?: string): Promise<AuthStatusResponse> {
         try {
-            const config = deviceId ? { 'x-device-id': deviceId } : {};
+            const headers: Record<string, string> = deviceId ? { 'x-device-id': deviceId } : {};
             const response = await getClient().get<SunbirdApiResponse<AuthStatusResponse>>(
                 '/user/v1/auth/info',
-                config
+                headers
             );
 
             if (response.data.params?.status === 'failed') {
