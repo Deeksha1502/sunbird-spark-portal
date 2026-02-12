@@ -42,10 +42,9 @@ class userAuthInfoService {
     /**
      * Fetches the authentication status from the backend
      * This includes the session ID (sid) and user ID (uid)
-     * @param deviceId - Optional device ID to send in the x-device-id header
      * @returns Promise with the auth status response
      */
-    async getAuthInfo(deviceId?: string): Promise<AuthStatusResponse> {
+    async getAuthInfo(): Promise<AuthStatusResponse> {
         try {
             const headers: Record<string, string> = deviceId ? { 'x-device-id': deviceId } : {};
             const response = await getClient().get<SunbirdApiResponse<AuthStatusResponse>>(
