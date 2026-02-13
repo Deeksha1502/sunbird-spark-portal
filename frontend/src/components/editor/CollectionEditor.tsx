@@ -55,12 +55,14 @@ export const CollectionEditor: React.FC<CollectionEditorProps> = ({
                 }
 
                 if (!(window as any).$.fn.fancytree) {
-                    // @ts-ignore
-                    await import('jquery.fancytree');
-                    // @ts-ignore
-                    await import('jquery.fancytree/dist/modules/jquery.fancytree.glyph.js');
-                    // @ts-ignore
-                    await import('jquery.fancytree/dist/modules/jquery.fancytree.dnd5.js');
+                    await new Promise<void>((resolve, reject) => {
+                        const script = document.createElement('script');
+                        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.fancytree/2.38.3/jquery.fancytree-all.min.js';
+                        script.async = true;
+                        script.onload = () => resolve();
+                        script.onerror = (e) => reject(new Error('Failed to load jquery.fancytree script'));
+                        document.body.appendChild(script);
+                    });
                 }
 
                 // 3. Load the Collection Editor Web Component Script
@@ -124,12 +126,13 @@ export const CollectionEditor: React.FC<CollectionEditorProps> = ({
     }
 
     return (
-        <div
-            ref={containerRef}
-            className="w-full h-full min-h-[600px] relative"
-            id="collection-editor-container"
-        >
+        <div className="w-full h-full min-h-[600px] relative" id="collection-editor-wrapper">
             {status === 'loading' && <div className="p-4">Loading Editor...</div>}
+            <div
+                ref={containerRef}
+                className="w-full h-full"
+                id="collection-editor-container"
+            />
         </div>
     );
 };
