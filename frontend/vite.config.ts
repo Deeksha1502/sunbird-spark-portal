@@ -23,6 +23,11 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      '/api': {
+        target: 'https://dev.sunbirded.org',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 

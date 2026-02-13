@@ -17,11 +17,13 @@ interface ExploreFiltersProps {
 const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
     const { t } = useAppI18n();
 
+    //TODO: Hardcoded filters, to be replaced with dynamic filters
     const collections = [
-        { id: "courses", label: "Courses" },
-        { id: "resources", label: "Resources" },
-        { id: "textbooks", label: "Textbooks" },
-        { id: "skills", label: "Skills" },
+        { id: "Collection", label: "Collection" },
+        { id: "Resource", label: "Resource" },
+        { id: "Content Playlist", label: "Content Playlist" },
+        { id: "Course", label: "Course" },
+        { id: "Course Assessment", label: "Course Assessment" },
     ];
 
     const contentTypes = [
@@ -87,7 +89,7 @@ const ExploreFilters = ({ filters, setFilters }: ExploreFiltersProps) => {
                                         className="h-5 w-5 rounded border-sunbird-ginger data-[state=checked]:bg-sunbird-ginger data-[state=checked]:border-sunbird-ginger"
                                     />
                                     <span className="text-sm text-foreground group-hover:text-primary transition-colors">
-                                        {t(`filterOptions.${item.id}`)}
+                                        {item.label}
                                     </span>
                                 </label>
                             ))}

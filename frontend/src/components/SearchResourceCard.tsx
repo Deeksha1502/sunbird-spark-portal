@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SearchItem, ContentType } from "@/types";
 
 const SearchResourceCard = ({ item }: { item: SearchItem }) => {
+    // TODO: getViewLabel to be replaced with dynamic description
     const getViewLabel = (type: ContentType) => {
         switch (type) {
             case "Video":
@@ -16,6 +17,7 @@ const SearchResourceCard = ({ item }: { item: SearchItem }) => {
         }
     };
 
+    // TODO: Link to be replaced with dynamic link
     return (
         <Link to={`/collection/${item.id}`} className="block h-full">
             <div className="group rounded-[20px] overflow-hidden cursor-pointer h-full min-h-[18.75rem]">
@@ -27,10 +29,8 @@ const SearchResourceCard = ({ item }: { item: SearchItem }) => {
                     />
 
                     {/* Type Badge */}
-                    <div className="absolute top-4 left-4">
-                        <span
-                            className="inline-block text-xs font-medium px-3 py-1.5 rounded-full bg-white/95 text-foreground"
-                        >
+                    <div className="absolute top-[2.75rem] left-[2.125rem] z-[5]">
+                        <span className="flex items-center justify-center bg-white text-black font-medium text-[1rem] px-3 h-[2.25rem] rounded-[0.25rem] shadow-sm tracking-wide">
                             {item.type}
                         </span>
                     </div>
@@ -38,7 +38,7 @@ const SearchResourceCard = ({ item }: { item: SearchItem }) => {
                     {/* Content */}
                     <div className="absolute inset-x-0 bottom-0 px-5 pb-5">
                         <h3
-                            className="text-white font-medium text-xl leading-snug max-w-[90%] text-shadow-card"
+                            className="text-white font-[450] text-[1rem] leading-snug max-w-[90%] text-shadow-card"
                         >
                             {item.title}
                         </h3>
@@ -46,7 +46,7 @@ const SearchResourceCard = ({ item }: { item: SearchItem }) => {
                             className="text-white/90 text-sm font-medium flex items-center gap-2 hover:opacity-80 transition-opacity text-shadow-card-sm"
                             style={{ paddingTop: '45px' }}
                         >
-                            {getViewLabel(item.type)}
+                            {getViewLabel(item.type as ContentType)}
                             <FiArrowRight className="w-3.5 h-3.5" />
                         </p>
                     </div>

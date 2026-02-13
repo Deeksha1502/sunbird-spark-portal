@@ -22,6 +22,50 @@ export interface HealthStatus {
   version: string;
 }
 
+export interface DashboardCourse {
+    id: string;
+    title: string;
+    author: string;
+    thumbnail: string;
+    badges: string[];
+    category: string;
+    language: string;
+    rating: number;
+    duration: string;
+}
+
+export interface DashboardNotification {
+    id: string;
+    message: string;
+    date: string;
+}
+
+export interface Lesson {
+    id: string;
+    title: string;
+    description?: string;
+    duration: string;
+    thumbnail?: string;
+    videoUrl?: string;
+    isCompleted?: boolean;
+    isLocked?: boolean;
+}
+
+export type ContentType = "Course" | "Textbook" | "Video" | "PDF" | "Epub" | "Collection" | "Resource" | "Content Playlist" | "Course Assessment" | "Digital Textbook";
+
+export interface SearchItem {
+    id: string;
+    title: string;
+    image: string;
+    type: ContentType | string;
+    rating?: number;
+    learners?: string;
+    lessons?: number;
+    lastUpdatedOn?: string;
+    description?: string;
+    isResource?: boolean;
+}
+
 export interface AppConfig {
   apiUrl: string;
   environment: 'development' | 'staging' | 'production';
@@ -38,53 +82,3 @@ export interface LocaleData {
 }
 
 export type Theme = 'light' | 'dark' | 'auto';
-
-export type NotificationType = 'success' | 'error' | 'warning' | 'info';
-
-export interface Notification {
-  id: string;
-  type: NotificationType;
-  title: string;
-  message: string;
-  duration?: number;
-  timestamp: Date;
-}
-export type ContentType = "Course" | "Textbook" | "Video" | "PDF" | "Epub";
-
-export interface SearchItem {
-    id: string;
-    title: string;
-    type: ContentType;
-    image: string;
-    isResource?: boolean;
-    rating?: number;
-    learners?: string;
-    lessons?: number;
-}
-
-export interface Lesson {
-    id: string;
-    title: string;
-    duration: string;
-    isCompleted: boolean;
-    isLocked: boolean;
-    videoUrl?: string;
-}
-
-export interface DashboardNotification {
-    id: string;
-    message: string;
-    date: string;
-}
-
-export interface DashboardCourse {
-    id: string;
-    title: string;
-    author: string;
-    thumbnail: string;
-    badges: string[];
-    category: string;
-    language: string;
-    rating: number;
-    duration: string;
-}

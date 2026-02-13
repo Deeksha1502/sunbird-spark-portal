@@ -1,151 +1,176 @@
+import { useState, useEffect, useRef } from "react";
 import type { FilterState } from "@/pages/SearchResults";
-import { SearchItem } from "@/types";
+import { SearchItem, ContentType } from "@/types";
 import SearchCourseCard from "./SearchCourseCard";
 import SearchResourceCard from "./SearchResourceCard";
-
-// Import resource images
-import resourceRobotHand from "@/assets/resource-robot-hand.svg";
-import resourceVR from "@/assets/resource-vr.svg";
-import resourceHardware from "@/assets/resource-hardware.svg";
-import resourceBitcoin from "@/assets/resource-bitcoin.svg";
-import resourceHacker from "@/assets/resource-hacker.svg";
-import resourceEthereum from "@/assets/resource-ethereum.svg";
+import { searchContent } from "@/api/content";
+import type { Content } from "@/types/content";
+import EmptyState from "./EmptyState";
+import { FiSearch } from "react-icons/fi";
+import { useAppI18n } from "@/hooks/useAppI18n";
 
 interface SearchResultsGridProps {
     filters: FilterState;
     query: string;
+    sortBy?: any;
 }
 
-const searchItems: SearchItem[] = [
-    {
-        id: "1",
-        title: "The AI Engineer Course 2026: Complete AI Engineer Bootcamp",
-        type: "Course",
-        image: resourceRobotHand,
-        rating: 4.5,
-        learners: "9k",
-        lessons: 25,
-    },
-    {
-        id: "2",
-        title: "Data Engineering Foundations",
-        type: "Textbook",
-        image: resourceVR,
-        rating: 4.5,
-        learners: "9k",
-        lessons: 25,
-    },
-    {
-        id: "3",
-        title: "Elm Partners with Udacity to Build a Graduate Development Program",
-        type: "Video",
-        image: resourceRobotHand,
-        isResource: true,
-    },
-    {
-        id: "4",
-        title: "The AI Engineer Course 2026: Complete AI Engineer Bootcamp",
-        type: "Course",
-        image: resourceRobotHand,
-        rating: 4.5,
-        learners: "9k",
-        lessons: 25,
-    },
-    {
-        id: "5",
-        title: "Data Engineering Foundations",
-        type: "Textbook",
-        image: resourceVR,
-        rating: 4.5,
-        learners: "9k",
-        lessons: 25,
-    },
-    {
-        id: "6",
-        title: "Generative AI for Cybersecurity Professionals",
-        type: "Course",
-        image: resourceHardware,
-        rating: 4.5,
-        learners: "9k",
-        lessons: 25,
-    },
-    {
-        id: "7",
-        title: "Data Engineering Foundations",
-        type: "PDF",
-        image: resourceVR,
-        isResource: true,
-    },
-    {
-        id: "8",
-        title: "The AI Engineer Course 2026: Complete AI Engineer Bootcamp",
-        type: "Course",
-        image: resourceHacker,
-        rating: 4.5,
-        learners: "9k",
-        lessons: 25,
-    },
-    {
-        id: "9",
-        title: "Data Engineering Foundations",
-        type: "Textbook",
-        image: resourceEthereum,
-        rating: 4.5,
-        learners: "9k",
-        lessons: 25,
-    },
-    {
-        id: "10",
-        title: "The AI Engineer Course 2026: Complete AI Engineer Bootcamp",
-        type: "Course",
-        image: resourceRobotHand,
-        rating: 4.5,
-        learners: "9k",
-        lessons: 25,
-    },
-    {
-        id: "11",
-        title: "Bitcoin Engineering Foundations",
-        type: "Epub",
-        image: resourceBitcoin,
-        isResource: true,
-    },
-    {
-        id: "12",
-        title: "Generative AI for Cybersecurity Professionals",
-        type: "Course",
-        image: resourceHacker,
-        rating: 4.5,
-        learners: "9k",
-        lessons: 25,
-    },
-];
+const SearchResultsGrid = ({ filters, query, sortBy }: SearchResultsGridProps) => {
+    const { t } = useAppI18n();
+    const [displayItems, setDisplayItems] = useState<SearchItem[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [hasMore, setHasMore] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const observerTarget = useRef<HTMLDivElement>(null);
+    const offsetRef = useRef(0);
+    const isFetchingRef = useRef(false);
+    const filtersRef = useRef(filters);
+    const sortByRef = useRef(sortBy);
+    const queryRef = useRef(query);
+    const limit = 9;
 
-const SearchResultsGrid = ({ filters, query }: SearchResultsGridProps) => {
-    // Filter items based on query (simple filter for demo)
-    const items = searchItems.filter(item =>
-        item.title.toLowerCase().includes(query.toLowerCase()) || query === ""
-    );
+    useEffect(() => {
+        filtersRef.current = filters;
+        sortByRef.current = sortBy;
+        queryRef.current = query;
+    }, [filters, sortBy, query]);
+
+    const fetchContent = async () => {
+        if (isFetchingRef.current || isLoading) {
+            return;
+        }
+
+        try {
+            isFetchingRef.current = true;
+            setIsLoading(true);
+
+            const currentOffset = offsetRef.current;
+            const currentQuery = queryRef.current;
+            const currentFilters = filtersRef.current;
+            const currentSortBy = sortByRef.current;
+
+            // Construct filters object
+            const activeFilters: any = {};
+            if (currentFilters.collections.length > 0) {
+                activeFilters.primaryCategory = currentFilters.collections;
+            }
+            if (currentFilters.contentTypes.length > 0) {
+                activeFilters.contentType = currentFilters.contentTypes;
+            }
+            // Add other filters as needed
+
+            const data = await searchContent(limit, currentOffset, currentQuery, currentSortBy, activeFilters);
+            const newContent = data.content || [];
+
+            if (newContent.length < limit) {
+                setHasMore(false);
+            }
+
+            const newItems: SearchItem[] = newContent.map((content: Content, index: number) => {
+                // Use static placeholder images if appIcon is missing
+                const placeholderImages = [
+                    "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop",
+                    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=250&fit=crop",
+                    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop",
+                    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=250&fit=crop",
+                    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=250&fit=crop",
+                    "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=250&fit=crop",
+                ];
+
+                const type = (content.contentType as ContentType) || "Course";
+                const isResource = type !== "Course" && type !== "Textbook";
+
+                return {
+                    id: content.identifier,
+                    title: content.name,
+                    type: type,
+                    image: content.appIcon || placeholderImages[index % placeholderImages.length] || "",
+                    isResource: isResource,
+                    rating: 4.5,
+                    learners: "9k",
+                    lessons: content.leafNodesCount || 10,
+                };
+            });
+
+            setDisplayItems(prev => [...prev, ...newItems]);
+            offsetRef.current = currentOffset + newContent.length;
+            setError(null);
+        } catch (err) {
+            console.error('Failed to fetch content:', err);
+            setError('Failed to load results');
+            setHasMore(false);
+        } finally {
+            setIsLoading(false);
+            isFetchingRef.current = false;
+        }
+    };
+
+    // Initial load and query change reset
+    useEffect(() => {
+        offsetRef.current = 0;
+        setDisplayItems([]);
+        setHasMore(true);
+        fetchContent();
+    }, [query, sortBy, filters]);
+
+    // Infinite scroll observer
+    useEffect(() => {
+        if (!hasMore || isLoading || !query.trim()) return;
+
+        const observer = new IntersectionObserver(
+            entries => {
+                if (entries && entries[0] && entries[0].isIntersecting && hasMore && !isFetchingRef.current) {
+                    fetchContent();
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (observerTarget.current) {
+            observer.observe(observerTarget.current);
+        }
+
+        return () => {
+            if (observerTarget.current) {
+                observer.unobserve(observerTarget.current);
+            }
+        };
+    }, [hasMore, isLoading, query, filters, sortBy]);
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
-            {items.length > 0 ? (
-                items.map((item) =>
-                    item.isResource ? (
-                        <SearchResourceCard key={item.id} item={item} />
-                    ) : (
-                        <SearchCourseCard key={item.id} item={item} />
+        <div className="flex flex-col pb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
+                {displayItems.length > 0 ? (
+                    displayItems.map((item) =>
+                        item.isResource ? (
+                            <SearchResourceCard key={item.id} item={item} />
+                        ) : (
+                            <SearchCourseCard key={item.id} item={item} />
+                        )
                     )
-                )
-            ) : (
-                <div className="col-span-full py-12 text-center">
-                    <p
-                        className="text-base text-muted-foreground"
-                    >
-                        No results found for "{query}"
-                    </p>
-                </div>
-            )}
+                ) : (
+                    !isLoading && (
+                        <div className="col-span-full">
+                            <EmptyState
+                                title="No content found"
+                                description=""
+                                icon={FiSearch}
+                            />
+                        </div>
+                    )
+                )}
+            </div>
+
+            {/* Sentinel for infinite scroll */}
+            <div ref={observerTarget} className="h-10 w-full flex items-center justify-center mt-6">
+                {isLoading && (
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sunbird-brick"></div>
+                )}
+                {error && <p className="text-red-500 text-sm">{error}</p>}
+                {!hasMore && !isLoading && displayItems.length > 0 && (
+                    <p className="text-muted-foreground text-sm">No more results to show</p>
+                )}
+            </div>
         </div>
     );
 };

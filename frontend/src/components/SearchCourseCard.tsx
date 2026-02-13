@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SearchItem } from "@/types";
 
 const SearchCourseCard = ({ item }: { item: SearchItem }) => {
+    // TODO: Link to be replaced with dynamic link
     return (
         <Link to={`/collection/${item.id}`} className="group h-full">
             <div
@@ -28,7 +29,7 @@ const SearchCourseCard = ({ item }: { item: SearchItem }) => {
 
                     {/* Title */}
                     <h3
-                        className="font-medium text-xl leading-snug line-clamp-3 text-foreground"
+                        className="font-[450] text-[1rem] leading-snug line-clamp-3 text-foreground"
                     >
                         {item.title}
                     </h3>
@@ -38,11 +39,6 @@ const SearchCourseCard = ({ item }: { item: SearchItem }) => {
                         className="flex items-center gap-1.5 text-xs text-muted-foreground"
                         style={{ paddingTop: '45px' }}
                     >
-                        <span className="font-medium text-foreground">{item.rating}</span>
-                        <FiStar className="w-3.5 h-3.5 fill-sunbird-brick text-sunbird-brick" />
-                        <span className="mx-0.5">•</span>
-                        <span>{item.learners} Learners</span>
-                        <span className="mx-0.5">•</span>
                         <span>{item.lessons} Lessons</span>
                     </div>
                 </div>

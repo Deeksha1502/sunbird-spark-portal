@@ -4,7 +4,8 @@ import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
 import ExploreFilters from "@/components/ExploreFilters";
 import ExploreGrid from "@/components/ExploreGrid";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiSearch } from "react-icons/fi";
+import { Input } from "@/components/input";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -27,6 +28,10 @@ const Explore = () => {
         contentTypes: [],
         categories: [],
     });
+    const [searchQuery, setSearchQuery] = useState("");
+    const [activeSearchQuery, setActiveSearchQuery] = useState("");
+    const [sortBy, setSortBy] = useState<any>({ lastUpdatedOn: "desc" });
+    const [sortLabel, setSortLabel] = useState("Newest");
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -53,9 +58,21 @@ const Explore = () => {
                     <div className="flex-1">
                         <div>
                             <div className="bg-white rounded-[12px] px-4 mb-6 flex flex-row justify-between items-center shadow-sm border border-border h-[60px]">
-                                <h1 className="font-medium text-foreground font-rubik text-[20px] leading-[26px] tracking-normal">
-                                    {t("startExploring")}
-                                </h1>
+                                <div className="flex-1 max-w-2xl relative">
+                                    <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                                    <Input
+                                        type="text"
+                                        placeholder={t("searchPlaceholder") || "Search for courses, lessons..."}
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter") {
+                                                setActiveSearchQuery(searchQuery);
+                                            }
+                                        }}
+                                        className="pl-10 border-none bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-[16px] placeholder:text-[#999999] w-full"
+                                    />
+                                </div>
 
                                 <div className="flex items-center gap-3 mt-4 md:mt-0">
                                     <div className="flex items-center gap-2 text-muted-foreground">
@@ -72,14 +89,29 @@ const Explore = () => {
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
                                             <button className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-md text-sm font-normal text-foreground hover:bg-gray-50 transition-colors min-w-[120px] justify-between">
-                                                Popular
+                                                {sortLabel}
                                                 <FiChevronDown className="w-4 h-4 text-sunbird-brick" />
                                             </button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end" className="w-[140px] bg-white z-50">
-                                            <DropdownMenuItem className="cursor-pointer hover:bg-gray-50">Popular</DropdownMenuItem>
-                                            <DropdownMenuItem className="cursor-pointer hover:bg-gray-50">Newest</DropdownMenuItem>
-                                            <DropdownMenuItem className="cursor-pointer hover:bg-gray-50">Rating</DropdownMenuItem>
+                                            <DropdownMenuItem 
+                                                className="cursor-pointer hover:bg-gray-50"
+                                                onClick={() => {
+                                                    setSortBy({ lastUpdatedOn: "desc" });
+                                                    setSortLabel("Newest");
+                                                }}
+                                            >
+                                                Newest
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem 
+                                                className="cursor-pointer hover:bg-gray-50"
+                                                onClick={() => {
+                                                    setSortBy({ lastUpdatedOn: "asc" });
+                                                    setSortLabel("Oldest");
+                                                }}
+                                            >
+                                                Oldest
+                                            </DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                 </div>
@@ -87,7 +119,7 @@ const Explore = () => {
                         </div>
 
                         <div>
-                            <ExploreGrid filters={filters} />
+                            <ExploreGrid filters={filters} query={activeSearchQuery} sortBy={sortBy} />
                         </div>
                     </div>
                 </div>
