@@ -78,7 +78,7 @@ app.all('/portal/logout', async (req, res) => {
     res.redirect('/');
 })
 app.use('/api/data/v1/form', formRoutes);
-
+app.use('/api/content/v1', contentRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 const recaptchaProtectedRoutes: string[] = [
