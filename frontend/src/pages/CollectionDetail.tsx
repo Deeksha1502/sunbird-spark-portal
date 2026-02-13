@@ -7,9 +7,9 @@ import PageLoader from "@/components/common/PageLoader";
 import FAQSection from "@/components/FAQSection";
 import { useAppI18n } from "@/hooks/useAppI18n";
 import { collectionData } from "@/data/collectionData";
-import CollectionOverview from "@/components/CollectionOverview";
-import CollectionSidebar from "@/components/CollectionSidebar";
-import { RelatedCourseCard, RelatedResourceCard } from "@/components/RelatedContent";
+import CollectionOverview from "@/components/collection/CollectionOverview";
+import CollectionSidebar from "@/components/collection/CollectionSidebar";
+import { RelatedCourseCard, RelatedResourceCard } from "@/components/collection/RelatedContent";
 
 const CollectionDetail = () => {
     const { collectionId } = useParams();
@@ -52,7 +52,7 @@ const CollectionDetail = () => {
 
                 {/* Title Row */}
                 <div className="flex items-start justify-between mb-2">
-                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground max-w-[75%]">
+                    <h1 className="text-xl md:text-2xl font-semibold text-foreground max-w-[75%]">
                         {collectionData.title}
                     </h1>
 
@@ -80,7 +80,7 @@ const CollectionDetail = () => {
                     <CollectionOverview collectionData={collectionData} />
 
                     {/* Right Sidebar - Lessons Accordion */}
-                    <div className="lg:sticky lg:top-6 max-h-[calc(100vh_-_120px)] overflow-y-scroll pr-3 custom-scrollbar">
+                    <div className="lg:sticky lg:top-6 h-fit max-h-[calc(100vh_-_120px)] overflow-y-scroll pr-3 custom-scrollbar">
                         <CollectionSidebar
                             modules={collectionData.modules}
                             expandedModules={expandedModules}
@@ -88,16 +88,17 @@ const CollectionDetail = () => {
                             collectionId={collectionId}
                         />
                     </div>
+
                 </div>
 
                 {/* Related Content Section */}
-                <section className="mt-16 mb-20">
-                    <div className="flex items-center gap-3 mb-8">
-                        <h2 className="text-2xl font-bold text-foreground">{t("courseDetails.relatedContent")}</h2>
-                        <FiArrowRight className="w-6 h-6 text-sunbird-brick" />
+                <section className="mt-16">
+                    <div className="flex items-center gap-3 mb-6">
+                        <h2 className="text-xl font-semibold text-foreground">{t("courseDetails.relatedContent")}</h2>
+                        <FiArrowRight className="w-5 h-5 text-sunbird-brick" />
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 auto-rows-fr">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-fr">
                         {collectionData.relatedContent.map((item) =>
                             item.isResource ? (
                                 <RelatedResourceCard key={item.id} item={item} />
@@ -109,18 +110,19 @@ const CollectionDetail = () => {
 
                     {/* Carousel Navigation */}
                     <div className="flex items-center justify-center gap-3 mt-8">
-                        <button className="w-8 h-8 rounded-full border flex items-center justify-center hover:border-gray-400 transition-colors">
-                            <FiArrowLeft className="w-4 h-4 text-sunbird-brick" />
+                        <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors">
+                            <FiArrowLeft className="w-4 h-4 text-gray-500" />
                         </button>
-                        <div className="w-24 overflow-x-scroll custom-scrollbar">
-                            <div className="w-[200%] h-1"></div>
+                        <div className="flex items-center gap-2">
+                            <div className="w-6 h-1 bg-gray-800 rounded-full" />
+                            <div className="w-6 h-1 bg-gray-300 rounded-full" />
                         </div>
                         <button className="w-8 h-8 rounded-full bg-sunbird-brick flex items-center justify-center hover:bg-sunbird-brick/90 transition-colors">
                             <FiArrowRight className="w-4 h-4 text-white" />
                         </button>
                     </div>
                 </section>
-                <FAQSection className="bg-gray-100" noPadding />
+                <FAQSection className="bg-gray-100" />
 
 
             </main>
