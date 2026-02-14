@@ -1,6 +1,40 @@
 import type { Request } from 'express';
 import logger from './logger.js';
 import { generateLoggedInKongToken } from '../services/kongAuthService.js';
+import { sessionStore } from './sessionStore.js';
+import * as cookie from 'cookie';
+import * as cookieSignature from 'cookie-signature';
+import { envConfig } from '../config/env.js';
+
+export const getCookieValue = (header: string, name: string): string | null => {
+    if (!header) return null;
+    const cookies = cookie.parse(header);
+    return cookies[name] || null;
+};
+
+export const getUnsignedSessionId = (cookieValue: string): string | null => {
+    if (!cookieValue) return null;
+    // cookie-signature expects the value to start with 's:'
+    if (cookieValue.startsWith('s:')) {
+        const unsigned = cookieSignature.unsign(cookieValue.slice(2), envConfig.SUNBIRD_ANONYMOUS_SESSION_SECRET);
+        return unsigned !== false ? unsigned : null;
+    }
+    return cookieValue;
+};
+
+export const destroySessionId = (sid: string): Promise<void> => {
+    return new Promise((resolve, reject) => {
+        sessionStore.destroy(sid, (err) => {
+            if (err) {
+                logger.error(`Error destroying session ID ${sid}:`, err);
+                reject(err);
+            } else {
+                logger.info(`Session ID ${sid} destroyed successfully`);
+                resolve();
+            }
+        });
+    });
+};
 
 export const saveSession = (req: Request): Promise<void> => {
     return new Promise((resolve, reject) => {
