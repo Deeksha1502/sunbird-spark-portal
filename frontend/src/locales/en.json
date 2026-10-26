@@ -676,7 +676,8 @@
     "errors": {
       "unexpectedResponse": "Unexpected server response. Please try again.",
       "creationFailed": "Creation Failed",
-      "unableToCreate": "Unable to create content. Please try again."
+      "unableToCreate": "Unable to create content. Please try again.",
+      "frameworkRequired": "A framework is needed to open this in the editor. Ask your administrator to set a default framework for your organisation."
     },
     "stats": {
       "published": "Published",

@@ -676,7 +676,8 @@
     "errors": {
       "unexpectedResponse": "Resposta inesperada do servidor. Por favor, tente novamente.",
       "creationFailed": "Falha na criação",
-      "unableToCreate": "Não foi possível criar o conteúdo. Por favor, tente novamente."
+      "unableToCreate": "Não foi possível criar o conteúdo. Por favor, tente novamente.",
+      "frameworkRequired": "É necessário um framework para abrir este conteúdo no editor. Peça ao seu administrador para definir um framework padrão para a sua organização."
     },
     "stats": {
       "published": "Publicado",

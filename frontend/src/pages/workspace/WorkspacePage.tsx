@@ -526,7 +526,7 @@ const WorkspacePage = () => {
       throw new Error(t("workspace.errors.unexpectedResponse"));
     }
 
-    navigate(`/workspace/content/edit/generic/${contentId}/draft/${orgFramework || ''}/draft`, {
+    navigate(`/workspace/content/edit/generic/${contentId}/draft/${orgFramework}/draft`, {
       state: { from: location.pathname + location.search },
     });
   };
@@ -561,6 +561,11 @@ const WorkspacePage = () => {
       } else if (selectedOption && QUML_EDITOR_OPTIONS.includes(selectedOption)) {
         await handleQuestionSetCreate(name);
       } else if (selectedOption && DYNAMIC_ASSESS_ECML_OPTIONS.includes(selectedOption)) {
+        // The editor route needs a framework segment, so don't create content the editor couldn't open.
+        if (!orgFramework) {
+          toast({ title: t("workspace.errors.creationFailed"), description: t("workspace.errors.frameworkRequired"), variant: "destructive" });
+          return;
+        }
         await handleDynamicAssessEcmlCreate(name);
       }
       setShowNameDialog(false);
@@ -589,6 +594,11 @@ const WorkspacePage = () => {
     const contentStatus = item.contentStatus || 'draft';
     // Dynamic Assess ECML opens in generic-editor-v2, unlike other ECML content.
     if (item.primaryCategory === 'Dynamic Course Assessment') {
+      // An empty framework segment matches no editor route and would redirect home, so explain instead.
+      if (!framework) {
+        toast({ title: t("workspace.errors.frameworkRequired"), variant: "destructive" });
+        return null;
+      }
       return `/workspace/content/edit/generic/${id}/${state}/${framework}/${contentStatus}`;
     }
     if (item.mimeType === 'application/vnd.ekstep.ecml-archive') {

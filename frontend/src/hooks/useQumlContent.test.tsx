@@ -517,4 +517,38 @@ describe('useQumlContent', () => {
     expect(result.current.data.children).toHaveLength(40);
     expect(result.current.data.children.every((c: any) => c.body === 'b')).toBe(true);
   });
+
+  it('totals a Dynamic set\'s score from the hydrated questions, not the score-less hierarchy stubs (positive)', async () => {
+    // Stubs carry no marks; question/list returns 5 marks each, so the drawn 2 questions are worth 10.
+    (questionSetService.getHierarchy as Mock).mockResolvedValue({
+      questionset: {
+        identifier: 'do_marks', primaryCategory: 'Dynamic QuestionSet', difficultyTarget: '{"E":2,"M":0,"D":0}',
+        children: ['e1', 'e2', 'e3', 'e4', 'e5', 'e6'].map((identifier) => ({
+          identifier, objectType: 'Question', mimeType: 'application/vnd.sunbird.question', difficultyLevel: 'EASY',
+        })),
+      },
+    });
+    (questionSetService.getQuestionList as Mock).mockImplementation(async (ids: string[]) => ({
+      questions: ids.map((identifier) => ({ identifier, mimeType: 'application/vnd.sunbird.question', maxScore: 5 })),
+    }));
+    const { result } = renderHook(() => useQumlContent('do_marks'), { wrapper: createWrapper() });
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(result.current.data.children).toHaveLength(2);
+    expect(result.current.data.maxScore).toBe(10);
+    expect(result.current.data.outcomeDeclaration.maxScore.defaultValue).toBe(10);
+  });
+
+  it('keeps an ordinary QuestionSet\'s published score untouched (negative)', async () => {
+    (questionSetService.getHierarchy as Mock).mockResolvedValue({
+      questionset: {
+        identifier: 'qs_marks', primaryCategory: 'Practice Question Set', maxScore: 3,
+        children: [{ identifier: 'q1', mimeType: 'application/vnd.sunbird.question' }],
+      },
+    });
+    (questionSetService.getQuestionList as Mock).mockResolvedValue({ questions: [{ identifier: 'q1', mimeType: 'application/vnd.sunbird.question', maxScore: 5 }] });
+    const { result } = renderHook(() => useQumlContent('qs_marks'), { wrapper: createWrapper() });
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(result.current.data.maxScore).toBe(3);
+    expect(result.current.data.outcomeDeclaration.maxScore.defaultValue).toBe(3);
+  });
 });

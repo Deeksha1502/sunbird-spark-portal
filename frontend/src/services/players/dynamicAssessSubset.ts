@@ -20,7 +20,8 @@ function toTarget(value: unknown): Target {
 const isQuestion = (c: AnyRecord) =>
   c?.mimeType === 'application/vnd.sunbird.question' || String(c?.objectType ?? '').replace(/Image$/, '') === 'Question';
 
-const scoreOf = (c: AnyRecord) => Number(c.outcomeDeclaration?.maxScore?.defaultValue ?? c.maxScore) || 1;
+/** A question's marks: its outcomeDeclaration maxScore, else maxScore, else 1. */
+export const scoreOf = (c: AnyRecord) => Number(c.outcomeDeclaration?.maxScore?.defaultValue ?? c.maxScore) || 1;
 
 /** 32-bit FNV-1a hash of the seed string. */
 function hashSeed(seed: string): number {

@@ -2,7 +2,7 @@ import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { questionSetService } from '../services/QuestionSetService';
 import _ from 'lodash';
 import userAuthInfoService from '@/services/userAuthInfoService/userAuthInfoService';
-import { dynamicAssessForLearner } from '@/services/players/dynamicAssessSubset';
+import { dynamicAssessForLearner, scoreOf } from '@/services/players/dynamicAssessSubset';
 
 /** knowlg-service rejects question/list requests with more identifiers than this (question.list.limit). */
 const QUESTION_LIST_LIMIT = 20;
@@ -104,6 +104,16 @@ export const useQumlContent = (
       };
 
       metadata = replaceQuestionsInHierarchy(metadata);
+
+      // Dynamic Assess: the draw scored the hierarchy stubs, which may lack marks, so total the hydrated questions instead.
+      if (metadata?.primaryCategory === 'Dynamic QuestionSet' && Array.isArray(metadata.children)) {
+        const maxScore = metadata.children.reduce((sum: number, q: any) => sum + scoreOf(q), 0);
+        metadata.maxScore = maxScore;
+        metadata.outcomeDeclaration = {
+          ...(metadata.outcomeDeclaration ?? {}),
+          maxScore: { cardinality: 'single', type: 'integer', ...(metadata.outcomeDeclaration?.maxScore ?? {}), defaultValue: maxScore },
+        };
+      }
 
       // Ensure outcomeDeclaration.maxScore structure exists
       if (!_.get(metadata, 'outcomeDeclaration')) {
